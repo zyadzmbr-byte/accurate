@@ -1,0 +1,25 @@
+{
+  "name": "Accurate Lab - معمل أكيوريت للتحاليل الطبية",
+  "short_name": "Accurate Lab",
+  "description": "البوابة الإلكترونية لموظفي معمل أكيوريت للتحاليل الطبية - تسجيل الحضور والمستلزمات والإجازات والمكافآت",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0284c7",
+  "theme_color": "#0284c7",
+  "orientation": "portrait",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "logo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
+

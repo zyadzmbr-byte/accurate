@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#0284c7">
+  <meta name="description" content="Accurate Lab - البوابة الإلكترونية لموظفي معمل أكيوريت للتحاليل الطبية">
+  <title>Accurate Lab | معمل أكيوريت للتحاليل الطبية</title>
+  
+  <link rel="icon" type="image/jpeg" href="logo.jpg">
+  <link rel="apple-touch-icon" href="logo.jpg">
+  <link rel="manifest" href="manifest.json">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <style>
+    /* Dedicated Login View Styles */
+    .login-hero-container {
+      min-height: 85vh;
+      min-height: 85dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem 1rem;
+      text-align: center;
+    }
+
+    .login-card-wrapper {
+      width: 100%;
+      max-width: 440px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.5rem;
+      box-shadow: var(--shadow-xl);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .login-card-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--secondary), var(--primary));
+    }
+
+    .login-brand-img {
+      width: 90px;
+      height: 90px;
+      border-radius: 24px;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 3px solid var(--primary);
+      box-shadow: var(--shadow-md), var(--shadow-glow);
+    }
+
+    .code-input-wrapper {
+      max-width: 260px;
+      margin: 1.25rem auto;
+    }
+
+    .code-input-lg {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: 0.35em;
+      padding: 0.75rem;
+      border-radius: var(--radius-md);
+      direction: ltr;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================================================
+       PAGE TRANSITION OVERLAY (0.5s Sky-Blue & White Bubbles)
+       ========================================================= -->
+  <div id="pageTransitionOverlay" class="page-transition-overlay" aria-hidden="true">
+    <div class="test-tube-stage">
+      <div class="test-tube-wrapper">
+        <div class="tube-lip"></div>
+        <div class="tube-body">
+          <div class="tube-liquid"></div>
+        </div>
+      </div>
+      <!-- Rising White Bubbles -->
+      <div class="bubbles-stream">
+        <span class="white-bubble bubble-1"></span>
+        <span class="white-bubble bubble-2"></span>
+        <span class="white-bubble bubble-3"></span>
+        <span class="white-bubble bubble-4"></span>
+        <span class="white-bubble bubble-5"></span>
+        <span class="white-bubble bubble-6"></span>
+      </div>
+    </div>
+    <div class="transition-text">Accurate Lab</div>
+  </div>
+
+  <!-- =========================================================
+       FLOATING ADMIN BUTTON (Always Visible & Accessible)
+       ========================================================= -->
+  <button id="fabAdminBtn" class="fab-admin" title="لوحة تحكم الإدارة (الرقم السري: 4k4k)" aria-label="لوحة تحكم الإدارة" style="z-index: 9999;">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+    </svg>
+    <span class="fab-badge">ادمن</span>
+  </button>
+
+  <!-- =========================================================
+       VIEW 1: DEFAULT LOGIN SCREEN (تظهر عند فتح الموقع)
+       ========================================================= -->
+  <div id="viewLogin">
+    <!-- Header with Theme Toggle -->
+    <header class="app-header">
+      <div class="header-container">
+        <div class="brand-wrapper">
+          <img src="logo.jpg" alt="Accurate Lab" class="brand-logo">
+          <div class="brand-text">
+            <span class="brand-name">Accurate Lab</span>
+            <span class="brand-subtitle">معمل أكيوريت للتحاليل الطبية</span>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button id="loginThemeToggleBtn" class="btn-icon" title="تبديل المظهر (فاتح / داكن)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="login-hero-container">
+      <div class="login-card-wrapper">
+        <img src="logo.jpg" alt="Accurate Lab Logo" class="login-brand-img">
+        <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.25rem;">Accurate Lab</h2>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.25rem;">معمل أكيوريت للتحاليل الطبية</p>
+
+        <form id="mainLoginForm">
+          <div class="form-group code-input-wrapper">
+            <label class="form-label" for="mainEmployeeCodeInput" style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem;">
+              أدخل الكود الرباعي للموظف:
+            </label>
+            <input type="text" id="mainEmployeeCodeInput" class="form-control code-input-lg" maxlength="4" pattern="[0-9]{4}" inputmode="numeric" placeholder="••••" required autofocus autocomplete="off">
+          </div>
+
+          <button type="submit" id="btnMainLoginSubmit" class="btn btn-primary btn-block" style="padding: 0.85rem; font-size: 1.05rem;">
+            تسجيل الدخول للمعمل
+          </button>
+        </form>
+
+        <div style="background: var(--bg-surface-elevated); padding: 0.75rem; border-radius: var(--radius-md); border: 1px dashed var(--border-color); margin-top: 1.25rem; font-size: 0.82rem; color: var(--text-secondary); text-align: right; line-height: 1.5;">
+          💡 <strong>ملاحظة للموظف:</strong> إذا كان الكود جديداً، سيُطلب منك استكمال بياناتك (الاسم / المنطقة / الهاتف) في الخطوة التالية.
+        </div>
+
+        <div style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">
+          إدارة المعمل: اضغط على <strong>الأيقونة العائمة أسفل الشاشة</strong> للدخول (الرمز: <code>4k4k</code>)
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       VIEW 2: MAIN APPLICATION (تظهر بعد تسجيل الدخول بالكود)
+       ========================================================= -->
+  <div id="viewMainApp" style="display: none;">
+
+    <!-- Main Header -->
+    <header class="app-header">
+      <div class="header-container">
+        <div class="brand-wrapper">
+          <img src="logo.jpg" alt="Accurate Lab Logo" class="brand-logo">
+          <div class="brand-text">
+            <span class="brand-name">
+              Accurate Lab
+              <span class="live-indicator" title="متصل"></span>
+            </span>
+            <span class="brand-subtitle">معمل أكيوريت للتحاليل الطبية</span>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <!-- Logged-in Employee Info -->
+          <div id="userHeaderBadge" class="user-pill">
+            <div class="user-avatar" id="userHeaderAvatar">م</div>
+            <div>
+              <div id="userHeaderName" style="line-height: 1.2;">-</div>
+              <div id="userHeaderArea" style="font-size: 0.72rem; color: var(--text-muted);">-</div>
+            </div>
+          </div>
+
+          <!-- Theme Toggle -->
+          <button id="themeToggleBtn" class="btn-icon" title="تبديل المظهر">
+            <svg id="themeIconSun" style="display: none;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg id="themeIconMoon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+
+          <!-- Logout Button -->
+          <button id="logoutBtn" class="btn-icon" title="تسجيل الخروج">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Desktop Navigation Bar -->
+    <nav id="desktopNav" class="desktop-nav">
+      <div class="desktop-nav-container">
+        <button class="desktop-nav-item active" data-page="attendance">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          تسجيل الحضور
+        </button>
+
+        <button class="desktop-nav-item" data-page="rewards">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 12 20 22 4 22 4 12"></polyline>
+            <rect x="2" y="7" width="20" height="5"></rect>
+            <line x1="12" y1="22" x2="12" y2="7"></line>
+            <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+            <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+          </svg>
+          المكافآت والخصومات
+        </button>
+
+        <button class="desktop-nav-item" data-page="supplies">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+          طلب مستلزمات
+        </button>
+
+        <button class="desktop-nav-item" data-page="leave">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          طلب إجازة
+        </button>
+      </div>
+    </nav>
+
+    <!-- Main 4 Pages Content -->
+    <main class="main-content">
+
+      <!-- =======================================================
+           PAGE 1: تسجيل الحضور والانصراف (ATTENDANCE)
+           ======================================================= -->
+      <section id="pageAttendance" class="app-page active">
+        <!-- Live Clock -->
+        <div class="live-clock-card">
+          <div class="clock-time" id="digitalClockTime">00:00:00 --</div>
+          <div class="clock-date" id="digitalClockDate">جاري التحديث...</div>
+        </div>
+
+        <!-- Attendance Action Cards -->
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              تسجيل الحضور والانصراف لليوم
+            </h2>
+            <span class="badge badge-info" id="todaySummaryBadge">4 حركات متاحة</span>
+          </div>
+
+          <div class="attendance-grid">
+            <!-- 1. دخول صباحي -->
+            <div class="attendance-card" id="cardMorningIn">
+              <div class="attendance-card-header">
+                <div class="attendance-card-icon morning-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="attendance-card-title">تسجيل دخول صباحي</h3>
+                  <p class="attendance-card-subtitle">بداية الوردية الصباحية</p>
+                </div>
+              </div>
+              <div class="attendance-card-status">
+                <span class="badge" id="statusMorningIn">لم يسجل بعد</span>
+                <button class="btn btn-primary btn-sm" id="btnMorningIn">
+                  تسجيل الآن
+                </button>
+              </div>
+            </div>
+
+            <!-- 2. خروج صباحي -->
+            <div class="attendance-card" id="cardMorningOut">
+              <div class="attendance-card-header">
+                <div class="attendance-card-icon morning-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="attendance-card-title">تسجيل خروج صباحي</h3>
+                  <p class="attendance-card-subtitle">نهاية الوردية الصباحية</p>
+                </div>
+              </div>
+              <div class="attendance-card-status">
+                <span class="badge" id="statusMorningOut">لم يسجل بعد</span>
+                <button class="btn btn-secondary btn-sm" id="btnMorningOut">
+                  تسجيل الآن
+                </button>
+              </div>
+            </div>
+
+            <!-- 3. دخول مسائي -->
+            <div class="attendance-card" id="cardEveningIn">
+              <div class="attendance-card-header">
+                <div class="attendance-card-icon evening-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="attendance-card-title">تسجيل دخول مسائي</h3>
+                  <p class="attendance-card-subtitle">بداية الوردية المسائية</p>
+                </div>
+              </div>
+              <div class="attendance-card-status">
+                <span class="badge" id="statusEveningIn">لم يسجل بعد</span>
+                <button class="btn btn-primary btn-sm" id="btnEveningIn">
+                  تسجيل الآن
+                </button>
+              </div>
+            </div>
+
+            <!-- 4. خروج مسائي -->
+            <div class="attendance-card" id="cardEveningOut">
+              <div class="attendance-card-header">
+                <div class="attendance-card-icon evening-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="attendance-card-title">تسجيل خروج مسائي</h3>
+                  <p class="attendance-card-subtitle">نهاية الوردية المسائية</p>
+                </div>
+              </div>
+              <div class="attendance-card-status">
+                <span class="badge" id="statusEveningOut">لم يسجل بعد</span>
+                <button class="btn btn-secondary btn-sm" id="btnEveningOut">
+                  تسجيل الآن
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Attendance History -->
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+              </svg>
+              سجل حركات الحضور المسجلة
+            </h2>
+            <span class="badge badge-info" id="attendanceHistoryCount">0 حركة</span>
+          </div>
+          <div id="attendanceHistoryList">
+            <div style="text-align: center; padding: 2rem 1rem; color: var(--text-muted);">
+              جاري تحميل سجل حركاتك...
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================================================
+           PAGE 2: المكافآت والخصومات (REWARDS & DEDUCTIONS)
+           ======================================================= -->
+      <section id="pageRewards" class="app-page">
+        <div class="rewards-summary-grid">
+          <div class="summary-card positive">
+            <div class="summary-label">إجمالي المكافآت</div>
+            <div class="summary-amount green" id="totalRewardsSum">0 ج.م</div>
+          </div>
+          <div class="summary-card negative">
+            <div class="summary-label">إجمالي الخصومات</div>
+            <div class="summary-amount red" id="totalDeductionsSum">0 ج.م</div>
+          </div>
+          <div class="summary-card net">
+            <div class="summary-label">الصافي</div>
+            <div class="summary-amount" id="netRewardsSum">0 ج.م</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+              </svg>
+              سجل المكافآت والخصومات الخاص بك
+            </h2>
+          </div>
+          <div id="rewardsListContainer">
+            <div style="text-align: center; padding: 2.5rem 1rem; color: var(--text-muted);">
+              لا توجد مكافآت أو خصومات مسجلة لك حتى الآن.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================================================
+           PAGE 3: طلب مستلزمات (SUPPLIES)
+           ======================================================= -->
+      <section id="pageSupplies" class="app-page">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+              المستلزمات الطبية المتاحة بالمعمل
+            </h2>
+          </div>
+          <div id="suppliesCatalogGrid" class="supplies-catalog-grid">
+            <div style="grid-column: 1 / -1; text-align: center; padding: 2rem; color: var(--text-muted);">
+              جاري تحميل المستلزمات الطبية...
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+              </svg>
+              طلب مستلزم جديد
+            </h2>
+          </div>
+
+          <form id="orderSupplyForm">
+            <div class="form-group">
+              <label class="form-label" for="supplySelect">اسم المستلزم الطبي *</label>
+              <input type="text" id="supplySelect" class="form-control" placeholder="اختر من القائمة أعلاه أو اكتب اسم المستلزم..." required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="supplyQuantity">الكمية المطلوبة (مع تحديد الوحدة مثل 5 علب، 10 كراتين) *</label>
+              <input type="text" id="supplyQuantity" class="form-control" placeholder="مثال: 5 علب أو 20 كرتونة..." required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="supplyNotes">ملاحظات إضافية (اختياري)</label>
+              <textarea id="supplyNotes" class="form-control" placeholder="أي تفاصيل خاصة أو درجة الأولوية..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">
+              إرسال طلب المستلزمات للإدارة
+            </button>
+          </form>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 11 12 14 22 4"></polyline>
+              </svg>
+              طلبات المستلزمات السابقة
+            </h2>
+          </div>
+          <div id="mySupplyOrdersList">
+            <div style="text-align: center; padding: 2rem; color: var(--text-muted);">
+              لم تقم بإرسال أي طلبات مستلزمات حتى الآن.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================================================
+           PAGE 4: طلب إجازة (LEAVE)
+           ======================================================= -->
+      <section id="pageLeave" class="app-page">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              </svg>
+              تقديم طلب إجازة جديدة
+            </h2>
+          </div>
+
+          <form id="leaveRequestForm">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+              <div class="form-group">
+                <label class="form-label" for="leaveDaysCount">عدد الأيام *</label>
+                <input type="number" id="leaveDaysCount" class="form-control" min="1" max="60" value="1" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="leaveStartDate">تاريخ بدء الإجازة *</label>
+                <input type="date" id="leaveStartDate" class="form-control" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="leaveType">نوع الإجازة</label>
+              <select id="leaveType" class="form-control">
+                <option value="اعتيادية">إجازة اعتيادية</option>
+                <option value="عارضة">إجازة عارضة</option>
+                <option value="مرضية">إجازة مرضية</option>
+                <option value="طارئة">إجازة طارئة</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="leaveReason">سبب الإجازة وملاحظات *</label>
+              <textarea id="leaveReason" class="form-control" placeholder="يرجى كتابة سبب طلب الإجازة..." required></textarea>
+            </div>
+
+            <!-- Cloudinary Upload for Leave Report -->
+            <div class="form-group">
+              <label class="form-label">إرفاق تقرير طبي أو عذر (رفع مباشر إلى Cloudinary)</label>
+              <div id="leaveUploadDropzone" class="upload-dropzone">
+                <input type="file" id="leaveFileInput" accept="image/*,application/pdf" style="display: none;">
+                <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                <div>انقر هنا لاختيار صورة أو ملف للرفع المباشر إلى Cloudinary</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">(يدعم JPG, PNG, PDF حتى 10 ميجابايت)</div>
+
+                <div id="leaveUploadProgress" class="progress-container">
+                  <div class="progress-bar-outer">
+                    <div id="leaveProgressBarInner" class="progress-bar-inner"></div>
+                  </div>
+                  <div id="leaveUploadProgressText" style="font-size: 0.78rem; margin-top: 0.35rem; color: var(--primary);">0%</div>
+                </div>
+
+                <div id="leaveUploadPreview" class="upload-preview-wrapper" style="display: none;">
+                  <img id="leavePreviewImg" src="" alt="المرفق" class="upload-preview-img">
+                  <button type="button" id="btnRemoveLeaveAttachment" class="upload-preview-remove">&times;</button>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">
+              إرسال طلب الإجازة للإدارة
+            </button>
+          </form>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+              </svg>
+              سجل طلبات الإجازات الخاصة بك
+            </h2>
+          </div>
+          <div id="myLeaveRequestsList">
+            <div style="text-align: center; padding: 2rem; color: var(--text-muted);">
+              لا توجد طلبات إجازة مسجلة لك حتى الآن.
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Mobile Bottom Nav -->
+    <nav id="mobileNav" class="mobile-nav" aria-label="التنقل">
+      <button class="nav-tab-btn active" data-page="attendance">
+        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        <span>تسجيل حضور</span>
+      </button>
+
+      <button class="nav-tab-btn" data-page="rewards">
+        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="20 12 20 22 4 22 4 12"></polyline>
+          <rect x="2" y="7" width="20" height="5"></rect>
+          <line x1="12" y1="22" x2="12" y2="7"></line>
+        </svg>
+        <span>المكافآت</span>
+      </button>
+
+      <button class="nav-tab-btn" data-page="supplies">
+        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+        </svg>
+        <span>المستلزمات</span>
+      </button>
+
+      <button class="nav-tab-btn" data-page="leave">
+        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+        </svg>
+        <span>طلب إجازة</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- =========================================================
+       MODAL: FIRST-TIME REGISTRATION (الاسم / المنطقة / رقم الهاتف)
+       ========================================================= -->
+  <div id="registerModal" class="modal-overlay">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">تسجيل بيانات الموظف الجديد</h3>
+      </div>
+      <form id="registerForm">
+        <div class="modal-body">
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
+            هذا الكود مسجل جديداً بالنظام! يرجى استكمال بياناتك الشخصية للربط:
+          </p>
+
+          <div class="form-group">
+            <label class="form-label" for="regName">اسم الموظف الثلاثي *</label>
+            <input type="text" id="regName" class="form-control" placeholder="مثال: د. أحمد محمد علي" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="regArea">المنطقة / الفرع *</label>
+            <input type="text" id="regArea" class="form-control" placeholder="مثال: فرع المهندسين / فرع المعادي" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="regPhone">رقم الهاتف *</label>
+            <input type="tel" id="regPhone" class="form-control" placeholder="01xxxxxxxxx" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary btn-block">
+            حفظ البيانات والدخول
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       MODAL: ADMIN PIN PROMPT (4k4k)
+       ========================================================= -->
+  <div id="adminPinModal" class="modal-overlay">
+    <div class="modal-dialog" style="max-width: 360px;">
+      <div class="modal-header">
+        <h3 class="modal-title">دخول لوحة تحكم الإدارة</h3>
+        <button type="button" class="btn-icon close-admin-pin" style="width: 32px; height: 32px;">&times;</button>
+      </div>
+      <form id="adminPinForm">
+        <div class="modal-body" style="text-align: center;">
+          <div style="width: 50px; height: 50px; margin: 0 auto 1rem; border-radius: 50%; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+            أدخل الرقم السري للوحة تحكم الأدمن:
+          </p>
+          <div class="form-group">
+            <input type="password" id="adminPinInput" class="form-control" placeholder="••••" style="text-align: center; font-size: 1.4rem; letter-spacing: 0.25em;" required autofocus>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary close-admin-pin">إلغاء</button>
+          <button type="submit" class="btn btn-primary">تأكيد الدخول</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       MODAL: ADMIN CONTROL CENTER
+       ========================================================= -->
+  <div id="adminDashboardModal" class="modal-overlay">
+    <div class="modal-dialog admin-modal-dialog">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <h3 class="modal-title">لوحة تحكم إدارة Accurate Lab</h3>
+          <span class="badge badge-success">متصل</span>
+        </div>
+        <button type="button" id="closeAdminDashboardBtn" class="btn-icon" style="width: 34px; height: 34px;">&times;</button>
+      </div>
+
+      <div class="admin-nav-tabs">
+        <button class="admin-tab-btn active" data-pane="adminCodes">
+          <span>🎲 توليد أكواد الموظفين</span>
+        </button>
+        <button class="admin-tab-btn" data-pane="adminRewards">
+          <span>💰 مكافأة / خصم</span>
+        </button>
+        <button class="admin-tab-btn" data-pane="adminAttendance">
+          <span>⏱️ سجل الحضور المباشر</span>
+        </button>
+        <button class="admin-tab-btn" data-pane="adminLeaves">
+          <span>🏖️ طلبات الإجازات</span>
+        </button>
+        <button class="admin-tab-btn" data-pane="adminSupplies">
+          <span>📦 المستلزمات والطلبات</span>
+        </button>
+      </div>
+
+      <div class="modal-body" style="background: var(--bg-body); padding: 1rem;">
+        
+        <!-- PANE 1: توليد أكواد الموظفين -->
+        <div id="paneAdminCodes" class="admin-pane active">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">توليد كود رباعي جديد لموظف</h4>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
+              عند النقر على الزر، سيتم توليد كود رباعي عشوائي وإضافته فوراً للسيرفر ليكون متاحاً للموظف للتسجيل به.
+            </p>
+            <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+              <button id="btnGenerateCode" class="btn btn-primary">
+                ⚡ توليد كود موظف جديد
+              </button>
+              <div id="generatedCodeDisplay" style="display: none; background: var(--bg-surface-elevated); padding: 0.5rem 1rem; border-radius: var(--radius-md); border: 1.5px dashed var(--primary); font-size: 1.25rem; font-weight: 800; color: var(--primary); letter-spacing: 0.15em;">
+                -
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">قائمة أكواد الموظفين بالسيرفر</h4>
+              <span class="badge badge-info" id="adminCodesCount">0 كود</span>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>الكود الرباعي</th>
+                    <th>الحالة</th>
+                    <th>اسم الموظف</th>
+                    <th>المنطقة</th>
+                    <th>الهاتف</th>
+                    <th>إجراء</th>
+                  </tr>
+                </thead>
+                <tbody id="adminEmployeesTableBody">
+                  <tr><td colspan="6" style="text-align: center; color: var(--text-muted);">جاري تحميل الأكواد...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANE 2: إرسال مكافأة أو خصم -->
+        <div id="paneAdminRewards" class="admin-pane">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">إرسال مكافأة أو خصم لموظف</h4>
+            </div>
+            <form id="adminRewardForm">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                <div class="form-group">
+                  <label class="form-label" for="rewardEmployeeSelect">الموظف المستهدف *</label>
+                  <select id="rewardEmployeeSelect" class="form-control" required>
+                    <option value="">اختر موظفاً...</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="rewardType">نوع الإجراء *</label>
+                  <select id="rewardType" class="form-control" required>
+                    <option value="reward">مكافأة 🎁</option>
+                    <option value="deduction">خصم 🔻</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="rewardAmount">المبلغ بالجنيه المصري (ج.م) *</label>
+                <input type="number" id="rewardAmount" class="form-control" min="1" step="0.5" placeholder="مثال: 500" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="rewardReason">سبب المكافأة أو الخصم *</label>
+                <textarea id="rewardReason" class="form-control" placeholder="يرجى توضيح سبب الإجراء بدقة..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block">
+                إرسال الإجراء للموظف فوراً
+              </button>
+            </form>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">سجل المكافآت والخصومات المرسلة</h4>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>الموظف</th>
+                    <th>النوع</th>
+                    <th>المبلغ</th>
+                    <th>السبب</th>
+                    <th>التاريخ</th>
+                    <th>حذف</th>
+                  </tr>
+                </thead>
+                <tbody id="adminRewardsTableBody">
+                  <tr><td colspan="6" style="text-align: center; color: var(--text-muted);">جاري التحميل...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANE 3: سجل الحضور المباشر -->
+        <div id="paneAdminAttendance" class="admin-pane">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">تقرير الحضور والانصراف اللحظي الوارد فوراً من الفروع</h4>
+              <span class="badge badge-success" id="adminAttendanceCount">0 سجل</span>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>الموظف</th>
+                    <th>الكود</th>
+                    <th>المنطقة</th>
+                    <th>الحركة</th>
+                    <th>التاريخ والساعة</th>
+                    <th>حذف</th>
+                  </tr>
+                </thead>
+                <tbody id="adminAttendanceTableBody">
+                  <tr><td colspan="6" style="text-align: center; color: var(--text-muted);">جاري التحميل...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANE 4: إدارة طلبات الإجازات -->
+        <div id="paneAdminLeaves" class="admin-pane">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">طلبات الإجازات المقدمة من الموظفين</h4>
+              <span class="badge badge-amber" id="adminLeavesCount">0 طلب</span>
+            </div>
+            <div id="adminLeavesListContainer">
+              <div style="text-align: center; padding: 2rem; color: var(--text-muted);">
+                لا توجد طلبات إجازة حتى الآن.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANE 5: إدارة المستلزمات والطلبات -->
+        <div id="paneAdminSupplies" class="admin-pane">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">إضافة مستلزم جديد إلى كتالوج المعمل لجميع الموظفين</h4>
+            </div>
+            <form id="adminAddSupplyForm">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                <div class="form-group">
+                  <label class="form-label" for="newSupplyName">اسم المستلزم الطبي *</label>
+                  <input type="text" id="newSupplyName" class="form-control" placeholder="مثال: أنابيب EDTA أو سنون سرنجات..." required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="newSupplyCategory">التصنيف / الوحدة</label>
+                  <input type="text" id="newSupplyCategory" class="form-control" placeholder="مثال: علبة / كرتونة">
+                </div>
+              </div>
+
+              <!-- Cloudinary Upload for Supply Picture -->
+              <div class="form-group">
+                <label class="form-label">صورة المستلزم (رفع مباشر إلى Cloudinary)</label>
+                <div id="supplyUploadDropzone" class="upload-dropzone">
+                  <input type="file" id="supplyFileInput" accept="image/*" style="display: none;">
+                  <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                    <polyline points="21 15 16 10 5 21"></polyline>
+                  </svg>
+                  <div>انقر لاختيار صورة المستلزم لرفعها إلى Cloudinary</div>
+
+                  <div id="supplyUploadProgress" class="progress-container">
+                    <div class="progress-bar-outer">
+                      <div id="supplyProgressBarInner" class="progress-bar-inner"></div>
+                    </div>
+                    <div id="supplyUploadProgressText" style="font-size: 0.78rem; margin-top: 0.35rem; color: var(--primary);">0%</div>
+                  </div>
+
+                  <div id="supplyUploadPreview" class="upload-preview-wrapper" style="display: none;">
+                    <img id="supplyPreviewImg" src="" alt="صورة المستلزم" class="upload-preview-img">
+                    <button type="button" id="btnRemoveSupplyImg" class="upload-preview-remove">&times;</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="newSupplyNotes">وصف أو ملاحظات</label>
+                <textarea id="newSupplyNotes" class="form-control" placeholder="ملاحظات حول الاستخدام أو التخزين..."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block">
+                + حفظ وإضافة المستلزم للكتالوج لجميع الموظفين
+              </button>
+            </form>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">المستلزمات الحالية بالكتالوج</h4>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>الصورة</th>
+                    <th>اسم المستلزم</th>
+                    <th>الوحدة</th>
+                    <th>حذف</th>
+                  </tr>
+                </thead>
+                <tbody id="adminSuppliesCatalogTableBody">
+                  <tr><td colspan="4" style="text-align: center; color: var(--text-muted);">جاري التحميل...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">طلبات المستلزمات الواردة من الموظفين</h4>
+              <span class="badge badge-amber" id="adminSupplyOrdersCount">0 طلب</span>
+            </div>
+            <div id="adminSupplyOrdersList">
+              <div style="text-align: center; padding: 2rem; color: var(--text-muted);">
+                لا توجد طلبات مستلزمات واردة.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <!-- =========================================================
+       FIREBASE SDK & CORE ENGINE (COMPATIBLE EVERYWHERE)
+       ========================================================= -->
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-database-compat.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    // Login Screen theme toggle binding
+    document.addEventListener('DOMContentLoaded', () => {
+      const loginThemeBtn = document.getElementById('loginThemeToggleBtn');
+      const mainThemeBtn = document.getElementById('themeToggleBtn');
+      if (loginThemeBtn && mainThemeBtn) {
+        loginThemeBtn.addEventListener('click', () => {
+          mainThemeBtn.click();
+        });
+      }
+    });
+  </script>
+</body>
+</html>

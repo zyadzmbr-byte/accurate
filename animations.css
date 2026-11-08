@@ -1,0 +1,260 @@
+/* =========================================================
+   PAGE TRANSITION & MEDICAL LAB BUBBLE ANIMATION
+   Duration: 0.5 seconds (نصف ثانية)
+   Color: Sky Blue screen (شاشة بلون سماوي) & White bubbles (فقاقيع بلون أبيض)
+   ========================================================= */
+
+.page-transition-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: linear-gradient(135deg, #0284c7 0%, #38bdf8 50%, #7dd3fc 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.1s ease;
+}
+
+.page-transition-overlay.animating {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Laboratory Test Tube Container */
+.test-tube-stage {
+  position: relative;
+  width: 140px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Laboratory Test Tube Glassware */
+.test-tube-wrapper {
+  position: relative;
+  width: 50px;
+  height: 140px;
+  margin-top: 35px;
+  transform-origin: bottom center;
+  animation: tubeSway 0.5s ease-in-out infinite alternate;
+}
+
+/* Glass Tube Rim (Top Lip) */
+.tube-lip {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 58px;
+  height: 10px;
+  border: 3px solid rgba(255, 255, 255, 0.95);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  z-index: 5;
+}
+
+/* Tube Glass Body */
+.tube-body {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 46px;
+  height: 125px;
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  border-top: none;
+  border-bottom-left-radius: 23px;
+  border-bottom-right-radius: 23px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.08) 40%, rgba(255, 255, 255, 0.4));
+  box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.4), 0 8px 25px rgba(2, 132, 199, 0.3);
+  overflow: hidden;
+  backdrop-filter: blur(2px);
+}
+
+/* Liquid inside Test Tube */
+.tube-liquid {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 65%;
+  background: linear-gradient(180deg, #0284c7 0%, #0369a1 100%);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: inset 0 5px 12px rgba(255, 255, 255, 0.3);
+}
+
+.tube-liquid::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: #38bdf8;
+  border-radius: 50%;
+  opacity: 0.9;
+}
+
+/* White Bubbles Escaping the Test Tube */
+.bubbles-stream {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 160px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.white-bubble {
+  position: absolute;
+  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #f0f9ff 60%, rgba(255, 255, 255, 0.85) 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.9), inset -1px -1px 3px rgba(186, 230, 253, 0.8);
+  opacity: 0;
+  animation: bubbleRise 0.5s ease-out infinite;
+}
+
+/* Individual White Bubbles with Staggered Delays & Paths */
+.bubble-1 {
+  width: 14px;
+  height: 14px;
+  left: 45%;
+  bottom: 10px;
+  animation-delay: 0s;
+  animation-duration: 0.45s;
+}
+
+.bubble-2 {
+  width: 22px;
+  height: 22px;
+  left: 30%;
+  bottom: 15px;
+  animation-delay: 0.08s;
+  animation-duration: 0.48s;
+}
+
+.bubble-3 {
+  width: 12px;
+  height: 12px;
+  left: 60%;
+  bottom: 8px;
+  animation-delay: 0.15s;
+  animation-duration: 0.42s;
+}
+
+.bubble-4 {
+  width: 18px;
+  height: 18px;
+  left: 40%;
+  bottom: 25px;
+  animation-delay: 0.22s;
+  animation-duration: 0.46s;
+}
+
+.bubble-5 {
+  width: 26px;
+  height: 26px;
+  left: 52%;
+  bottom: 12px;
+  animation-delay: 0.28s;
+  animation-duration: 0.5s;
+}
+
+.bubble-6 {
+  width: 10px;
+  height: 10px;
+  left: 35%;
+  bottom: 20px;
+  animation-delay: 0.35s;
+  animation-duration: 0.4s;
+}
+
+/* Keyframe Animations */
+@keyframes tubeSway {
+  0% {
+    transform: rotate(-3deg);
+  }
+
+  100% {
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes bubbleRise {
+  0% {
+    transform: translateY(0) scale(0.4) translateX(0);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.95;
+    transform: translateY(-25px) scale(0.8) translateX(-4px);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateY(-80px) scale(1.1) translateX(6px);
+  }
+
+  90% {
+    opacity: 0.8;
+    transform: translateY(-130px) scale(1.25) translateX(-8px);
+  }
+
+  100% {
+    transform: translateY(-160px) scale(1.4) translateX(10px);
+    opacity: 0;
+  }
+}
+
+.transition-text {
+  color: #ffffff;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-top: 1rem;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  animation: pulseText 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes pulseText {
+  0% {
+    opacity: 0.8;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+}
+
+/* Glowing Pulse for Live Elements */
+@keyframes pulseGlow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(2, 132, 199, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 0 8px rgba(2, 132, 199, 0);
+  }
+}
+
+.live-indicator {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  animation: pulseGlow 1.5s infinite;
+}
