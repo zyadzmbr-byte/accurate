@@ -2458,6 +2458,399 @@ textarea.form-control {
   }
 }
 
+
+
+/* =========================================================
+   NATIVE-FEELING MOBILE APP STYLES & DIMENSIONS (≤ 680px)
+   ========================================================= */
+.mobile-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0.35rem 0.5rem calc(0.35rem + env(safe-area-inset-bottom, 0px));
+  transition: all 0.25s ease;
+}
+
+[data-theme="dark"] .mobile-nav {
+  background: rgba(15, 23, 42, 0.95);
+  border-top-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.35);
+}
+
+@media (min-width: 681px) {
+  .mobile-nav {
+    max-width: 520px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 20px 20px 0 0;
+    border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+  }
+}
+
+.nav-tab-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 0.3rem 0.2rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  min-height: 52px;
+  gap: 0.2rem;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-tab-btn .tab-icon-wrap {
+  width: 44px;
+  height: 26px;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.nav-tab-btn .tab-icon {
+  width: 20px;
+  height: 20px;
+  transition: all 0.2s ease;
+}
+
+.nav-tab-btn .tab-label {
+  font-size: 0.73rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  transition: color 0.2s ease;
+}
+
+.nav-tab-btn.active .tab-icon-wrap {
+  background: rgba(2, 132, 199, 0.15);
+  color: var(--primary);
+}
+
+[data-theme="dark"] .nav-tab-btn.active .tab-icon-wrap {
+  background: rgba(14, 165, 233, 0.25);
+  color: var(--primary-light);
+}
+
+.nav-tab-btn.active .tab-icon {
+  stroke: var(--primary);
+  transform: scale(1.08);
+}
+
+.nav-tab-btn.active .tab-label {
+  color: var(--primary);
+  font-weight: 800;
+}
+
+@media (max-width: 680px) {
+  html, body {
+    font-size: 15px;
+  }
+
+  /* Sleek Compact Header */
+  .app-header {
+    padding: 0.5rem 0.75rem !important;
+    border-bottom: 1px solid var(--border-color) !important;
+  }
+
+  .header-container {
+    gap: 0.5rem !important;
+  }
+
+  .brand-logo {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 8px !important;
+  }
+
+  .brand-name {
+    font-size: 0.95rem !important;
+    font-weight: 800 !important;
+  }
+
+  .brand-subtitle {
+    display: none !important;
+  }
+
+  .header-actions {
+    gap: 0.4rem !important;
+  }
+
+  .user-pill {
+    padding: 0.25rem 0.55rem !important;
+    border-radius: 20px !important;
+    gap: 0.4rem !important;
+  }
+
+  .user-avatar {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 0.8rem !important;
+  }
+
+  #userHeaderName {
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    max-width: 85px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  #userHeaderArea {
+    display: none !important;
+  }
+
+  .btn-icon {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 8px !important;
+    padding: 0 !important;
+  }
+
+  .btn-icon svg {
+    width: 17px !important;
+    height: 17px !important;
+  }
+
+  /* Main Content Area */
+  .main-content {
+    padding: 0.75rem 0.75rem calc(85px + env(safe-area-inset-bottom, 0px)) 0.75rem !important;
+    max-width: 100% !important;
+  }
+
+  /* Cards styling */
+  .card {
+    padding: 0.9rem !important;
+    border-radius: 16px !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .card-header {
+    margin-bottom: 0.75rem !important;
+  }
+
+  .card-title {
+    font-size: 0.95rem !important;
+    font-weight: 800 !important;
+  }
+
+  /* Live Clock Card */
+  .live-clock-card {
+    padding: 0.75rem 1rem !important;
+    border-radius: 16px !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .clock-time {
+    font-size: 1.7rem !important;
+    font-weight: 800 !important;
+  }
+
+  .clock-date {
+    font-size: 0.78rem !important;
+    margin-top: 0.2rem !important;
+  }
+
+  /* Attendance 2x2 Grid on Mobile */
+  .attendance-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.6rem !important;
+  }
+
+  .attendance-card {
+    padding: 0.75rem 0.65rem !important;
+    border-radius: 14px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    gap: 0.5rem !important;
+    min-height: 130px !important;
+  }
+
+  .attendance-card-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.35rem !important;
+  }
+
+  .attendance-card-icon {
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 10px !important;
+  }
+
+  .attendance-card-icon svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .attendance-card-title {
+    font-size: 0.84rem !important;
+    font-weight: 700 !important;
+    line-height: 1.25 !important;
+  }
+
+  .attendance-card-subtitle {
+    font-size: 0.7rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .attendance-card-status {
+    flex-direction: column !important;
+    gap: 0.4rem !important;
+    padding-top: 0.4rem !important;
+    align-items: stretch !important;
+  }
+
+  .attendance-card-status .badge {
+    font-size: 0.7rem !important;
+    padding: 2px 4px !important;
+    text-align: center !important;
+  }
+
+  .attendance-card-status .btn {
+    width: 100% !important;
+    padding: 0.4rem 0.5rem !important;
+    font-size: 0.8rem !important;
+    min-height: 34px !important;
+  }
+
+  /* Daily Photo Reports */
+  .daily-reports-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  .upload-report-box {
+    padding: 0.85rem !important;
+    border-radius: 14px !important;
+    gap: 0.65rem !important;
+  }
+
+  .report-icon-wrap {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .report-icon-wrap svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .report-box-title {
+    font-size: 0.95rem !important;
+  }
+
+  .photo-dropzone {
+    min-height: 100px !important;
+    padding: 0.75rem !important;
+  }
+
+  .dropzone-icon {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .dropzone-text {
+    font-size: 0.82rem !important;
+  }
+
+  .dropzone-subtext {
+    font-size: 0.72rem !important;
+  }
+
+  /* Floating Admin Button */
+  .fab-admin {
+    bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important;
+    left: 14px !important;
+    width: 44px !important;
+    height: 44px !important;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4) !important;
+  }
+
+  .fab-admin svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .fab-badge {
+    font-size: 0.6rem !important;
+    padding: 1px 4px !important;
+    top: -2px !important;
+    right: -2px !important;
+  }
+
+  /* Rewards Summary Grid */
+  .rewards-summary-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.45rem !important;
+  }
+
+  .reward-summary-card {
+    padding: 0.6rem 0.35rem !important;
+    border-radius: 12px !important;
+  }
+
+  .reward-summary-title {
+    font-size: 0.72rem !important;
+  }
+
+  .reward-summary-val {
+    font-size: 1.15rem !important;
+  }
+
+  /* Supplies Grid */
+  .supplies-catalog-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.6rem !important;
+  }
+
+  .supply-card {
+    padding: 0.75rem !important;
+    border-radius: 14px !important;
+  }
+
+  .supply-img-wrap {
+    height: 85px !important;
+  }
+
+  .supply-card-name {
+    font-size: 0.85rem !important;
+  }
+
+  /* Admin Modal on Mobile */
+  .admin-modal-dialog {
+    width: 95vw !important;
+    max-width: 500px !important;
+    height: 92vh !important;
+    height: 92dvh !important;
+    border-radius: 20px !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -2618,48 +3011,7 @@ textarea.form-control {
       </div>
     </header>
 
-    <!-- Desktop Navigation Bar -->
-    <nav id="desktopNav" class="desktop-nav">
-      <div class="desktop-nav-container">
-        <button class="desktop-nav-item active" data-page="attendance" type="button" onclick="window.navigateToPage('attendance')">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"></circle>
-            <polyline points="12 6 12 12 16 14"></polyline>
-          </svg>
-          تسجيل الحضور
-        </button>
-
-        <button class="desktop-nav-item" data-page="rewards" type="button" onclick="window.navigateToPage('rewards')">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="20 12 20 22 4 22 4 12"></polyline>
-            <rect x="2" y="7" width="20" height="5"></rect>
-            <line x1="12" y1="22" x2="12" y2="7"></line>
-            <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
-            <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
-          </svg>
-          المكافآت والخصومات
-        </button>
-
-        <button class="desktop-nav-item" data-page="supplies" type="button" onclick="window.navigateToPage('supplies')">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-            <line x1="12" y1="22.08" x2="12" y2="12"></line>
-          </svg>
-          طلب مستلزمات
-        </button>
-
-        <button class="desktop-nav-item" data-page="leave" type="button" onclick="window.navigateToPage('leave')">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-            <line x1="16" y1="2" x2="16" y2="6"></line>
-            <line x1="8" y1="2" x2="8" y2="6"></line>
-            <line x1="3" y1="10" x2="21" y2="10"></line>
-          </svg>
-          طلب إجازة
-        </button>
-      </div>
-    </nav>
+    
 
     <!-- Main 4 Pages Content -->
     <main class="main-content">
@@ -3129,37 +3481,52 @@ textarea.form-control {
 
     </main>
 
-    <!-- Mobile Bottom Nav -->
+        <!-- Mobile Bottom Navigation Bar (التنقل السفلي للتطبيق) -->
     <nav id="mobileNav" class="mobile-nav" aria-label="التنقل">
       <button class="nav-tab-btn active" data-page="attendance" type="button" onclick="window.navigateToPage('attendance')">
-        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="10"></circle>
-          <polyline points="12 6 12 12 16 14"></polyline>
-        </svg>
-        <span>تسجيل حضور</span>
+        <div class="tab-icon-wrap">
+          <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+        <span class="tab-label">تسجيل حضور</span>
       </button>
 
       <button class="nav-tab-btn" data-page="rewards" type="button" onclick="window.navigateToPage('rewards')">
-        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="20 12 20 22 4 22 4 12"></polyline>
-          <rect x="2" y="7" width="20" height="5"></rect>
-          <line x1="12" y1="22" x2="12" y2="7"></line>
-        </svg>
-        <span>المكافآت</span>
+        <div class="tab-icon-wrap">
+          <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 12 20 22 4 22 4 12"></polyline>
+            <rect x="2" y="7" width="20" height="5"></rect>
+            <line x1="12" y1="22" x2="12" y2="7"></line>
+            <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+            <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+          </svg>
+        </div>
+        <span class="tab-label">المكافآت</span>
       </button>
 
       <button class="nav-tab-btn" data-page="supplies" type="button" onclick="window.navigateToPage('supplies')">
-        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-        </svg>
-        <span>المستلزمات</span>
+        <div class="tab-icon-wrap">
+          <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <span class="tab-label">المستلزمات</span>
       </button>
 
       <button class="nav-tab-btn" data-page="leave" type="button" onclick="window.navigateToPage('leave')">
-        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-        </svg>
-        <span>طلب إجازة</span>
+        <div class="tab-icon-wrap">
+          <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+        </div>
+        <span class="tab-label">طلب إجازة</span>
       </button>
     </nav>
   </div>
@@ -3249,7 +3616,7 @@ textarea.form-control {
 
       <div class="admin-nav-tabs">
         <button class="admin-tab-btn active" data-pane="adminCodes" onclick="window.switchAdminTab('adminCodes')">
-          <span>🎲 توليد أكواد الموظفين</span>
+          <span>👥 طلبات وأكواد الموظفين</span>
         </button>
         <button class="admin-tab-btn" data-pane="adminRewards" onclick="window.switchAdminTab('adminRewards')">
           <span>💰 مكافأة / خصم</span>
@@ -3273,26 +3640,7 @@ textarea.form-control {
         
         <!-- PANE 1: توليد أكواد الموظفين -->
         <div id="paneAdminCodes" class="admin-pane active">
-          <!-- Generator Card -->
-          <div class="card">
-            <div class="card-header">
-              <h4 class="card-title">توليد كود رباعي جديد لموظف</h4>
-            </div>
-            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
-              عند النقر على الزر، سيتم توليد كود رباعي عشوائي وإضافته فوراً للسيرفر ليكون متاحاً للموظف للتسجيل به.
-            </p>
-            <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
-              <button id="btnGenerateCode" type="button" class="btn btn-primary" onclick="window.handleGenerateCode()">
-                ⚡ توليد كود موظف جديد
-              </button>
-              <div id="generatedCodeDisplay" style="display: none; background: var(--bg-surface-elevated); padding: 0.75rem 1.25rem; border-radius: var(--radius-md); border: 1.5px dashed var(--primary); text-align: center;">
-                <div id="generatedCodeValue" style="font-size: 1.4rem; font-weight: 800; color: var(--primary); letter-spacing: 0.15em;">-</div>
-                <div style="display: flex; gap: 0.4rem; margin-top: 0.5rem; justify-content: center;">
-                  <button type="button" id="btnCopyCode" class="btn btn-secondary btn-sm" onclick="window.copyGeneratedCode()" title="نسخ الكود">📋 نسخ</button>
-                  <button type="button" id="btnShareWhatsApp" class="btn btn-success btn-sm" onclick="window.shareGeneratedCodeWhatsApp()" title="مشاركة عبر واتساب">💬 واتساب</button>
-                </div>
-              </div>
-            </div>
+          
           </div>
 
           <!-- Section 1: Pending Registration Requests -->
@@ -3992,7 +4340,6 @@ textarea.form-control {
     const viewLogin = document.getElementById('viewLogin');
     const viewMainApp = document.getElementById('viewMainApp');
     const mobileNav = document.getElementById('mobileNav');
-    const desktopNav = document.getElementById('desktopNav');
     const userBadge = document.getElementById('userHeaderBadge');
     const logoutBtn = document.getElementById('logoutBtn');
     const nameEl = document.getElementById('userHeaderName');
@@ -4004,7 +4351,6 @@ textarea.form-control {
       if (viewLogin) viewLogin.style.display = 'block';
       if (viewMainApp) viewMainApp.style.display = 'none';
       if (mobileNav) mobileNav.style.display = 'none';
-      if (desktopNav) desktopNav.style.display = 'none';
       if (userBadge) userBadge.style.display = 'none';
       if (logoutBtn) logoutBtn.style.display = 'none';
     } else {
@@ -4012,7 +4358,6 @@ textarea.form-control {
       if (viewLogin) viewLogin.style.display = 'none';
       if (viewMainApp) viewMainApp.style.display = 'block';
       if (mobileNav) mobileNav.style.display = 'flex';
-      if (desktopNav) desktopNav.style.display = 'block';
       if (userBadge) userBadge.style.display = 'flex';
       if (logoutBtn) logoutBtn.style.display = 'flex';
 
