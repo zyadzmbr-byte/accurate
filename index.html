@@ -1570,6 +1570,138 @@ textarea.form-control {
   100% { opacity: 0; transform: translateY(-240px) scale(1.6) translateX(4px); }
 }
 
+
+
+/* =========================================================
+   COMPACT DAILY REPORTS UPLOAD BOXES (MOBILE ONLY ≤ 680px)
+   ========================================================= */
+@media (max-width: 680px) {
+  .daily-reports-card {
+    padding: 0.65rem 0.75rem !important;
+    margin-bottom: 0.75rem !important;
+    border-radius: 14px !important;
+  }
+  .daily-reports-card .card-header {
+    margin-bottom: 0.35rem !important;
+    gap: 0.35rem !important;
+  }
+  .daily-reports-card .card-title {
+    font-size: 0.86rem !important;
+    font-weight: 800 !important;
+    gap: 0.35rem !important;
+  }
+  .daily-reports-card .card-title svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+  #todayUploadsCountBadge {
+    font-size: 0.68rem !important;
+    padding: 2px 6px !important;
+  }
+  .daily-reports-card > p {
+    font-size: 0.72rem !important;
+    margin-bottom: 0.45rem !important;
+    line-height: 1.25 !important;
+    color: var(--text-muted) !important;
+  }
+
+  /* Compact 2-column grid side-by-side on mobile */
+  .daily-reports-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.45rem !important;
+  }
+
+  .upload-report-box {
+    padding: 0.5rem 0.45rem !important;
+    border-radius: 12px !important;
+    gap: 0.35rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    background: var(--bg-surface-elevated) !important;
+    border: 1px solid var(--border-color) !important;
+  }
+
+  .report-box-header {
+    gap: 0.35rem !important;
+    align-items: center !important;
+    margin-bottom: 0.15rem !important;
+  }
+  .report-icon-wrap {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    border-radius: 6px !important;
+  }
+  .report-icon-wrap svg {
+    width: 13px !important;
+    height: 13px !important;
+  }
+  .report-box-title {
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+  }
+  .report-box-subtitle {
+    display: none !important; /* Hides bulky subtitle on mobile */
+  }
+
+  .photo-dropzone {
+    min-height: 56px !important;
+    height: 56px !important;
+    padding: 0.3rem !important;
+    border-radius: 8px !important;
+    border: 1.5px dashed var(--border-color) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .photo-dropzone .dropzone-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.15rem !important;
+  }
+  .dropzone-icon {
+    width: 17px !important;
+    height: 17px !important;
+  }
+  .dropzone-text {
+    font-size: 0.66rem !important;
+    font-weight: 600 !important;
+    line-height: 1.15 !important;
+    text-align: center !important;
+  }
+  .dropzone-subtext {
+    display: none !important; /* Hides extra subtext on mobile */
+  }
+
+  .photo-preview-wrap {
+    height: 50px !important;
+  }
+  .photo-preview-wrap img {
+    height: 50px !important;
+    border-radius: 6px !important;
+  }
+  .btn-remove-preview {
+    width: 20px !important;
+    height: 20px !important;
+    font-size: 14px !important;
+    top: 2px !important;
+    right: 2px !important;
+  }
+
+  .upload-report-box .btn {
+    padding: 0.35rem 0.35rem !important;
+    font-size: 0.72rem !important;
+    min-height: 28px !important;
+    height: 28px !important;
+    border-radius: 7px !important;
+    font-weight: 700 !important;
+  }
+}
+
 </style>
 
   
@@ -1805,14 +1937,14 @@ textarea.form-control {
 
               <!-- File Dropzone / Picker -->
               <div class="photo-dropzone" id="supplyReceiptDropzone" onclick="document.getElementById('supplyReceiptInput').click()">
-                <input type="file" id="supplyReceiptInput" accept="image/*" capture="environment" style="display: none;" onchange="window.handleReportFileSelect(event, 'supply_receipt')">
+                <input type="file" id="supplyReceiptInput" accept="image/*"  style="display: none;" onchange="window.handleReportFileSelect(event, 'supply_receipt')">
                 <div id="supplyReceiptPlaceholder" class="dropzone-content">
                   <svg class="dropzone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                     <polyline points="17 8 12 3 7 8"></polyline>
                     <line x1="12" y1="3" x2="12" y2="15"></line>
                   </svg>
-                  <span class="dropzone-text">اضغط لاختيار أو التقاط صورة التوريد</span>
+                  <span class="dropzone-text">اضغط لاختيار صورة التوريد من الجهاز</span>
                   <span class="dropzone-subtext">رفع مباشر من الهاتف أو الكمبيوتر</span>
                 </div>
                 <div id="supplyReceiptPreviewWrap" class="photo-preview-wrap" style="display: none;">
@@ -1853,14 +1985,14 @@ textarea.form-control {
 
               <!-- File Dropzone / Picker -->
               <div class="photo-dropzone" id="dailyJournalDropzone" onclick="document.getElementById('dailyJournalInput').click()">
-                <input type="file" id="dailyJournalInput" accept="image/*" capture="environment" style="display: none;" onchange="window.handleReportFileSelect(event, 'daily_journal')">
+                <input type="file" id="dailyJournalInput" accept="image/*"  style="display: none;" onchange="window.handleReportFileSelect(event, 'daily_journal')">
                 <div id="dailyJournalPlaceholder" class="dropzone-content">
                   <svg class="dropzone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                     <polyline points="17 8 12 3 7 8"></polyline>
                     <line x1="12" y1="3" x2="12" y2="15"></line>
                   </svg>
-                  <span class="dropzone-text">اضغط لاختيار أو التقاط صورة اليوميات</span>
+                  <span class="dropzone-text">اضغط لاختيار صورة اليوميات من الجهاز</span>
                   <span class="dropzone-subtext">رفع مباشر من الهاتف أو الكمبيوتر</span>
                 </div>
                 <div id="dailyJournalPreviewWrap" class="photo-preview-wrap" style="display: none;">
