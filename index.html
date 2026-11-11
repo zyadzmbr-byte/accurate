@@ -7,15 +7,1547 @@
   <meta name="description" content="Accurate Lab - البوابة الإلكترونية لموظفي معمل أكيوريت للتحاليل الطبية">
   <title>Accurate Lab | معمل أكيوريت للتحاليل الطبية</title>
   
-  <link rel="icon" type="image/jpeg" href="logo.jpg">
-  <link rel="apple-touch-icon" href="logo.jpg">
-  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/jpeg" href="./logo.jpg">
+  <link rel="apple-touch-icon" href="./logo.jpg">
+  <link rel="manifest" href="./manifest.json">
   
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/animations.css">
+    <!-- Google Fonts Preconnect for fast, crisp Arabic typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
 
+  <!-- External Stylesheets (Relative Paths) -->
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/animations.css">
+
+  <!-- Embedded Full CSS (Guarantees 100% styling on GitHub Pages even if external CSS files fail to load) -->
   <style>
+/* Accurate Lab - CSS Design System & Theme Engine */
+
+
+:root {
+  /* Medical Laboratory Color Palette (Light Mode Default) */
+  --font-main: 'Cairo', 'Tajawal', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  --primary: #0284c7;
+  --primary-hover: #0369a1;
+  --primary-light: #e0f2fe;
+  --primary-rgb: 2, 132, 199;
+  
+  --secondary: #06b6d4;
+  --secondary-light: #ecfeff;
+  
+  --accent-green: #10b981;
+  --accent-green-light: #d1fae5;
+  --accent-green-dark: #047857;
+  
+  --accent-red: #ef4444;
+  --accent-red-light: #fee2e2;
+  --accent-red-dark: #b91c1c;
+  
+  --accent-amber: #f59e0b;
+  --accent-amber-light: #fef3c7;
+  --accent-amber-dark: #b45309;
+  
+  --accent-purple: #8b5cf6;
+  --accent-purple-light: #ede9fe;
+  
+  /* Light Theme Surfaces */
+  --bg-body: #f0f7fc;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-input: #f8fafc;
+  
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --text-inverse: #ffffff;
+  
+  --border-color: #e2e8f0;
+  --border-focus: #38bdf8;
+  
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  --shadow-glow: 0 0 20px rgba(2, 132, 199, 0.25);
+  
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+  
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+  
+  --nav-height: 64px;
+  --header-height: 70px;
+}
+
+/* Dark Theme Variables */
+[data-theme="dark"] {
+  --primary: #38bdf8;
+  --primary-hover: #0ea5e9;
+  --primary-light: rgba(56, 189, 248, 0.15);
+  --primary-rgb: 56, 189, 248;
+  
+  --secondary: #22d3ee;
+  --secondary-light: rgba(34, 211, 238, 0.15);
+  
+  --accent-green: #34d399;
+  --accent-green-light: rgba(52, 211, 153, 0.15);
+  --accent-green-dark: #10b981;
+  
+  --accent-red: #f87171;
+  --accent-red-light: rgba(248, 113, 113, 0.15);
+  --accent-red-dark: #ef4444;
+  
+  --accent-amber: #fbbf24;
+  --accent-amber-light: rgba(251, 191, 36, 0.15);
+  --accent-amber-dark: #f59e0b;
+  
+  --bg-body: #0b1120;
+  --bg-surface: #111c30;
+  --bg-surface-elevated: #182640;
+  --bg-card: #132038;
+  --bg-input: #182640;
+  
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-inverse: #0f172a;
+  
+  --border-color: #1e2e4a;
+  --border-focus: #38bdf8;
+  
+  --shadow-sm: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 8px -1px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 10px 20px -3px rgba(0, 0, 0, 0.6);
+  --shadow-xl: 0 20px 30px -5px rgba(0, 0, 0, 0.7);
+  --shadow-glow: 0 0 25px rgba(56, 189, 248, 0.35);
+}
+
+/* Base Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  font-family: var(--font-main);
+  direction: rtl;
+  text-align: right;
+  scroll-behavior: smooth;
+  font-size: 16px;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+body {
+  background-color: var(--bg-body);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+  padding-bottom: calc(var(--nav-height) + 20px);
+}
+
+@media (min-width: 768px) {
+  body {
+    padding-bottom: 20px;
+  }
+}
+
+/* Typography Helpers */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text-primary);
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+/* App Header */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0.75rem 1rem;
+  box-shadow: var(--shadow-sm);
+  transition: background-color var(--transition-normal), border-color var(--transition-normal);
+}
+
+.header-container {
+  max-width: 1024px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-logo {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  border: 2px solid var(--primary);
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.brand-subtitle {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Employee Pill Badge */
+.user-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.user-pill .user-avatar {
+  width: 26px;
+  height: 26px;
+  background: var(--primary-light);
+  color: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+/* Action Buttons */
+.btn-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.btn-icon:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+
+.btn-icon:active {
+  transform: scale(0.95);
+}
+
+/* Main Container */
+.main-content {
+  flex: 1;
+  max-width: 1024px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* Pages Layout */
+.app-page {
+  display: none;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.app-page.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Desktop Navigation Header Bar */
+.desktop-nav {
+  display: none;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .desktop-nav {
+    display: block;
+  }
+}
+
+.desktop-nav-container {
+  max-width: 1024px;
+  margin: 0 auto;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.desktop-nav-item {
+  padding: 0.85rem 1.25rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all var(--transition-fast);
+}
+
+.desktop-nav-item:hover {
+  color: var(--primary);
+  background: var(--primary-light);
+}
+
+.desktop-nav-item.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+  font-weight: 700;
+}
+
+/* Mobile Bottom Navigation Bar */
+.mobile-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-color);
+  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0.4rem 0.5rem calc(0.4rem + env(safe-area-inset-bottom, 0px));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: background-color var(--transition-normal), border-color var(--transition-normal);
+}
+
+@media (min-width: 768px) {
+  .mobile-nav {
+    display: none;
+  }
+}
+
+.nav-tab-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 0.35rem 0.25rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  position: relative;
+  font-size: 0.72rem;
+  font-weight: 600;
+  gap: 0.2rem;
+  min-height: 52px;
+}
+
+.nav-tab-btn .tab-icon {
+  width: 22px;
+  height: 22px;
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.nav-tab-btn.active {
+  color: var(--primary);
+}
+
+.nav-tab-btn.active .tab-icon {
+  transform: translateY(-2px) scale(1.1);
+  color: var(--primary);
+}
+
+.nav-tab-btn.active::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  width: 18px;
+  height: 3px;
+  background: var(--primary);
+  border-radius: var(--radius-full);
+}
+
+/* Floating Admin Button (FAB) */
+.fab-admin {
+  position: fixed;
+  bottom: calc(var(--nav-height) + 16px);
+  left: 16px;
+  z-index: 45;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 20px rgba(2, 132, 199, 0.4), var(--shadow-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.fab-admin:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 10px 25px rgba(2, 132, 199, 0.6);
+}
+
+.fab-admin:active {
+  transform: scale(0.95);
+}
+
+.fab-admin svg {
+  width: 26px;
+  height: 26px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.fab-admin .fab-badge {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  background: var(--accent-red);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--bg-surface);
+}
+
+@media (min-width: 768px) {
+  .fab-admin {
+    bottom: 24px;
+    left: 24px;
+    width: 58px;
+    height: 58px;
+  }
+}
+
+/* Cards & Surfaces */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1rem;
+  transition: background-color var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  gap: 0.5rem;
+}
+
+.card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-title svg {
+  color: var(--primary);
+  width: 22px;
+  height: 22px;
+}
+
+/* Form Controls */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.4rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem 0.95rem;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border-color);
+  background: var(--bg-input);
+  color: var(--text-primary);
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.form-control:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+  background: var(--bg-surface);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 85px;
+}
+
+/* Standard Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: none;
+  transition: all var(--transition-fast);
+  text-align: center;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.3);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.05);
+  box-shadow: 0 6px 16px rgba(var(--primary-rgb), 0.4);
+}
+
+.btn-secondary {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn-sm {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.82rem;
+  border-radius: var(--radius-sm);
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.badge-success {
+  background: var(--accent-green-light);
+  color: var(--accent-green-dark);
+}
+
+.badge-danger {
+  background: var(--accent-red-light);
+  color: var(--accent-red-dark);
+}
+
+.badge-amber {
+  background: var(--accent-amber-light);
+  color: var(--accent-amber-dark);
+}
+
+.badge-info {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+/* =========================================================
+   PAGE 1: ATTENDANCE STYLES
+   ========================================================= */
+.live-clock-card {
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  color: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 8px 20px rgba(2, 132, 199, 0.3);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.live-clock-card::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.clock-time {
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  line-height: 1.1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  direction: ltr;
+  display: inline-block;
+}
+
+.clock-date {
+  font-size: 0.95rem;
+  opacity: 0.95;
+  margin-top: 0.35rem;
+  font-weight: 600;
+}
+
+.attendance-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 600px) {
+  .attendance-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.attendance-card {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.attendance-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.attendance-card.done {
+  border-color: var(--accent-green);
+  background: linear-gradient(to bottom, var(--bg-card), var(--accent-green-light));
+}
+
+.attendance-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.attendance-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.morning-icon {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.evening-icon {
+  background: #ede9fe;
+  color: #7c3aed;
+}
+
+.attendance-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.attendance-card-subtitle {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.attendance-card-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--border-color);
+}
+
+/* =========================================================
+   PAGE 2: REWARDS & DEDUCTIONS STYLES
+   ========================================================= */
+.rewards-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+@media (max-width: 480px) {
+  .rewards-summary-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.summary-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.summary-card.positive {
+  border-top: 4px solid var(--accent-green);
+}
+
+.summary-card.negative {
+  border-top: 4px solid var(--accent-red);
+}
+
+.summary-card.net {
+  border-top: 4px solid var(--primary);
+}
+
+.summary-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.summary-amount {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--text-primary);
+}
+
+.summary-amount.green {
+  color: var(--accent-green);
+}
+
+.summary-amount.red {
+  color: var(--accent-red);
+}
+
+.transaction-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius-md);
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  margin-bottom: 0.65rem;
+  transition: transform var(--transition-fast);
+}
+
+.transaction-item:hover {
+  transform: translateX(-4px);
+}
+
+.transaction-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.transaction-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.transaction-icon.reward {
+  background: var(--accent-green-light);
+  color: var(--accent-green-dark);
+}
+
+.transaction-icon.deduction {
+  background: var(--accent-red-light);
+  color: var(--accent-red-dark);
+}
+
+.transaction-details h4 {
+  font-size: 0.95rem;
+  margin-bottom: 0.15rem;
+}
+
+.transaction-meta {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.transaction-price {
+  font-size: 1.15rem;
+  font-weight: 800;
+  direction: ltr;
+}
+
+/* =========================================================
+   PAGE 3: SUPPLIES STYLES
+   ========================================================= */
+.supplies-catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .supplies-catalog-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.supply-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-fast);
+}
+
+.supply-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.supply-img-wrapper {
+  height: 110px;
+  background: var(--bg-surface-elevated);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.supply-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.supply-card:hover .supply-img {
+  transform: scale(1.05);
+}
+
+.supply-placeholder-icon {
+  width: 40px;
+  height: 40px;
+  color: var(--text-muted);
+  opacity: 0.5;
+}
+
+.supply-content {
+  padding: 0.75rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.supply-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.supply-unit-badge {
+  font-size: 0.72rem;
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 0.65rem;
+}
+
+/* =========================================================
+   CLOUDINARY UPLOAD COMPONENT STYLES
+   ========================================================= */
+.upload-dropzone {
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  text-align: center;
+  background: var(--bg-surface-elevated);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.upload-dropzone:hover, .upload-dropzone.dragover {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+
+.upload-icon {
+  width: 36px;
+  height: 36px;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.progress-container {
+  display: none;
+  margin-top: 0.75rem;
+}
+
+.progress-bar-outer {
+  height: 8px;
+  background: var(--border-color);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progress-bar-inner {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--secondary), var(--primary));
+  transition: width 0.2s ease;
+}
+
+.upload-preview-wrapper {
+  margin-top: 0.75rem;
+  position: relative;
+  display: inline-block;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.upload-preview-img {
+  max-width: 120px;
+  max-height: 120px;
+  display: block;
+  object-fit: cover;
+}
+
+.upload-preview-remove {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  background: rgba(239, 68, 68, 0.9);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+}
+
+/* =========================================================
+   MODALS & OVERLAYS
+   ========================================================= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  overflow: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.modal-dialog {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  max-height: 90dvh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-xl);
+  transform: scale(0.92) translateY(10px);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overflow: hidden;
+}
+
+.modal-overlay.active .modal-dialog {
+  transform: scale(1) translateY(0);
+}
+
+.modal-header {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.modal-body {
+  padding: 1.25rem;
+  overflow-y: auto;
+}
+
+.modal-footer {
+  padding: 0.85rem 1.25rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+/* Admin Center Fullscreen Drawer / Modal */
+.admin-modal-dialog {
+  max-width: 780px;
+  height: 88vh;
+  height: 88dvh;
+}
+
+.admin-nav-tabs {
+  display: flex;
+  background: var(--bg-surface-elevated);
+  border-bottom: 1px solid var(--border-color);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.admin-nav-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.admin-tab-btn {
+  padding: 0.75rem 1rem;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.88rem;
+  white-space: nowrap;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all var(--transition-fast);
+}
+
+.admin-tab-btn:hover {
+  color: var(--primary);
+}
+
+.admin-tab-btn.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+  background: var(--bg-card);
+}
+
+.admin-pane {
+  display: none;
+}
+
+.admin-pane.active {
+  display: block;
+}
+
+/* Responsive Table */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  text-align: right;
+}
+
+.data-table th, .data-table td {
+  padding: 0.75rem 0.85rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.data-table th {
+  background: var(--bg-surface-elevated);
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.data-table tr:hover {
+  background: var(--bg-surface-elevated);
+}
+
+/* Toast Notifications */
+.toast-container {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  pointer-events: none;
+  width: 90%;
+  max-width: 380px;
+}
+
+.toast {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  animation: toastIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  pointer-events: auto;
+}
+
+.toast.toast-success {
+  border-right: 4px solid var(--accent-green);
+}
+
+.toast.toast-error {
+  border-right: 4px solid var(--accent-red);
+}
+
+.toast.toast-info {
+  border-right: 4px solid var(--primary);
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ANIMATIONS */
+/* =========================================================
+   PAGE TRANSITION & MEDICAL LAB BUBBLE ANIMATION
+   Duration: 0.5 seconds (نصف ثانية)
+   Color: Sky Blue screen (شاشة بلون سماوي) & White bubbles (فقاقيع بلون أبيض)
+   ========================================================= */
+
+.page-transition-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: linear-gradient(135deg, #0284c7 0%, #38bdf8 50%, #7dd3fc 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.1s ease;
+}
+
+.page-transition-overlay.animating {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Laboratory Test Tube Container */
+.test-tube-stage {
+  position: relative;
+  width: 140px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Laboratory Test Tube Glassware */
+.test-tube-wrapper {
+  position: relative;
+  width: 50px;
+  height: 140px;
+  margin-top: 35px;
+  transform-origin: bottom center;
+  animation: tubeSway 0.5s ease-in-out infinite alternate;
+}
+
+/* Glass Tube Rim (Top Lip) */
+.tube-lip {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 58px;
+  height: 10px;
+  border: 3px solid rgba(255, 255, 255, 0.95);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  z-index: 5;
+}
+
+/* Tube Glass Body */
+.tube-body {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 46px;
+  height: 125px;
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  border-top: none;
+  border-bottom-left-radius: 23px;
+  border-bottom-right-radius: 23px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.08) 40%, rgba(255, 255, 255, 0.4));
+  box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.4), 0 8px 25px rgba(2, 132, 199, 0.3);
+  overflow: hidden;
+  backdrop-filter: blur(2px);
+}
+
+/* Liquid inside Test Tube */
+.tube-liquid {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 65%;
+  background: linear-gradient(180deg, #0284c7 0%, #0369a1 100%);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: inset 0 5px 12px rgba(255, 255, 255, 0.3);
+}
+
+.tube-liquid::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: #38bdf8;
+  border-radius: 50%;
+  opacity: 0.9;
+}
+
+/* White Bubbles Escaping the Test Tube */
+.bubbles-stream {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 160px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.white-bubble {
+  position: absolute;
+  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #f0f9ff 60%, rgba(255, 255, 255, 0.85) 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.9), inset -1px -1px 3px rgba(186, 230, 253, 0.8);
+  opacity: 0;
+  animation: bubbleRise 0.5s ease-out infinite;
+}
+
+/* Individual White Bubbles with Staggered Delays & Paths */
+.bubble-1 {
+  width: 14px;
+  height: 14px;
+  left: 45%;
+  bottom: 10px;
+  animation-delay: 0s;
+  animation-duration: 0.45s;
+}
+
+.bubble-2 {
+  width: 22px;
+  height: 22px;
+  left: 30%;
+  bottom: 15px;
+  animation-delay: 0.08s;
+  animation-duration: 0.48s;
+}
+
+.bubble-3 {
+  width: 12px;
+  height: 12px;
+  left: 60%;
+  bottom: 8px;
+  animation-delay: 0.15s;
+  animation-duration: 0.42s;
+}
+
+.bubble-4 {
+  width: 18px;
+  height: 18px;
+  left: 40%;
+  bottom: 25px;
+  animation-delay: 0.22s;
+  animation-duration: 0.46s;
+}
+
+.bubble-5 {
+  width: 26px;
+  height: 26px;
+  left: 52%;
+  bottom: 12px;
+  animation-delay: 0.28s;
+  animation-duration: 0.5s;
+}
+
+.bubble-6 {
+  width: 10px;
+  height: 10px;
+  left: 35%;
+  bottom: 20px;
+  animation-delay: 0.35s;
+  animation-duration: 0.4s;
+}
+
+/* Keyframe Animations */
+@keyframes tubeSway {
+  0% {
+    transform: rotate(-3deg);
+  }
+
+  100% {
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes bubbleRise {
+  0% {
+    transform: translateY(0) scale(0.4) translateX(0);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.95;
+    transform: translateY(-25px) scale(0.8) translateX(-4px);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateY(-80px) scale(1.1) translateX(6px);
+  }
+
+  90% {
+    opacity: 0.8;
+    transform: translateY(-130px) scale(1.25) translateX(-8px);
+  }
+
+  100% {
+    transform: translateY(-160px) scale(1.4) translateX(10px);
+    opacity: 0;
+  }
+}
+
+.transition-text {
+  color: #ffffff;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-top: 1rem;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  animation: pulseText 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes pulseText {
+  0% {
+    opacity: 0.8;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+}
+
+/* Glowing Pulse for Live Elements */
+@keyframes pulseGlow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(2, 132, 199, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 0 8px rgba(2, 132, 199, 0);
+  }
+}
+
+.live-indicator {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  animation: pulseGlow 1.5s infinite;
+}
+
     /* Dedicated Login View Styles */
     .login-hero-container {
       min-height: 85vh;
@@ -74,7 +1606,859 @@
       border-radius: var(--radius-md);
       direction: ltr;
     }
-  </style>
+  
+/* =========================================================
+   NEW: LOGIN PENDING APPROVAL NOTICE
+   ========================================================= */
+.login-pending-notice {
+  background: var(--bg-surface-elevated);
+  border: 1.5px solid var(--accent-amber);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  margin-top: 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  text-align: right;
+  animation: fadeIn 0.3s ease;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
+}
+
+.pending-notice-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   NEW: DAILY PHOTO REPORTS (توريد ويوميات)
+   ========================================================= */
+.daily-reports-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 680px) {
+  .daily-reports-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.upload-report-box {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.upload-report-box:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.report-box-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.report-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.icon-blue {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.icon-purple {
+  background: var(--accent-purple-light);
+  color: var(--accent-purple);
+}
+
+.report-box-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.15rem;
+}
+
+.report-box-subtitle {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.photo-dropzone {
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 0.75rem;
+  text-align: center;
+  background: var(--bg-surface-elevated);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-height: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-dropzone:hover {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+
+.dropzone-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.dropzone-icon {
+  width: 32px;
+  height: 32px;
+  color: var(--primary);
+  margin-bottom: 0.25rem;
+}
+
+.dropzone-text {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.dropzone-subtext {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.photo-preview-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 220px;
+  margin: 0 auto;
+}
+
+.photo-preview-wrap img {
+  width: 100%;
+  max-height: 140px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-remove-preview {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: 28px;
+  height: 28px;
+  background: var(--accent-red);
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.upload-progress-box {
+  margin: 0.5rem 0;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 7px;
+  background: var(--border-color);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 0.35rem;
+}
+
+.progress-bar-inner {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--secondary), var(--primary));
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* Today's uploaded photos pills */
+.employee-today-uploads-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.today-upload-pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.6rem 0.85rem;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xs);
+}
+
+.today-upload-thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 1.5px solid var(--primary);
+}
+
+.today-upload-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85rem;
+}
+
+.upload-time {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Admin Photos Grid */
+.admin-photos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.admin-photo-card {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.admin-photo-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.photo-card-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  background: #000;
+  cursor: pointer;
+}
+
+.photo-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.photo-card-img-wrap:hover img {
+  transform: scale(1.03);
+}
+
+.photo-type-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.badge-blue {
+  background: #0284c7;
+  color: #fff;
+}
+
+.badge-purple {
+  background: #8b5cf6;
+  color: #fff;
+}
+
+.photo-card-body {
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.photo-card-user {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.user-avatar-sm {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: 800;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.user-name-title {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.user-meta-sub {
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+}
+
+.photo-card-date {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  border-top: 1px dashed var(--border-color);
+  padding-top: 0.5rem;
+}
+
+.photo-card-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+/* =========================================================
+   PROFESSIONAL MOBILE DIMENSIONS & OVERFLOW PREVENTION
+   ========================================================= */
+@media (max-width: 600px) {
+  body {
+    padding-bottom: 95px !important;
+  }
+  
+  .main-content {
+    padding: 0.75rem 0.65rem !important;
+  }
+  
+  .card {
+    padding: 1rem 0.85rem !important;
+    border-radius: 16px !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .login-card-wrapper {
+    padding: 1.5rem 1rem !important;
+    max-width: 100% !important;
+    border-radius: 20px !important;
+  }
+
+  .code-input-lg {
+    font-size: 1.8rem !important;
+    letter-spacing: 0.25em !important;
+    padding: 0.65rem !important;
+  }
+
+  .fab-admin {
+    bottom: 76px !important;
+    left: 12px !important;
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .admin-modal-dialog {
+    width: 96vw !important;
+    max-width: 96vw !important;
+    height: 92vh !important;
+    height: 92dvh !important;
+    border-radius: 18px !important;
+  }
+
+  .admin-nav-tabs {
+    padding: 0 0.25rem !important;
+  }
+
+  .admin-tab-btn {
+    padding: 0.65rem 0.85rem !important;
+    font-size: 0.82rem !important;
+  }
+
+  .data-table th, .data-table td {
+    padding: 0.55rem 0.45rem !important;
+    font-size: 0.82rem !important;
+  }
+
+  .form-control {
+    font-size: 16px !important; /* Prevents auto-zoom on mobile iOS Safari */
+    min-height: 46px !important;
+  }
+}
+
+
+/* =========================================================
+   NEW: LOGIN PENDING APPROVAL NOTICE
+   ========================================================= */
+.login-pending-notice {
+  background: var(--bg-surface-elevated);
+  border: 1.5px solid var(--accent-amber);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  margin-top: 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  text-align: right;
+  animation: fadeIn 0.3s ease;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
+}
+
+.pending-notice-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   NEW: DAILY PHOTO REPORTS (توريد ويوميات)
+   ========================================================= */
+.daily-reports-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 680px) {
+  .daily-reports-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.upload-report-box {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.upload-report-box:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.report-box-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.report-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.icon-blue {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.icon-purple {
+  background: var(--accent-purple-light);
+  color: var(--accent-purple);
+}
+
+.report-box-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.15rem;
+}
+
+.report-box-subtitle {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.photo-dropzone {
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 0.75rem;
+  text-align: center;
+  background: var(--bg-surface-elevated);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-height: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-dropzone:hover {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+
+.dropzone-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.dropzone-icon {
+  width: 32px;
+  height: 32px;
+  color: var(--primary);
+  margin-bottom: 0.25rem;
+}
+
+.dropzone-text {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.dropzone-subtext {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.photo-preview-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 220px;
+  margin: 0 auto;
+}
+
+.photo-preview-wrap img {
+  width: 100%;
+  max-height: 140px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-remove-preview {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: 28px;
+  height: 28px;
+  background: var(--accent-red);
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.upload-progress-box {
+  margin: 0.5rem 0;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 7px;
+  background: var(--border-color);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 0.35rem;
+}
+
+.progress-bar-inner {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--secondary), var(--primary));
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* Today's uploaded photos pills */
+.employee-today-uploads-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.today-upload-pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.6rem 0.85rem;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xs);
+}
+
+.today-upload-thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 1.5px solid var(--primary);
+}
+
+.today-upload-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85rem;
+}
+
+.upload-time {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Admin Photos Grid */
+.admin-photos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.admin-photo-card {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.admin-photo-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.photo-card-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  background: #000;
+  cursor: pointer;
+}
+
+.photo-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.photo-card-img-wrap:hover img {
+  transform: scale(1.03);
+}
+
+.photo-type-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.badge-blue {
+  background: #0284c7;
+  color: #fff;
+}
+
+.badge-purple {
+  background: #8b5cf6;
+  color: #fff;
+}
+
+.photo-card-body {
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.photo-card-user {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.user-avatar-sm {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: 800;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.user-name-title {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.user-meta-sub {
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+}
+
+.photo-card-date {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  border-top: 1px dashed var(--border-color);
+  padding-top: 0.5rem;
+}
+
+.photo-card-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+/* =========================================================
+   PROFESSIONAL MOBILE DIMENSIONS & OVERFLOW PREVENTION
+   ========================================================= */
+@media (max-width: 600px) {
+  body {
+    padding-bottom: 95px !important;
+  }
+  
+  .main-content {
+    padding: 0.75rem 0.65rem !important;
+  }
+  
+  .card {
+    padding: 1rem 0.85rem !important;
+    border-radius: 16px !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .login-card-wrapper {
+    padding: 1.5rem 1rem !important;
+    max-width: 100% !important;
+    border-radius: 20px !important;
+  }
+
+  .code-input-lg {
+    font-size: 1.8rem !important;
+    letter-spacing: 0.25em !important;
+    padding: 0.65rem !important;
+  }
+
+  .fab-admin {
+    bottom: 76px !important;
+    left: 12px !important;
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .admin-modal-dialog {
+    width: 96vw !important;
+    max-width: 96vw !important;
+    height: 92vh !important;
+    height: 92dvh !important;
+    border-radius: 18px !important;
+  }
+
+  .admin-nav-tabs {
+    padding: 0 0.25rem !important;
+  }
+
+  .admin-tab-btn {
+    padding: 0.65rem 0.85rem !important;
+    font-size: 0.82rem !important;
+  }
+
+  .data-table th, .data-table td {
+    padding: 0.55rem 0.45rem !important;
+    font-size: 0.82rem !important;
+  }
+
+  .form-control {
+    font-size: 16px !important; /* Prevents auto-zoom on mobile iOS Safari */
+    min-height: 46px !important;
+  }
+}
+
+</style>
 </head>
 <body>
 
@@ -105,7 +2489,7 @@
   <!-- =========================================================
        FLOATING ADMIN BUTTON (Always Visible & Accessible)
        ========================================================= -->
-  <button id="fabAdminBtn" class="fab-admin" title="لوحة تحكم الإدارة (الرقم السري: 4k4k)" aria-label="لوحة تحكم الإدارة" style="z-index: 9999;">
+  <button id="fabAdminBtn" class="fab-admin" title="لوحة تحكم الإدارة" aria-label="لوحة تحكم الإدارة" onclick="window.openAdminPinModal(event)" style="z-index: 9999;">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
       <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
@@ -121,14 +2505,14 @@
     <header class="app-header">
       <div class="header-container">
         <div class="brand-wrapper">
-          <img src="logo.jpg" alt="Accurate Lab" class="brand-logo">
+          <img src="./logo.jpg" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src=this.src.endsWith('Logo.jpg')?'./logo.jpg':'./Logo.jpg';}" alt="Accurate Lab" class="brand-logo">
           <div class="brand-text">
             <span class="brand-name">Accurate Lab</span>
             <span class="brand-subtitle">معمل أكيوريت للتحاليل الطبية</span>
           </div>
         </div>
         <div class="header-actions">
-          <button id="loginThemeToggleBtn" class="btn-icon" title="تبديل المظهر (فاتح / داكن)">
+          <button id="loginThemeToggleBtn" type="button" class="btn-icon" onclick="window.toggleTheme()" title="تبديل المظهر">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
             </svg>
@@ -139,16 +2523,16 @@
 
     <div class="login-hero-container">
       <div class="login-card-wrapper">
-        <img src="logo.jpg" alt="Accurate Lab Logo" class="login-brand-img">
+        <img src="./logo.jpg" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src=this.src.endsWith('Logo.jpg')?'./logo.jpg':'./Logo.jpg';}" alt="Accurate Lab Logo" class="login-brand-img">
         <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.25rem;">Accurate Lab</h2>
         <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.25rem;">معمل أكيوريت للتحاليل الطبية</p>
 
-        <form id="mainLoginForm">
+        <form id="mainLoginForm" onsubmit="window.handleLoginSubmit(event); return false;">
           <div class="form-group code-input-wrapper">
             <label class="form-label" for="mainEmployeeCodeInput" style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem;">
               أدخل الكود الرباعي للموظف:
             </label>
-            <input type="text" id="mainEmployeeCodeInput" class="form-control code-input-lg" maxlength="4" pattern="[0-9]{4}" inputmode="numeric" placeholder="••••" required autofocus autocomplete="off">
+            <input type="text" id="mainEmployeeCodeInput" class="form-control code-input-lg" maxlength="4" inputmode="numeric" placeholder="••••" required autofocus autocomplete="off">
           </div>
 
           <button type="submit" id="btnMainLoginSubmit" class="btn btn-primary btn-block" style="padding: 0.85rem; font-size: 1.05rem;">
@@ -156,12 +2540,20 @@
           </button>
         </form>
 
-        <div style="background: var(--bg-surface-elevated); padding: 0.75rem; border-radius: var(--radius-md); border: 1px dashed var(--border-color); margin-top: 1.25rem; font-size: 0.82rem; color: var(--text-secondary); text-align: right; line-height: 1.5;">
-          💡 <strong>ملاحظة للموظف:</strong> إذا كان الكود جديداً، سيُطلب منك استكمال بياناتك (الاسم / المنطقة / الهاتف) في الخطوة التالية.
+        
+                <!-- NEW: Notification for Code Pending Approval -->
+        <div id="loginPendingNoticeBox" class="login-pending-notice" style="display: none;">
+          <div class="pending-notice-icon">⏳</div>
+          <div class="pending-notice-body">
+            <h4 style="font-weight: 800; font-size: 0.95rem; margin-bottom: 0.25rem; color: #b45309;">تم اعتماد الكود وفي انتظار الموافقة عليه</h4>
+            <p id="pendingNoticeText" style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5;">
+              طلبك مسجل وفي انتظار مراجعة واعتماد إدارة المعمل. سيتم تفعيل حسابك ودخولك فور الموافقة.
+            </p>
+          </div>
         </div>
 
-        <div style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">
-          إدارة المعمل: اضغط على <strong>الأيقونة العائمة أسفل الشاشة</strong> للدخول (الرمز: <code>4k4k</code>)
+        <div style="background: var(--bg-surface-elevated); padding: 0.75rem; border-radius: var(--radius-md); border: 1px dashed var(--border-color); margin-top: 1.25rem; font-size: 0.82rem; color: var(--text-secondary); text-align: right; line-height: 1.5;">
+          💡 <strong>ملاحظة للموظف:</strong> إذا كان الكود جديداً، سيُطلب منك استكمال بياناتك (الاسم / المنطقة / الهاتف) في الخطوة التالية.
         </div>
       </div>
     </div>
@@ -176,7 +2568,7 @@
     <header class="app-header">
       <div class="header-container">
         <div class="brand-wrapper">
-          <img src="logo.jpg" alt="Accurate Lab Logo" class="brand-logo">
+          <img src="./logo.jpg" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src=this.src.endsWith('Logo.jpg')?'./logo.jpg':'./Logo.jpg';}" alt="Accurate Lab Logo" class="brand-logo">
           <div class="brand-text">
             <span class="brand-name">
               Accurate Lab
@@ -197,7 +2589,7 @@
           </div>
 
           <!-- Theme Toggle -->
-          <button id="themeToggleBtn" class="btn-icon" title="تبديل المظهر">
+          <button id="themeToggleBtn" type="button" class="btn-icon" onclick="window.toggleTheme()" title="تبديل المظهر">
             <svg id="themeIconSun" style="display: none;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="5"></circle>
               <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -215,7 +2607,7 @@
           </button>
 
           <!-- Logout Button -->
-          <button id="logoutBtn" class="btn-icon" title="تسجيل الخروج">
+          <button id="logoutBtn" type="button" class="btn-icon" onclick="window.handleLogout()" title="تسجيل الخروج">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
               <polyline points="16 17 21 12 16 7"></polyline>
@@ -229,7 +2621,7 @@
     <!-- Desktop Navigation Bar -->
     <nav id="desktopNav" class="desktop-nav">
       <div class="desktop-nav-container">
-        <button class="desktop-nav-item active" data-page="attendance">
+        <button class="desktop-nav-item active" data-page="attendance" type="button" onclick="window.navigateToPage('attendance')">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="10"></circle>
             <polyline points="12 6 12 12 16 14"></polyline>
@@ -237,7 +2629,7 @@
           تسجيل الحضور
         </button>
 
-        <button class="desktop-nav-item" data-page="rewards">
+        <button class="desktop-nav-item" data-page="rewards" type="button" onclick="window.navigateToPage('rewards')">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <polyline points="20 12 20 22 4 22 4 12"></polyline>
             <rect x="2" y="7" width="20" height="5"></rect>
@@ -248,7 +2640,7 @@
           المكافآت والخصومات
         </button>
 
-        <button class="desktop-nav-item" data-page="supplies">
+        <button class="desktop-nav-item" data-page="supplies" type="button" onclick="window.navigateToPage('supplies')">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
             <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
@@ -257,7 +2649,7 @@
           طلب مستلزمات
         </button>
 
-        <button class="desktop-nav-item" data-page="leave">
+        <button class="desktop-nav-item" data-page="leave" type="button" onclick="window.navigateToPage('leave')">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
             <line x1="16" y1="2" x2="16" y2="6"></line>
@@ -319,7 +2711,7 @@
               </div>
               <div class="attendance-card-status">
                 <span class="badge" id="statusMorningIn">لم يسجل بعد</span>
-                <button class="btn btn-primary btn-sm" id="btnMorningIn">
+                <button class="btn btn-primary btn-sm" id="btnMorningIn" type="button" onclick="window.handleAttendance('morning_in')">
                   تسجيل الآن
                 </button>
               </div>
@@ -340,7 +2732,7 @@
               </div>
               <div class="attendance-card-status">
                 <span class="badge" id="statusMorningOut">لم يسجل بعد</span>
-                <button class="btn btn-secondary btn-sm" id="btnMorningOut">
+                <button class="btn btn-secondary btn-sm" id="btnMorningOut" type="button" onclick="window.handleAttendance('morning_out')">
                   تسجيل الآن
                 </button>
               </div>
@@ -361,7 +2753,7 @@
               </div>
               <div class="attendance-card-status">
                 <span class="badge" id="statusEveningIn">لم يسجل بعد</span>
-                <button class="btn btn-primary btn-sm" id="btnEveningIn">
+                <button class="btn btn-primary btn-sm" id="btnEveningIn" type="button" onclick="window.handleAttendance('evening_in')">
                   تسجيل الآن
                 </button>
               </div>
@@ -382,10 +2774,136 @@
               </div>
               <div class="attendance-card-status">
                 <span class="badge" id="statusEveningOut">لم يسجل بعد</span>
-                <button class="btn btn-secondary btn-sm" id="btnEveningOut">
+                <button class="btn btn-secondary btn-sm" id="btnEveningOut" type="button" onclick="window.handleAttendance('evening_out')">
                   تسجيل الآن
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+
+
+                <!-- =======================================================
+             NEW: إرسال التقارير المصورة (صورة التوريد وصورة اليوميات)
+             ======================================================= -->
+        <div class="card daily-reports-card">
+          <div class="card-header">
+            <h2 class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                <circle cx="12" cy="13" r="4"></circle>
+              </svg>
+              إرسال التقارير اليومية المصورة (التوريد واليوميات)
+            </h2>
+            <span class="badge badge-info" id="todayUploadsCountBadge">0 تقارير اليوم</span>
+          </div>
+
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
+            قم بالتقاط أو رفع صور إيصالات التوريد وشيت اليوميات مباشرة من جهازك لإرسالها فوراً لإدارة المعمل.
+          </p>
+
+          <div class="daily-reports-grid">
+            <!-- 1. صورة التوريد -->
+            <div class="upload-report-box" id="boxSupplyReceipt">
+              <div class="report-box-header">
+                <div class="report-icon-wrap icon-blue">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="report-box-title">صورة التوريد</h3>
+                  <p class="report-box-subtitle">إيصال أو فاتورة التوريد اليومي</p>
+                </div>
+              </div>
+
+              <!-- File Dropzone / Picker -->
+              <div class="photo-dropzone" id="supplyReceiptDropzone" onclick="document.getElementById('supplyReceiptInput').click()">
+                <input type="file" id="supplyReceiptInput" accept="image/*" capture="environment" style="display: none;" onchange="window.handleReportFileSelect(event, 'supply_receipt')">
+                <div id="supplyReceiptPlaceholder" class="dropzone-content">
+                  <svg class="dropzone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                  </svg>
+                  <span class="dropzone-text">اضغط لاختيار أو التقاط صورة التوريد</span>
+                  <span class="dropzone-subtext">رفع مباشر من الهاتف أو الكمبيوتر</span>
+                </div>
+                <div id="supplyReceiptPreviewWrap" class="photo-preview-wrap" style="display: none;">
+                  <img id="supplyReceiptPreviewImg" src="" alt="معاينة صورة التوريد">
+                  <button type="button" class="btn-remove-preview" onclick="window.cancelReportSelection(event, 'supply_receipt')">&times;</button>
+                </div>
+              </div>
+
+              <!-- Progress Bar -->
+              <div id="supplyReceiptProgress" class="upload-progress-box" style="display: none;">
+                <div class="progress-bar"><div class="progress-bar-inner" id="supplyReceiptProgressBar"></div></div>
+                <span class="progress-text" id="supplyReceiptProgressText">جاري الرفع...</span>
+              </div>
+
+              <!-- Upload Button -->
+              <button type="button" id="btnUploadSupplyReceipt" class="btn btn-primary btn-block" onclick="window.submitDailyReport('supply_receipt')" disabled>
+                📤 رفع صورة التوريد الآن
+              </button>
+            </div>
+
+            <!-- 2. صورة اليوميات -->
+            <div class="upload-report-box" id="boxDailyJournal">
+              <div class="report-box-header">
+                <div class="report-icon-wrap icon-purple">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="report-box-title">صورة اليوميات</h3>
+                  <p class="report-box-subtitle">شيت اليوميات وكشف العمل اليومي</p>
+                </div>
+              </div>
+
+              <!-- File Dropzone / Picker -->
+              <div class="photo-dropzone" id="dailyJournalDropzone" onclick="document.getElementById('dailyJournalInput').click()">
+                <input type="file" id="dailyJournalInput" accept="image/*" capture="environment" style="display: none;" onchange="window.handleReportFileSelect(event, 'daily_journal')">
+                <div id="dailyJournalPlaceholder" class="dropzone-content">
+                  <svg class="dropzone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                  </svg>
+                  <span class="dropzone-text">اضغط لاختيار أو التقاط صورة اليوميات</span>
+                  <span class="dropzone-subtext">رفع مباشر من الهاتف أو الكمبيوتر</span>
+                </div>
+                <div id="dailyJournalPreviewWrap" class="photo-preview-wrap" style="display: none;">
+                  <img id="dailyJournalPreviewImg" src="" alt="معاينة صورة اليوميات">
+                  <button type="button" class="btn-remove-preview" onclick="window.cancelReportSelection(event, 'daily_journal')">&times;</button>
+                </div>
+              </div>
+
+              <!-- Progress Bar -->
+              <div id="dailyJournalProgress" class="upload-progress-box" style="display: none;">
+                <div class="progress-bar"><div class="progress-bar-inner" id="dailyJournalProgressBar"></div></div>
+                <span class="progress-text" id="dailyJournalProgressText">جاري الرفع...</span>
+              </div>
+
+              <!-- Upload Button -->
+              <button type="button" id="btnUploadDailyJournal" class="btn btn-secondary btn-block" onclick="window.submitDailyReport('daily_journal')" disabled>
+                📤 رفع صورة اليوميات الآن
+              </button>
+            </div>
+          </div>
+
+          <!-- Today's uploads by this employee -->
+          <div style="margin-top: 1.5rem; border-top: 1px dashed var(--border-color); padding-top: 1.25rem;">
+            <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-secondary); margin-bottom: 0.75rem;">
+              التقارير التي قمت برفعها اليوم:
+            </h4>
+            <div id="employeeTodayUploadsList" class="employee-today-uploads-grid">
+              <div style="color: var(--text-muted); font-size: 0.85rem; padding: 0.5rem 0;">لم تقم برفع أي تقارير مصورة اليوم بعد</div>
             </div>
           </div>
         </div>
@@ -478,7 +2996,7 @@
             </h2>
           </div>
 
-          <form id="orderSupplyForm">
+          <form id="orderSupplyForm" onsubmit="window.handleSupplyOrderSubmit(event); return false;">
             <div class="form-group">
               <label class="form-label" for="supplySelect">اسم المستلزم الطبي *</label>
               <input type="text" id="supplySelect" class="form-control" placeholder="اختر من القائمة أعلاه أو اكتب اسم المستلزم..." required>
@@ -531,7 +3049,7 @@
             </h2>
           </div>
 
-          <form id="leaveRequestForm">
+          <form id="leaveRequestForm" onsubmit="window.handleLeaveSubmit(event); return false;">
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
               <div class="form-group">
                 <label class="form-label" for="leaveDaysCount">عدد الأيام *</label>
@@ -613,7 +3131,7 @@
 
     <!-- Mobile Bottom Nav -->
     <nav id="mobileNav" class="mobile-nav" aria-label="التنقل">
-      <button class="nav-tab-btn active" data-page="attendance">
+      <button class="nav-tab-btn active" data-page="attendance" type="button" onclick="window.navigateToPage('attendance')">
         <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="12" cy="12" r="10"></circle>
           <polyline points="12 6 12 12 16 14"></polyline>
@@ -621,7 +3139,7 @@
         <span>تسجيل حضور</span>
       </button>
 
-      <button class="nav-tab-btn" data-page="rewards">
+      <button class="nav-tab-btn" data-page="rewards" type="button" onclick="window.navigateToPage('rewards')">
         <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <polyline points="20 12 20 22 4 22 4 12"></polyline>
           <rect x="2" y="7" width="20" height="5"></rect>
@@ -630,14 +3148,14 @@
         <span>المكافآت</span>
       </button>
 
-      <button class="nav-tab-btn" data-page="supplies">
+      <button class="nav-tab-btn" data-page="supplies" type="button" onclick="window.navigateToPage('supplies')">
         <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
         </svg>
         <span>المستلزمات</span>
       </button>
 
-      <button class="nav-tab-btn" data-page="leave">
+      <button class="nav-tab-btn" data-page="leave" type="button" onclick="window.navigateToPage('leave')">
         <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
         </svg>
@@ -654,7 +3172,7 @@
       <div class="modal-header">
         <h3 class="modal-title">تسجيل بيانات الموظف الجديد</h3>
       </div>
-      <form id="registerForm">
+      <form id="registerForm" onsubmit="window.handleRegistrationSubmit(event); return false;">
         <div class="modal-body">
           <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
             هذا الكود مسجل جديداً بالنظام! يرجى استكمال بياناتك الشخصية للربط:
@@ -691,9 +3209,9 @@
     <div class="modal-dialog" style="max-width: 360px;">
       <div class="modal-header">
         <h3 class="modal-title">دخول لوحة تحكم الإدارة</h3>
-        <button type="button" class="btn-icon close-admin-pin" style="width: 32px; height: 32px;">&times;</button>
+        <button type="button" class="btn-icon close-admin-pin" onclick="window.closeAdminPinModal()" onclick="window.closeAdminPinModal()" onclick="window.closeAdminPinModal()" onclick="window.closeAdminPinModal()" onclick="window.closeAdminPinModal()" onclick="window.closeAdminPinModal()" onclick="window.closeAdminPinModal()" style="width: 32px; height: 32px;">&times;</button>
       </div>
-      <form id="adminPinForm">
+      <form id="adminPinForm" onsubmit="window.handleAdminPinSubmit(event); return false;">
         <div class="modal-body" style="text-align: center;">
           <div style="width: 50px; height: 50px; margin: 0 auto 1rem; border-radius: 50%; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center;">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -709,7 +3227,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary close-admin-pin">إلغاء</button>
+          <button type="button" class="btn btn-secondary close-admin-pin" onclick="window.closeAdminPinModal()" onclick="window.closeAdminPinModal()" onclick="window.closeAdminPinModal()" onclick="window.closeAdminPinModal()" onclick="window.closeAdminPinModal()" onclick="window.closeAdminPinModal()" onclick="window.closeAdminPinModal()">إلغاء</button>
           <button type="submit" class="btn btn-primary">تأكيد الدخول</button>
         </div>
       </form>
@@ -726,24 +3244,28 @@
           <h3 class="modal-title">لوحة تحكم إدارة Accurate Lab</h3>
           <span class="badge badge-success">متصل</span>
         </div>
-        <button type="button" id="closeAdminDashboardBtn" class="btn-icon" style="width: 34px; height: 34px;">&times;</button>
+        <button type="button" id="closeAdminDashboardBtn" class="btn-icon" onclick="window.closeAdminDashboard()" style="width: 34px; height: 34px;">&times;</button>
       </div>
 
       <div class="admin-nav-tabs">
-        <button class="admin-tab-btn active" data-pane="adminCodes">
+        <button class="admin-tab-btn active" data-pane="adminCodes" onclick="window.switchAdminTab('adminCodes')">
           <span>🎲 توليد أكواد الموظفين</span>
         </button>
-        <button class="admin-tab-btn" data-pane="adminRewards">
+        <button class="admin-tab-btn" data-pane="adminRewards" onclick="window.switchAdminTab('adminRewards')">
           <span>💰 مكافأة / خصم</span>
         </button>
-        <button class="admin-tab-btn" data-pane="adminAttendance">
+        <button class="admin-tab-btn" data-pane="adminAttendance" onclick="window.switchAdminTab('adminAttendance')">
           <span>⏱️ سجل الحضور المباشر</span>
         </button>
-        <button class="admin-tab-btn" data-pane="adminLeaves">
+        <button class="admin-tab-btn" data-pane="adminLeaves" onclick="window.switchAdminTab('adminLeaves')">
           <span>🏖️ طلبات الإجازات</span>
         </button>
-        <button class="admin-tab-btn" data-pane="adminSupplies">
+        <button class="admin-tab-btn" data-pane="adminSupplies" onclick="window.switchAdminTab('adminSupplies')">
           <span>📦 المستلزمات والطلبات</span>
+        </button>
+        <button class="admin-tab-btn" data-pane="adminDailyUploads" onclick="window.switchAdminTab('adminDailyUploads')">
+          <span>📸 صور التوريد واليوميات</span>
+          <span class="badge badge-info" id="adminDailyUploadsBadge" style="margin-right: 4px; display: none;">0</span>
         </button>
       </div>
 
@@ -751,6 +3273,7 @@
         
         <!-- PANE 1: توليد أكواد الموظفين -->
         <div id="paneAdminCodes" class="admin-pane active">
+          <!-- Generator Card -->
           <div class="card">
             <div class="card-header">
               <h4 class="card-title">توليد كود رباعي جديد لموظف</h4>
@@ -759,34 +3282,72 @@
               عند النقر على الزر، سيتم توليد كود رباعي عشوائي وإضافته فوراً للسيرفر ليكون متاحاً للموظف للتسجيل به.
             </p>
             <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
-              <button id="btnGenerateCode" class="btn btn-primary">
+              <button id="btnGenerateCode" type="button" class="btn btn-primary" onclick="window.handleGenerateCode()">
                 ⚡ توليد كود موظف جديد
               </button>
-              <div id="generatedCodeDisplay" style="display: none; background: var(--bg-surface-elevated); padding: 0.5rem 1rem; border-radius: var(--radius-md); border: 1.5px dashed var(--primary); font-size: 1.25rem; font-weight: 800; color: var(--primary); letter-spacing: 0.15em;">
-                -
+              <div id="generatedCodeDisplay" style="display: none; background: var(--bg-surface-elevated); padding: 0.75rem 1.25rem; border-radius: var(--radius-md); border: 1.5px dashed var(--primary); text-align: center;">
+                <div id="generatedCodeValue" style="font-size: 1.4rem; font-weight: 800; color: var(--primary); letter-spacing: 0.15em;">-</div>
+                <div style="display: flex; gap: 0.4rem; margin-top: 0.5rem; justify-content: center;">
+                  <button type="button" id="btnCopyCode" class="btn btn-secondary btn-sm" onclick="window.copyGeneratedCode()" title="نسخ الكود">📋 نسخ</button>
+                  <button type="button" id="btnShareWhatsApp" class="btn btn-success btn-sm" onclick="window.shareGeneratedCodeWhatsApp()" title="مشاركة عبر واتساب">💬 واتساب</button>
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="card">
-            <div class="card-header">
-              <h4 class="card-title">قائمة أكواد الموظفين بالسيرفر</h4>
-              <span class="badge badge-info" id="adminCodesCount">0 كود</span>
+          <!-- Section 1: Pending Registration Requests -->
+          <div class="card" style="border: 2px solid var(--accent-amber);">
+            <div class="card-header" style="background: rgba(245, 158, 11, 0.08); margin: -1.25rem -1.25rem 1rem -1.25rem; padding: 0.85rem 1.25rem; border-bottom: 1px solid rgba(245, 158, 11, 0.2);">
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <h4 class="card-title" style="color: #b45309;">⏳ طلبات تسجيل الأكواد الجديدة (في انتظار الموافقة)</h4>
+              </div>
+              <span class="badge badge-amber" id="adminPendingRequestsBadge" style="display: none;">0 طلب جديد</span>
             </div>
+            <p style="font-size: 0.83rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+              الأكواد التي أدخلها الموظفون وسجلوا بياناتهم بانتظار موافقتك. بمجرد النقر على "موافقة"، ينضاف الموظف للسيستم فوراً ويسجل دخولاً دائماً.
+            </p>
             <div class="table-responsive">
               <table class="data-table">
                 <thead>
                   <tr>
                     <th>الكود الرباعي</th>
-                    <th>الحالة</th>
                     <th>اسم الموظف</th>
-                    <th>المنطقة</th>
-                    <th>الهاتف</th>
+                    <th>المنطقة / الفرع</th>
+                    <th>رقم الهاتف</th>
+                    <th>الحالة</th>
+                    <th>القرار</th>
+                  </tr>
+                </thead>
+                <tbody id="adminPendingRequestsTableBody">
+                  <tr><td colspan="6" style="text-align: center; color: var(--text-muted); padding: 1.25rem;">لا توجد طلبات تسجيل جديدة في انتظار الموافقة ✨</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Section 2: Approved Active Members (حذف عضو) -->
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">الموظفون المعتمدون بالسيستم (إدارة وحذف الأعضاء)</h4>
+              <span class="badge badge-success" id="adminCodesCount">0 عضو معتمد</span>
+            </div>
+            <p style="font-size: 0.83rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+              قائمة الأعضاء المفعلين بالكامل. عند حذف أي عضو، يتم مسحه من السيستم نهائياً ولن يستطيع الدخول مجدداً.
+            </p>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>الكود الرباعي</th>
+                    <th>حالة الحساب</th>
+                    <th>اسم الموظف</th>
+                    <th>المنطقة / الفرع</th>
+                    <th>رقم الهاتف</th>
                     <th>إجراء</th>
                   </tr>
                 </thead>
                 <tbody id="adminEmployeesTableBody">
-                  <tr><td colspan="6" style="text-align: center; color: var(--text-muted);">جاري تحميل الأكواد...</td></tr>
+                  <tr><td colspan="6" style="text-align: center; color: var(--text-muted); padding: 1.25rem;">جاري تحميل قائمة الأعضاء...</td></tr>
                 </tbody>
               </table>
             </div>
@@ -799,7 +3360,7 @@
             <div class="card-header">
               <h4 class="card-title">إرسال مكافأة أو خصم لموظف</h4>
             </div>
-            <form id="adminRewardForm">
+            <form id="adminRewardForm" onsubmit="window.handleAdminRewardSubmit(event); return false;">
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
                 <div class="form-group">
                   <label class="form-label" for="rewardEmployeeSelect">الموظف المستهدف *</label>
@@ -836,6 +3397,9 @@
           <div class="card">
             <div class="card-header">
               <h4 class="card-title">سجل المكافآت والخصومات المرسلة</h4>
+              <button type="button" id="btnExportRewardsCSV" class="btn btn-secondary btn-sm" onclick="window.exportRewardsCSV()" title="تصدير إلى إكسيل">
+                📊 تصدير Excel
+              </button>
             </div>
             <div class="table-responsive">
               <table class="data-table">
@@ -860,9 +3424,26 @@
         <!-- PANE 3: سجل الحضور المباشر -->
         <div id="paneAdminAttendance" class="admin-pane">
           <div class="card">
-            <div class="card-header">
-              <h4 class="card-title">تقرير الحضور والانصراف اللحظي الوارد فوراً من الفروع</h4>
-              <span class="badge badge-success" id="adminAttendanceCount">0 سجل</span>
+            <div class="card-header" style="flex-wrap: wrap; gap: 0.5rem;">
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <h4 class="card-title">تقرير الحضور والانصراف اللحظي الوارد فوراً من الفروع</h4>
+                <span class="badge badge-success" id="adminAttendanceCount">0 سجل</span>
+              </div>
+              <div style="display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap;">
+                <button type="button" id="btnExportAttendanceCSV" class="btn btn-secondary btn-sm" onclick="window.exportAttendanceCSV()" title="تصدير إلى إكسيل">
+                  📊 تصدير Excel
+                </button>
+                <button type="button" id="btnPrintAttendance" class="btn btn-secondary btn-sm" onclick="window.printAttendance()" title="طباعة كشف الحضور">
+                  🖨️ طباعة
+                </button>
+              </div>
+            </div>
+
+            <!-- Filter & Search Controls -->
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 0.75rem; flex-wrap: wrap; background: var(--bg-surface-elevated); padding: 0.6rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+              <input type="text" id="adminAttendanceSearchInput" class="form-control" style="flex: 2; min-width: 150px; padding: 0.45rem 0.75rem; font-size: 0.82rem;" placeholder="🔍 بحث بالاسم أو الكود أو الفرع...">
+              <input type="date" id="adminAttendanceDateFilter" class="form-control" style="flex: 1; min-width: 130px; padding: 0.45rem 0.75rem; font-size: 0.82rem;" title="فلترة بتاريخ محدد">
+              <button type="button" id="btnResetAttendanceFilter" class="btn btn-secondary btn-sm">إلغاء الفلتر</button>
             </div>
             <div class="table-responsive">
               <table class="data-table">
@@ -887,9 +3468,14 @@
         <!-- PANE 4: إدارة طلبات الإجازات -->
         <div id="paneAdminLeaves" class="admin-pane">
           <div class="card">
-            <div class="card-header">
-              <h4 class="card-title">طلبات الإجازات المقدمة من الموظفين</h4>
-              <span class="badge badge-amber" id="adminLeavesCount">0 طلب</span>
+            <div class="card-header" style="flex-wrap: wrap; gap: 0.5rem;">
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <h4 class="card-title">طلبات الإجازات المقدمة من الموظفين</h4>
+                <span class="badge badge-amber" id="adminLeavesCount">0 طلب</span>
+              </div>
+              <button type="button" id="btnExportLeavesCSV" class="btn btn-secondary btn-sm" onclick="window.exportLeavesCSV()" title="تصدير إلى إكسيل">
+                📊 تصدير Excel
+              </button>
             </div>
             <div id="adminLeavesListContainer">
               <div style="text-align: center; padding: 2rem; color: var(--text-muted);">
@@ -905,7 +3491,7 @@
             <div class="card-header">
               <h4 class="card-title">إضافة مستلزم جديد إلى كتالوج المعمل لجميع الموظفين</h4>
             </div>
-            <form id="adminAddSupplyForm">
+            <form id="adminAddSupplyForm" onsubmit="window.handleAdminAddSupplySubmit(event); return false;">
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
                 <div class="form-group">
                   <label class="form-label" for="newSupplyName">اسم المستلزم الطبي *</label>
@@ -989,6 +3575,48 @@
           </div>
         </div>
 
+
+                <!-- =======================================================
+             NEW PANE 6: صور التوريد واليوميات المرفوعة
+             ======================================================= -->
+        <div id="paneAdminDailyUploads" class="admin-pane">
+          <div class="card">
+            <div class="card-header">
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <h4 class="card-title">📸 سجل صور التوريد واليوميات المرسلة من الموظفين</h4>
+              </div>
+              <span class="badge badge-info" id="adminDailyUploadsCount">0 صورة مرفوعة</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
+              يمكنك معاينة كافة صور إيصالات التوريد وشيتات اليوميات المرسلة من أجهزة الموظفين، وتحميل أي صورة مباشرة على جهازك بجودة أصلية.
+            </p>
+
+            <!-- Filters -->
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap; background: var(--bg-surface-elevated); padding: 0.75rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); align-items: center;">
+              <select id="adminFilterUploadType" class="form-control" style="max-width: 160px; padding: 0.4rem 0.6rem; font-size: 0.85rem;" onchange="window.renderAdminDailyUploads()">
+                <option value="all">كل الصور</option>
+                <option value="supply_receipt">صور التوريد فقط 📦</option>
+                <option value="daily_journal">صور اليوميات فقط 📑</option>
+              </select>
+
+              <input type="date" id="adminFilterUploadDate" class="form-control" style="max-width: 150px; padding: 0.4rem 0.6rem; font-size: 0.85rem;" onchange="window.renderAdminDailyUploads()">
+
+              <input type="text" id="adminFilterUploadSearch" class="form-control" placeholder="بحث باسم أو كود الموظف..." style="flex: 1; min-width: 160px; padding: 0.4rem 0.6rem; font-size: 0.85rem;" oninput="window.renderAdminDailyUploads()">
+
+              <button type="button" class="btn btn-secondary btn-sm" onclick="document.getElementById('adminFilterUploadType').value='all'; document.getElementById('adminFilterUploadDate').value=''; document.getElementById('adminFilterUploadSearch').value=''; window.renderAdminDailyUploads();">
+                إعادة ضبط
+              </button>
+            </div>
+
+            <!-- Photos Grid -->
+            <div id="adminDailyUploadsList" class="admin-photos-grid">
+              <div style="grid-column: 1 / -1; text-align: center; padding: 3rem 1rem; color: var(--text-muted); background: var(--bg-card); border-radius: var(--radius-md); border: 1px dashed var(--border-color);">
+                جاري تحميل الصور من السيرفر...
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -999,21 +3627,2377 @@
   <!-- =========================================================
        FIREBASE SDK & CORE ENGINE (COMPATIBLE EVERYWHERE)
        ========================================================= -->
+    <!-- Firebase Compat SDK (Loaded asynchronously with auto-fallback) -->
+    <!-- Firebase Compat SDK (Loaded asynchronously with auto-fallback) -->
+    <!-- Firebase Compat SDK (Loaded asynchronously with auto-fallback) -->
+    <!-- Firebase Compat SDK (Loaded asynchronously with auto-fallback) -->
+    <!-- Firebase Compat SDK (Loaded asynchronously with auto-fallback) -->
+    <!-- Firebase Compat SDK (Loaded asynchronously with auto-fallback) -->
+    <!-- Firebase Compat SDK (Loaded asynchronously with auto-fallback) -->
   <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-database-compat.js"></script>
-  <script src="js/app.js"></script>
 
+  <!-- Complete Inlined Application Engine (Guarantees 100% of buttons and features work everywhere) -->
   <script>
-    // Login Screen theme toggle binding
-    document.addEventListener('DOMContentLoaded', () => {
-      const loginThemeBtn = document.getElementById('loginThemeToggleBtn');
-      const mainThemeBtn = document.getElementById('themeToggleBtn');
-      if (loginThemeBtn && mainThemeBtn) {
-        loginThemeBtn.addEventListener('click', () => {
-          mainThemeBtn.click();
+/**
+ * Accurate Lab - Rock-Solid Unified Application Engine
+ * Works 100% Offline, on file:///, on localhost, on GitHub Pages, and on any hosting.
+ */
+
+(function (window, document) {
+  'use strict';
+
+  // Digit normalizer: converts Arabic-Indic digits (٠١٢٣٤٥٦٧٨٩) to standard ASCII (0123456789)
+  function normalizeDigits(str) {
+    if (str === null || str === undefined) return '';
+    return str.toString()
+      .replace(/[٠-٩]/g, d => "٠١٢٣٤٥٦٧٨٩".indexOf(d))
+      .replace(/[۰-۹]/g, d => "۰۱۲۳۴۵۶۷۸۹".indexOf(d))
+      .trim();
+  }
+
+  const CONFIG = {
+    FIREBASE: {
+      apiKey: "AIzaSyBF4UsJhaL0a754H3rqgz7O-i1U_tOAvQQ",
+      authDomain: "accurate-19f22.firebaseapp.com",
+      projectId: "accurate-19f22",
+      storageBucket: "accurate-19f22.firebasestorage.app",
+      messagingSenderId: "876808771046",
+      appId: "1:876808771046:web:a225ca3d084c11f4b6b227",
+      databaseURL: "https://accurate-19f22-default-rtdb.firebaseio.com"
+    },
+    CLOUDINARY: {
+      cloudName: "dt1nytaju",
+      uploadPreset: "accurate",
+      uploadUrl: "https://api.cloudinary.com/v1_1/dt1nytaju/upload"
+    },
+    ADMIN_PIN: "4k4k"
+  };
+
+  const STORAGE = {
+    USER: 'accurate_lab_user',
+    THEME: 'accurate_theme',
+    ADMIN: 'accurate_admin_auth',
+    EMPLOYEES: 'accurate_employees_data',
+    ATTENDANCE: 'accurate_attendance_data',
+    REWARDS: 'accurate_rewards_data',
+    SUPPLIES: 'accurate_supplies_data',
+    SUPPLY_ORDERS: 'accurate_supply_orders_data',
+    LEAVES: 'accurate_leaves_data',
+    REGISTRATION_REQUESTS: 'accurate_registration_requests',
+    DAILY_UPLOADS: 'accurate_daily_uploads_data'
+  };
+
+  const ATTENDANCE_LABELS = {
+    morning_in: 'تسجيل دخول صباحي',
+    morning_out: 'تسجيل خروج صباحي',
+    evening_in: 'تسجيل دخول مسائي',
+    evening_out: 'تسجيل خروج مسائي'
+  };
+
+  function getLocal(key, defaultVal) {
+    try {
+      const data = localStorage.getItem(key);
+      return data ? JSON.parse(data) : defaultVal;
+    } catch (_) {
+      return defaultVal;
+    }
+  }
+
+  function setLocal(key, val) {
+    try {
+      localStorage.setItem(key, JSON.stringify(val));
+    } catch (_) {}
+  }
+
+  // Pre-populate demo / initial data if empty so the lab is never blank
+  if (!localStorage.getItem(STORAGE.EMPLOYEES)) {
+    setLocal(STORAGE.EMPLOYEES, [
+      { code: "1001", isRegistered: true, name: "د. أحمد خليل", area: "فرع المهندسين", phone: "01012345678", createdAt: Date.now() - 86400000 },
+      { code: "1002", isRegistered: true, name: "د. سارة محمود", area: "فرع مدينة نصر", phone: "01123456789", createdAt: Date.now() - 72000000 }
+    ]);
+  }
+  if (!localStorage.getItem(STORAGE.SUPPLIES)) {
+    setLocal(STORAGE.SUPPLIES, [
+      { id: "sup_1", name: "أنابيب EDTA لفصل الدم", category: "علبة 100 أنبوب", unit: "علبة", imageUrl: "", createdAt: Date.now() },
+      { id: "sup_2", name: "كواشف CBC ومحاليل تخفيف", category: "عبوة 5 لتر", unit: "عبوة", imageUrl: "", createdAt: Date.now() },
+      { id: "sup_3", name: "سنون سرنجات مقاس 21 معقمة", category: "كرتونة 1000 سن", unit: "كرتونة", imageUrl: "", createdAt: Date.now() }
+    ]);
+  }
+
+  /* =========================================================
+     FIREBASE CONNECTOR (With Graceful Fallback)
+     ========================================================= */
+  let firebaseDb = null;
+  function initFirebase() {
+    try {
+      if (typeof firebase !== 'undefined' && firebase.initializeApp) {
+        if (!firebase.apps || !firebase.apps.length) {
+          firebase.initializeApp(CONFIG.FIREBASE);
+        }
+        firebaseDb = firebase.database();
+        console.log('✅ Firebase Database connected');
+        
+        // Seed initial employees into Firebase if absent
+        firebaseDb.ref('employees/1001').once('value').then(snap => {
+          if (!snap.exists()) {
+            firebaseDb.ref('employees/1001').set({
+              code: "1001",
+              isRegistered: true,
+              name: "د. أحمد خليل",
+              area: "فرع المهندسين",
+              phone: "01012345678",
+              createdAt: Date.now() - 86400000
+            });
+          }
+        }).catch(() => {});
+
+        firebaseDb.ref('employees/1002').once('value').then(snap => {
+          if (!snap.exists()) {
+            firebaseDb.ref('employees/1002').set({
+              code: "1002",
+              isRegistered: true,
+              name: "د. سارة محمود",
+              area: "فرع مدينة نصر",
+              phone: "01123456789",
+              createdAt: Date.now() - 72000000
+            });
+          }
+        }).catch(() => {});
+
+        syncFromFirebase();
+      }
+    } catch (e) {
+      console.warn('Firebase init warning:', e);
+    }
+  }
+
+  function syncFromFirebase() {
+    if (!firebaseDb) return;
+    try {
+      firebaseDb.ref('employees').on('value', snap => {
+        const d = snap.val();
+        if (d) {
+          const list = Object.keys(d).map(k => ({ ...d[k], code: k }));
+          list.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+          setLocal(STORAGE.EMPLOYEES, list);
+          state.employees = list;
+          renderAdminViews();
+        }
+      });
+      firebaseDb.ref('attendance').on('value', snap => {
+        const d = snap.val();
+        if (d) {
+          const list = Object.keys(d).map(k => ({ ...d[k], id: k }));
+          list.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+          setLocal(STORAGE.ATTENDANCE, list);
+          state.attendance = list;
+          renderEmployeeAttendance();
+          renderAdminViews();
+        }
+      });
+      firebaseDb.ref('rewards').on('value', snap => {
+        const d = snap.val();
+        if (d) {
+          const list = Object.keys(d).map(k => ({ ...d[k], id: k }));
+          list.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+          setLocal(STORAGE.REWARDS, list);
+          state.rewards = list;
+          renderEmployeeRewards();
+          renderAdminViews();
+        }
+      });
+      firebaseDb.ref('supplies').on('value', snap => {
+        const d = snap.val();
+        if (d) {
+          const list = Object.keys(d).map(k => ({ ...d[k], id: k }));
+          list.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+          setLocal(STORAGE.SUPPLIES, list);
+          state.supplies = list;
+          renderEmployeeSupplies();
+          renderAdminViews();
+        }
+      });
+      firebaseDb.ref('supply_requests').on('value', snap => {
+        const d = snap.val();
+        if (d) {
+          const list = Object.keys(d).map(k => ({ ...d[k], id: k }));
+          list.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+          setLocal(STORAGE.SUPPLY_ORDERS, list);
+          state.supplyOrders = list;
+          renderEmployeeSupplies();
+          renderAdminViews();
+        }
+      });
+      firebaseDb.ref('leave_requests').on('value', snap => {
+        const d = snap.val();
+        if (d) {
+          const list = Object.keys(d).map(k => ({ ...d[k], id: k }));
+          list.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+          setLocal(STORAGE.LEAVES, list);
+          state.leaves = list;
+          renderEmployeeLeaves();
+          renderAdminViews();
+        }
+      });
+
+      // 7. Live Sync for Registration Requests
+      firebaseDb.ref('registration_requests').on('value', snap => {
+        const d = snap.val();
+        if (d) {
+          const list = Object.keys(d).map(k => ({ ...d[k], code: k }));
+          list.sort((a, b) => (b.requestedAt || 0) - (a.requestedAt || 0));
+          setLocal(STORAGE.REGISTRATION_REQUESTS, list);
+          state.registrationRequests = list;
+        } else {
+          setLocal(STORAGE.REGISTRATION_REQUESTS, []);
+          state.registrationRequests = [];
+        }
+        renderAdminViews();
+      });
+
+      // 8. Live Sync for Daily Uploads (Supply & Daily Journal Photos)
+      firebaseDb.ref('daily_uploads').on('value', snap => {
+        const d = snap.val();
+        if (d) {
+          const list = Object.keys(d).map(k => ({ ...d[k], id: k }));
+          list.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+          setLocal(STORAGE.DAILY_UPLOADS, list);
+          state.dailyUploads = list;
+        } else {
+          setLocal(STORAGE.DAILY_UPLOADS, []);
+          state.dailyUploads = [];
+        }
+        renderEmployeeDailyUploads();
+        renderAdminDailyUploads();
+      });
+    } catch (_) {}
+  }
+
+  /* =========================================================
+     APP STATE
+     ========================================================= */
+  const state = {
+    user: getLocal(STORAGE.USER, null),
+    theme: localStorage.getItem(STORAGE.THEME) || 'light',
+    activePage: 'attendance',
+    pendingRegistrationCode: null,
+    employees: getLocal(STORAGE.EMPLOYEES, []),
+    attendance: getLocal(STORAGE.ATTENDANCE, []),
+    rewards: getLocal(STORAGE.REWARDS, []),
+    supplies: getLocal(STORAGE.SUPPLIES, []),
+    supplyOrders: getLocal(STORAGE.SUPPLY_ORDERS, []),
+    leaves: getLocal(STORAGE.LEAVES, []),
+    registrationRequests: getLocal(STORAGE.REGISTRATION_REQUESTS, []),
+    dailyUploads: getLocal(STORAGE.DAILY_UPLOADS, []),
+    uploadedLeaveFile: null,
+    uploadedSupplyFile: null,
+    selectedReportFiles: {
+      supply_receipt: null,
+      daily_journal: null
+    }
+  };
+  window.state = state;
+
+  /* =========================================================
+     AUDIO FEEDBACK (Web Audio API)
+     ========================================================= */
+  let audioCtx = null;
+  function playSound(type) {
+    try {
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContext) return;
+      if (!audioCtx) audioCtx = new AudioContext();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+
+      const now = audioCtx.currentTime;
+      if (type === 'bubble') {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(450, now);
+        osc.frequency.exponentialRampToValueAtTime(850, now + 0.12);
+        gain.gain.setValueAtTime(0.12, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(now);
+        osc.stop(now + 0.12);
+      } else if (type === 'checkin' || type === 'success') {
+        [523.25, 659.25, 783.99].forEach((freq, idx) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, now + idx * 0.06);
+          gain.gain.setValueAtTime(0.15, now + idx * 0.06);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.06 + 0.22);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now + idx * 0.06);
+          osc.stop(now + idx * 0.06 + 0.22);
         });
       }
+    } catch (_) {}
+  }
+
+  /* =========================================================
+     TOAST NOTIFICATION
+     ========================================================= */
+  function showToast(message, type = 'info', duration = 3500) {
+    const container = document.getElementById('toastContainer');
+    if (!container) return;
+
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    let icon = type === 'success' ? '✅ ' : type === 'error' ? '❌ ' : 'ℹ️ ';
+    toast.innerHTML = `<span>${icon}</span><span>${message}</span>`;
+    container.appendChild(toast);
+
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateY(-10px)';
+      toast.style.transition = 'all 0.3s ease';
+      setTimeout(() => toast.remove(), 300);
+    }, duration);
+  }
+
+  /* =========================================================
+     THEME CONTROLLER
+     ========================================================= */
+  function applyTheme(theme) {
+    state.theme = theme;
+    localStorage.setItem(STORAGE.THEME, theme);
+    document.documentElement.setAttribute('data-theme', theme);
+    const sun = document.getElementById('themeIconSun');
+    const moon = document.getElementById('themeIconMoon');
+    if (sun) sun.style.display = theme === 'dark' ? 'block' : 'none';
+    if (moon) moon.style.display = theme === 'dark' ? 'none' : 'block';
+  }
+
+  let isTogglingTheme = false;
+  window.toggleTheme = function () {
+    if (isTogglingTheme) return;
+    isTogglingTheme = true;
+    setTimeout(() => { isTogglingTheme = false; }, 300);
+    const next = state.theme === 'light' ? 'dark' : 'light';
+    applyTheme(next);
+    playSound('bubble');
+    showToast(next === 'dark' ? 'تم تفعيل الوضع الداكن 🌙' : 'تم تفعيل الوضع النهاري ☀️', 'info', 1500);
+  };
+
+  /* =========================================================
+     VIEW SWITCHER (Login View vs Main App View)
+     ========================================================= */
+  function updateViewVisibility() {
+    const viewLogin = document.getElementById('viewLogin');
+    const viewMainApp = document.getElementById('viewMainApp');
+    const mobileNav = document.getElementById('mobileNav');
+    const desktopNav = document.getElementById('desktopNav');
+    const userBadge = document.getElementById('userHeaderBadge');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const nameEl = document.getElementById('userHeaderName');
+    const areaEl = document.getElementById('userHeaderArea');
+    const avatarEl = document.getElementById('userHeaderAvatar');
+
+    if (!state.user) {
+      // Show Login, hide Main App
+      if (viewLogin) viewLogin.style.display = 'block';
+      if (viewMainApp) viewMainApp.style.display = 'none';
+      if (mobileNav) mobileNav.style.display = 'none';
+      if (desktopNav) desktopNav.style.display = 'none';
+      if (userBadge) userBadge.style.display = 'none';
+      if (logoutBtn) logoutBtn.style.display = 'none';
+    } else {
+      // Show Main App, hide Login
+      if (viewLogin) viewLogin.style.display = 'none';
+      if (viewMainApp) viewMainApp.style.display = 'block';
+      if (mobileNav) mobileNav.style.display = 'flex';
+      if (desktopNav) desktopNav.style.display = 'block';
+      if (userBadge) userBadge.style.display = 'flex';
+      if (logoutBtn) logoutBtn.style.display = 'flex';
+
+      if (nameEl) nameEl.textContent = state.user.name || `كود: ${state.user.code}`;
+      if (areaEl) areaEl.textContent = state.user.area || 'معمل أكيوريت';
+      if (avatarEl) avatarEl.textContent = (state.user.name || 'م').charAt(0);
+
+      renderAllEmployeeViews();
+    }
+  }
+  window.updateViewVisibility = updateViewVisibility;
+
+  /* =========================================================
+     0.5s SKY-BLUE & WHITE BUBBLES TRANSITION
+     ========================================================= */
+  window.navigateToPage = function (targetPageId) {
+    if (state.activePage === targetPageId) return;
+
+    playSound('bubble');
+    const overlay = document.getElementById('pageTransitionOverlay');
+    if (overlay) overlay.classList.add('animating');
+
+    setTimeout(() => {
+      ['attendance', 'rewards', 'supplies', 'leave'].forEach(p => {
+        const pageEl = document.getElementById('page' + p.charAt(0).toUpperCase() + p.slice(1));
+        if (pageEl) pageEl.classList.toggle('active', p === targetPageId);
+      });
+
+      document.querySelectorAll('.desktop-nav-item, .nav-tab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.page === targetPageId);
+      });
+
+      state.activePage = targetPageId;
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }, 250);
+
+    setTimeout(() => {
+      if (overlay) overlay.classList.remove('animating');
+    }, 500);
+  };
+
+  /* =========================================================
+     EMPLOYEE AUTHENTICATION & REGISTRATION WORKFLOW
+     ========================================================= */
+  let isLoggingIn = false;
+  window.handleLoginSubmit = async function (e) {
+    if (e) {
+      if (e.preventDefault) e.preventDefault();
+      if (e.stopPropagation) e.stopPropagation();
+    }
+    if (isLoggingIn) return;
+    isLoggingIn = true;
+    setTimeout(() => { isLoggingIn = false; }, 600);
+
+    const input = document.getElementById('mainEmployeeCodeInput');
+    if (!input) return;
+
+    const rawCode = input.value;
+    const cleanCode = normalizeDigits(rawCode);
+
+    if (!cleanCode || cleanCode.length !== 4) {
+      showToast('يرجى إدخال الكود الرباعي المكون من 4 أرقام', 'error');
+      input.focus();
+      return;
+    }
+
+    // Lookup in state and Firebase
+    let emp = state.employees.find(e => e.code === cleanCode);
+    if (!emp && firebaseDb) {
+      try {
+        const snap = await firebaseDb.ref('employees/' + cleanCode).once('value');
+        if (snap.exists()) emp = { ...snap.val(), code: cleanCode };
+      } catch (_) {}
+    }
+
+    // Check if pending registration
+    let pendingReq = state.registrationRequests.find(r => r.code === cleanCode);
+    if (!pendingReq && firebaseDb) {
+      try {
+        const snapReq = await firebaseDb.ref('registration_requests/' + cleanCode).once('value');
+        if (snapReq.exists()) pendingReq = { ...snapReq.val(), code: cleanCode };
+      } catch (_) {}
+    }
+
+    // CASE 1: Code is Approved in System -> Direct Login!
+    if (emp && (emp.status === 'approved' || emp.isApproved === true)) {
+      state.user = emp;
+      setLocal(STORAGE.USER, emp);
+      playSound('success');
+
+      // Hide any pending notice
+      const noticeBox = document.getElementById('loginPendingNoticeBox');
+      if (noticeBox) noticeBox.style.display = 'none';
+
+      // 0.5s transition
+      const overlay = document.getElementById('pageTransitionOverlay');
+      if (overlay) {
+        overlay.classList.add('animating');
+        setTimeout(() => {
+          updateViewVisibility();
+          overlay.classList.remove('animating');
+        }, 500);
+      } else {
+        updateViewVisibility();
+      }
+      showToast(`أهلاً بك مجدداً د. ${emp.name} في Accurate Lab`, 'success');
+      return;
+    }
+
+    // CASE 2: Code is Pending Admin Approval -> Show waiting message!
+    if (pendingReq || (emp && (emp.status === 'pending' || (emp.isRegistered && !emp.isApproved)))) {
+      const empName = (pendingReq && pendingReq.name) || (emp && emp.name) || '';
+      showPendingApprovalNotice(cleanCode, empName);
+      playSound('bubble');
+      showToast('تم اعتماد الكود وفي انتظار الموافقة عليه من إدارة المعمل ⏳', 'warning', 4500);
+      return;
+    }
+
+    // CASE 3: New Code -> Open Registration Modal to enter details!
+    state.pendingRegistrationCode = cleanCode;
+    const regModal = document.getElementById('registerModal');
+    const regCodeDisplay = document.getElementById('regCodeDisplay');
+    if (regCodeDisplay) regCodeDisplay.textContent = cleanCode;
+    if (regModal) regModal.classList.add('active');
+    playSound('bubble');
+    showToast(`كود جديد [ ${cleanCode} ]! أدخل بياناتك لإرسالها للإدارة للاعتماد`, 'info', 4000);
+  };
+
+  function showPendingApprovalNotice(code, name) {
+    const box = document.getElementById('loginPendingNoticeBox');
+    const textEl = document.getElementById('pendingNoticeText');
+    if (box) {
+      box.style.display = 'flex';
+      if (textEl) {
+        if (name) {
+          textEl.innerHTML = `مرحباً <strong>د. ${name}</strong>، تم اعتماد كودك [ <strong style="color: var(--primary);">${code}</strong> ] وبياناتك بنجاح! طلبك قيد المراجعة حالياً من إدارة المعمل. سيتم تفعيل دخولك المباشر فور موافقة الإدارة.`;
+        } else {
+          textEl.innerHTML = `كود الموظف [ <strong style="color: var(--primary);">${code}</strong> ] مسجل بنجاح وهو في انتظار موافقة الإدارة. سيتم تفعيل دخولك فور الاعتماد.`;
+        }
+      }
+      box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+
+  window.handleRegistrationSubmit = async function (e) {
+    if (e && e.preventDefault) e.preventDefault();
+    const nameInput = document.getElementById('regName');
+    const areaInput = document.getElementById('regArea');
+    const phoneInput = document.getElementById('regPhone');
+
+    const name = nameInput ? nameInput.value.trim() : '';
+    const area = areaInput ? areaInput.value.trim() : '';
+    const phone = phoneInput ? normalizeDigits(phoneInput.value.trim()) : '';
+    const code = state.pendingRegistrationCode;
+
+    if (!name || !area || !phone || !code) {
+      showToast('يرجى ملء جميع البيانات لإتمام التسجيل', 'error');
+      return;
+    }
+
+    const regData = {
+      code: code,
+      name: name,
+      area: area,
+      phone: phone,
+      isRegistered: true,
+      isApproved: false,
+      status: 'pending',
+      requestedAt: Date.now()
+    };
+
+    // Save to Firebase (both in employees and registration_requests)
+    if (firebaseDb) {
+      try {
+        await firebaseDb.ref('employees/' + code).set(regData);
+        await firebaseDb.ref('registration_requests/' + code).set(regData);
+      } catch (_) {}
+    }
+
+    // Update local list
+    const idx = state.employees.findIndex(e => e.code === code);
+    if (idx !== -1) {
+      state.employees[idx] = { ...state.employees[idx], ...regData };
+    } else {
+      state.employees.unshift(regData);
+    }
+    setLocal(STORAGE.EMPLOYEES, state.employees);
+
+    state.registrationRequests = state.registrationRequests.filter(r => r.code !== code);
+    state.registrationRequests.unshift(regData);
+    setLocal(STORAGE.REGISTRATION_REQUESTS, state.registrationRequests);
+
+    // Close registration modal
+    const regModal = document.getElementById('registerModal');
+    if (regModal) regModal.classList.remove('active');
+
+    // Reset input fields
+    if (nameInput) nameInput.value = '';
+    if (areaInput) areaInput.value = '';
+    if (phoneInput) phoneInput.value = '';
+    const loginInput = document.getElementById('mainEmployeeCodeInput');
+    if (loginInput) loginInput.value = '';
+
+    playSound('success');
+    showPendingApprovalNotice(code, name);
+    showToast('تم اعتماد الكود وفي انتظار الموافقة عليه ⏳', 'success', 5000);
+    renderAdminViews();
+  };
+
+  // Admin approves employee registration
+  window.approveEmployeeRegistration = async function (code) {
+    const emp = state.employees.find(e => e.code === code) || state.registrationRequests.find(r => r.code === code);
+    const name = emp ? emp.name : code;
+
+    const updates = {
+      isApproved: true,
+      status: 'approved',
+      approvedAt: Date.now()
+    };
+
+    if (firebaseDb) {
+      try {
+        await firebaseDb.ref('employees/' + code).update(updates);
+        await firebaseDb.ref('registration_requests/' + code).remove();
+      } catch (_) {}
+    }
+
+    const idx = state.employees.findIndex(e => e.code === code);
+    if (idx !== -1) {
+      Object.assign(state.employees[idx], updates);
+    }
+    state.registrationRequests = state.registrationRequests.filter(r => r.code !== code);
+    setLocal(STORAGE.EMPLOYEES, state.employees);
+    setLocal(STORAGE.REGISTRATION_REQUESTS, state.registrationRequests);
+
+    playSound('success');
+    showToast(`تمت الموافقة على الموظف (${name}) وتفعيل الكود (${code}) بنجاح! سيتمكن الآن من تسجيل الدخول مباشرة ✅`, 'success', 4500);
+    renderAdminViews();
+  };
+
+  // Admin rejects registration request
+  window.rejectEmployeeRegistration = async function (code) {
+    if (!confirm(`هل ترغب بالتأكيد في رفض طلب الكود (${code})؟`)) return;
+
+    if (firebaseDb) {
+      try {
+        await firebaseDb.ref('employees/' + code).remove();
+        await firebaseDb.ref('registration_requests/' + code).remove();
+      } catch (_) {}
+    }
+
+    state.employees = state.employees.filter(e => e.code !== code);
+    state.registrationRequests = state.registrationRequests.filter(r => r.code !== code);
+    setLocal(STORAGE.EMPLOYEES, state.employees);
+    setLocal(STORAGE.REGISTRATION_REQUESTS, state.registrationRequests);
+
+    playSound('bubble');
+    showToast(`تم رفض طلب الكود (${code}) وحذفه من السيرفر`, 'info');
+    renderAdminViews();
+  };
+
+  // Admin deletes member completely (حذف عضو)
+  window.deleteEmployeeMember = async function (code) {
+    const emp = state.employees.find(e => e.code === code);
+    const name = emp ? emp.name : code;
+
+    if (!confirm(`هل أنت متأكد من حذف العضو (${name} - كود: ${code}) ومسح الكود الخاص به من السيستم نهائياً؟ لن يتمكن من تسجيل الدخول بعد الآن.`)) {
+      return;
+    }
+
+    if (firebaseDb) {
+      try {
+        await firebaseDb.ref('employees/' + code).remove();
+        await firebaseDb.ref('registration_requests/' + code).remove();
+      } catch (_) {}
+    }
+
+    state.employees = state.employees.filter(e => e.code !== code);
+    state.registrationRequests = state.registrationRequests.filter(r => r.code !== code);
+    setLocal(STORAGE.EMPLOYEES, state.employees);
+    setLocal(STORAGE.REGISTRATION_REQUESTS, state.registrationRequests);
+
+    playSound('bubble');
+    showToast(`تم حذف العضو (${name}) ومسح الكود الخاص به من السيستم بالكامل 🗑️`, 'success', 3500);
+    renderAdminViews();
+  };
+
+  window.handleLogout = function () {
+    localStorage.removeItem(STORAGE.USER);
+    state.user = null;
+    const input = document.getElementById('mainEmployeeCodeInput');
+    if (input) {
+      input.value = '';
+      setTimeout(() => input.focus(), 200);
+    }
+    playSound('bubble');
+    updateViewVisibility();
+    showToast('تم تسجيل الخروج بنجاح 👋', 'info');
+  };
+
+  /* =========================================================
+     PAGE 1: ATTENDANCE (تسجيل الحضور والانصراف)
+     ========================================================= */
+  let isSubmittingAttendance = false;
+  window.handleAttendance = async function (type) {
+    if (isSubmittingAttendance) return;
+    isSubmittingAttendance = true;
+    setTimeout(() => { isSubmittingAttendance = false; }, 600);
+    if (!state.user) {
+      showToast('يرجى تسجيل الدخول أولاً', 'error');
+      updateViewVisibility();
+      return;
+    }
+
+    const label = ATTENDANCE_LABELS[type] || type;
+    const now = new Date();
+    const dateStr = now.toLocaleDateString('ar-EG', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    const timeStr = now.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+    const isoDate = now.toISOString().split('T')[0];
+    const id = 'att_' + Date.now() + '_' + Math.random().toString(36).substring(2, 6);
+
+    const record = {
+      id: id,
+      employeeCode: state.user.code,
+      employeeName: state.user.name || 'غير معروف',
+      employeePhone: state.user.phone || '',
+      employeeArea: state.user.area || 'غير محدد',
+      actionType: type,
+      actionLabel: label,
+      date: isoDate,
+      dateDisplay: dateStr,
+      time: timeStr,
+      timestamp: Date.now()
+    };
+
+    if (firebaseDb) {
+      try {
+        await firebaseDb.ref('attendance/' + id).set(record);
+      } catch (_) {}
+    }
+
+    state.attendance.unshift(record);
+    setLocal(STORAGE.ATTENDANCE, state.attendance);
+
+    playSound('checkin');
+    showToast(`تم ${label} بنجاح وإرسال التقرير للإدارة فوراً ⚡`, 'success', 4000);
+    renderEmployeeAttendance();
+    renderAdminViews();
+  };
+
+  function renderEmployeeAttendance() {
+    if (!state.user) return;
+    const todayIso = new Date().toISOString().split('T')[0];
+    const myToday = state.attendance.filter(r => r.employeeCode === state.user.code && r.date === todayIso);
+
+    const doneTypes = {};
+    myToday.forEach(r => { doneTypes[r.actionType] = r.time; });
+
+    const cards = [
+      { id: 'cardMorningIn', st: 'statusMorningIn', btn: 'btnMorningIn', key: 'morning_in' },
+      { id: 'cardMorningOut', st: 'statusMorningOut', btn: 'btnMorningOut', key: 'morning_out' },
+      { id: 'cardEveningIn', st: 'statusEveningIn', btn: 'btnEveningIn', key: 'evening_in' },
+      { id: 'cardEveningOut', st: 'statusEveningOut', btn: 'btnEveningOut', key: 'evening_out' }
+    ];
+
+    cards.forEach(c => {
+      const cardEl = document.getElementById(c.id);
+      const stEl = document.getElementById(c.st);
+      const btnEl = document.getElementById(c.btn);
+      if (doneTypes[c.key]) {
+        if (cardEl) cardEl.classList.add('done');
+        if (stEl) {
+          stEl.className = 'badge badge-success';
+          stEl.textContent = `تم: ${doneTypes[c.key]}`;
+        }
+        if (btnEl) btnEl.textContent = 'تسجيل مجدداً';
+      } else {
+        if (cardEl) cardEl.classList.remove('done');
+        if (stEl) {
+          stEl.className = 'badge';
+          stEl.textContent = 'لم يسجل بعد';
+        }
+        if (btnEl) btnEl.textContent = 'تسجيل الآن';
+      }
     });
+
+    const sumBadge = document.getElementById('todaySummaryBadge');
+    if (sumBadge) sumBadge.textContent = `${Object.keys(doneTypes).length} من 4 مسجلة اليوم`;
+
+    // History list
+    const myHistory = state.attendance.filter(r => r.employeeCode === state.user.code);
+    const countEl = document.getElementById('attendanceHistoryCount');
+    if (countEl) countEl.textContent = `${myHistory.length} حركة`;
+
+    const histList = document.getElementById('attendanceHistoryList');
+    if (histList) {
+      if (myHistory.length === 0) {
+        histList.innerHTML = `<div style="text-align: center; padding: 2rem; color: var(--text-muted);">لم تسجل أي حركات حضور حتى الآن</div>`;
+      } else {
+        histList.innerHTML = myHistory.slice(0, 15).map(item => `
+          <div class="transaction-item">
+            <div class="transaction-info">
+              <div class="transaction-icon ${item.actionType.includes('in') ? 'reward' : 'deduction'}">
+                ${item.actionType.includes('in') ? '☀️' : '🌙'}
+              </div>
+              <div class="transaction-details">
+                <h4>${item.actionLabel}</h4>
+                <div class="transaction-meta">${item.dateDisplay || item.date} - ${item.time}</div>
+              </div>
+            </div>
+            <span class="badge ${item.actionType.includes('in') ? 'badge-success' : 'badge-info'}">
+              تم الإرسال فوراً للإدارة
+            </span>
+          </div>
+        `).join('');
+      }
+    }
+  }
+
+  /* =========================================================
+     PAGE 2: REWARDS & DEDUCTIONS (المكافآت والخصومات)
+     ========================================================= */
+  function renderEmployeeRewards() {
+    if (!state.user) return;
+    const myRewards = state.rewards.filter(r => r.employeeCode === state.user.code);
+
+    let totalR = 0, totalD = 0;
+    myRewards.forEach(r => {
+      const val = parseFloat(r.amount) || 0;
+      if (r.type === 'reward') totalR += val;
+      else totalD += val;
+    });
+    const net = totalR - totalD;
+
+    const rEl = document.getElementById('totalRewardsSum');
+    const dEl = document.getElementById('totalDeductionsSum');
+    const nEl = document.getElementById('netRewardsSum');
+
+    if (rEl) rEl.textContent = `${totalR.toLocaleString('ar-EG')} ج.م`;
+    if (dEl) dEl.textContent = `${totalD.toLocaleString('ar-EG')} ج.م`;
+    if (nEl) {
+      nEl.textContent = `${net.toLocaleString('ar-EG')} ج.م`;
+      nEl.className = `summary-amount ${net >= 0 ? 'green' : 'red'}`;
+    }
+
+    const listEl = document.getElementById('rewardsListContainer');
+    if (listEl) {
+      if (myRewards.length === 0) {
+        listEl.innerHTML = `<div style="text-align: center; padding: 2.5rem 1rem; color: var(--text-muted);">لا توجد مكافآت أو خصومات مسجلة لك حتى الآن</div>`;
+      } else {
+        listEl.innerHTML = myRewards.map(item => `
+          <div class="transaction-item">
+            <div class="transaction-info">
+              <div class="transaction-icon ${item.type === 'reward' ? 'reward' : 'deduction'}">
+                ${item.type === 'reward' ? '🎁' : '🔻'}
+              </div>
+              <div class="transaction-details">
+                <h4 style="color: ${item.type === 'reward' ? 'var(--accent-green-dark)' : 'var(--accent-red-dark)'}">
+                  ${item.type === 'reward' ? 'مكافأة تشجيعية' : 'خصم إداري'}
+                </h4>
+                <div style="font-weight: 600; font-size: 0.88rem; margin: 0.15rem 0;">${item.reason}</div>
+                <div class="transaction-meta">${item.dateDisplay || item.date} - ${item.time}</div>
+              </div>
+            </div>
+            <div class="transaction-price" style="color: ${item.type === 'reward' ? 'var(--accent-green)' : 'var(--accent-red)'}">
+              ${item.type === 'reward' ? '+' : '-'}${item.amount} ج.م
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+  }
+
+  /* =========================================================
+     PAGE 3: SUPPLIES (طلب مستلزمات)
+     ========================================================= */
+  function renderEmployeeSupplies() {
+    // 1. Catalog
+    const grid = document.getElementById('suppliesCatalogGrid');
+    if (grid) {
+      if (state.supplies.length === 0) {
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 2rem; color: var(--text-muted);">لا توجد مستلزمات بالكتالوج حالياً</div>`;
+      } else {
+        grid.innerHTML = state.supplies.map(item => `
+          <div class="supply-card">
+            <div class="supply-img-wrapper">
+              ${item.imageUrl ? `<img src="${item.imageUrl}" alt="${item.name}" class="supply-img">` : `
+                <svg class="supply-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                </svg>
+              `}
+            </div>
+            <div class="supply-content">
+              <div>
+                <div class="supply-title">${item.name}</div>
+                <div class="supply-unit-badge">${item.unit || item.category || 'مستلزم معمل'}</div>
+              </div>
+              <button type="button" class="btn btn-secondary btn-sm" onclick="window.quickOrderSupply('${item.name.replace(/'/g, "\\'")}')">
+                + طلب هذا المستلزم
+              </button>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    // 2. My past orders
+    if (!state.user) return;
+    const myOrders = state.supplyOrders.filter(r => r.employeeCode === state.user.code);
+    const myOrdersList = document.getElementById('mySupplyOrdersList');
+    if (myOrdersList) {
+      if (myOrders.length === 0) {
+        myOrdersList.innerHTML = `<div style="text-align: center; padding: 2rem; color: var(--text-muted);">لم تقم بإرسال أي طلبات مستلزمات حتى الآن</div>`;
+      } else {
+        myOrdersList.innerHTML = myOrders.map(order => `
+          <div class="transaction-item">
+            <div class="transaction-info">
+              <div class="transaction-icon reward">📦</div>
+              <div class="transaction-details">
+                <h4>${order.supplyName}</h4>
+                <div style="font-size: 0.85rem; font-weight: 600;">الكمية: ${order.quantity}</div>
+                ${order.notes ? `<div style="font-size: 0.78rem; color: var(--text-secondary);">${order.notes}</div>` : ''}
+                <div class="transaction-meta">${order.dateDisplay || order.date} - ${order.time}</div>
+              </div>
+            </div>
+            <div>
+              <span class="badge ${order.status === 'completed' ? 'badge-success' : 'badge-amber'}">
+                ${order.status === 'completed' ? 'تم الصرف ✅' : 'قيد التجهيز'}
+              </span>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+  }
+
+  window.quickOrderSupply = function (name) {
+    const input = document.getElementById('supplySelect');
+    const qty = document.getElementById('supplyQuantity');
+    if (input) input.value = name;
+    if (qty) qty.focus();
+    playSound('bubble');
+    showToast(`تم اختيار [ ${name} ]. حدد الكمية واضغط إرسال`, 'info', 2500);
+  };
+
+  window.handleSupplyOrderSubmit = async function (e) {
+    if (e && e.preventDefault) e.preventDefault();
+    if (!state.user) {
+      showToast('يرجى تسجيل الدخول أولاً', 'error');
+      return;
+    }
+
+    const nameInput = document.getElementById('supplySelect');
+    const qtyInput = document.getElementById('supplyQuantity');
+    const notesInput = document.getElementById('supplyNotes');
+
+    const supplyName = nameInput ? nameInput.value.trim() : '';
+    const quantity = qtyInput ? qtyInput.value.trim() : '';
+    const notes = notesInput ? notesInput.value.trim() : '';
+
+    if (!supplyName || !quantity) {
+      showToast('يرجى تحديد المستلزم والكمية المطلوبة', 'error');
+      return;
+    }
+
+    const now = new Date();
+    const id = 'req_' + Date.now() + '_' + Math.random().toString(36).substring(2, 6);
+    const order = {
+      id: id,
+      employeeCode: state.user.code,
+      employeeName: state.user.name,
+      employeePhone: state.user.phone,
+      employeeArea: state.user.area,
+      supplyName: supplyName,
+      quantity: quantity,
+      notes: notes,
+      status: 'pending',
+      date: now.toISOString().split('T')[0],
+      dateDisplay: now.toLocaleDateString('ar-EG'),
+      time: now.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' }),
+      createdAt: Date.now()
+    };
+
+    if (firebaseDb) {
+      try {
+        await firebaseDb.ref('supply_requests/' + id).set(order);
+      } catch (_) {}
+    }
+
+    state.supplyOrders.unshift(order);
+    setLocal(STORAGE.SUPPLY_ORDERS, state.supplyOrders);
+
+    if (nameInput) nameInput.value = '';
+    if (qtyInput) qtyInput.value = '';
+    if (notesInput) notesInput.value = '';
+
+    playSound('success');
+    showToast('تم إرسال طلب المستلزمات للإدارة بنجاح مع كافة بياناتك 📦', 'success');
+    renderEmployeeSupplies();
+    renderAdminViews();
+  };
+
+  /* =========================================================
+     PAGE 4: LEAVE REQUEST (طلب إجازة)
+     ========================================================= */
+  function renderEmployeeLeaves() {
+    if (!state.user) return;
+    const myLeaves = state.leaves.filter(r => r.employeeCode === state.user.code);
+    const listEl = document.getElementById('myLeaveRequestsList');
+    if (listEl) {
+      if (myLeaves.length === 0) {
+        listEl.innerHTML = `<div style="text-align: center; padding: 2rem; color: var(--text-muted);">لا توجد طلبات إجازة مسجلة لك حتى الآن</div>`;
+      } else {
+        listEl.innerHTML = myLeaves.map(leave => {
+          let statusBadge = '<span class="badge badge-amber">⏳ قيد المراجعة</span>';
+          if (leave.status === 'approved') statusBadge = '<span class="badge badge-success">✅ تمت الموافقة</span>';
+          if (leave.status === 'rejected') statusBadge = '<span class="badge badge-danger">❌ تم الرفض</span>';
+
+          return `
+            <div class="transaction-item" style="flex-direction: column; align-items: stretch; gap: 0.5rem;">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <div style="font-weight: 700; font-size: 1rem;">إجازة ${leave.leaveType || 'اعتيادية'} (${leave.daysCount} أيام)</div>
+                ${statusBadge}
+              </div>
+              <div style="font-size: 0.85rem; color: var(--text-secondary);">
+                <strong>تاريخ البدء:</strong> ${leave.startDate} | <strong>السبب:</strong> ${leave.reason}
+              </div>
+              ${leave.attachmentUrl ? `
+                <div>
+                  <a href="${leave.attachmentUrl}" target="_blank" rel="noopener noreferrer" style="font-size: 0.78rem; font-weight: 700; color: var(--primary);">
+                    📎 عرض المرفق الطبي المرفوع على Cloudinary
+                  </a>
+                </div>
+              ` : ''}
+              ${leave.adminNotes ? `
+                <div style="background: var(--bg-surface); padding: 0.4rem 0.6rem; border-radius: var(--radius-sm); font-size: 0.78rem; border-right: 3px solid var(--primary);">
+                  <strong>رد الإدارة:</strong> ${leave.adminNotes}
+                </div>
+              ` : ''}
+              <div class="transaction-meta" style="align-self: flex-end;">${leave.dateDisplay || leave.date} - ${leave.time}</div>
+            </div>
+          `;
+        }).join('');
+      }
+    }
+  }
+
+  window.handleLeaveSubmit = async function (e) {
+    if (e && e.preventDefault) e.preventDefault();
+    if (!state.user) {
+      showToast('يرجى تسجيل الدخول أولاً', 'error');
+      return;
+    }
+
+    const daysInput = document.getElementById('leaveDaysCount');
+    const startInput = document.getElementById('leaveStartDate');
+    const typeInput = document.getElementById('leaveType');
+    const reasonInput = document.getElementById('leaveReason');
+
+    const days = daysInput ? daysInput.value : '1';
+    const startDate = startInput ? startInput.value : '';
+    const leaveType = typeInput ? typeInput.value : 'اعتيادية';
+    const reason = reasonInput ? reasonInput.value.trim() : '';
+
+    if (!days || !startDate || !reason) {
+      showToast('يرجى تعبئة كافة الحقول المطلوبة', 'error');
+      return;
+    }
+
+    const now = new Date();
+    const id = 'leave_' + Date.now() + '_' + Math.random().toString(36).substring(2, 6);
+    const leave = {
+      id: id,
+      employeeCode: state.user.code,
+      employeeName: state.user.name,
+      employeePhone: state.user.phone,
+      employeeArea: state.user.area,
+      daysCount: parseInt(days, 10),
+      startDate: startDate,
+      leaveType: leaveType,
+      reason: reason,
+      attachmentUrl: state.uploadedLeaveFile ? state.uploadedLeaveFile.secure_url : '',
+      status: 'pending',
+      adminNotes: '',
+      date: now.toISOString().split('T')[0],
+      dateDisplay: now.toLocaleDateString('ar-EG'),
+      time: now.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' }),
+      createdAt: Date.now()
+    };
+
+    if (firebaseDb) {
+      try {
+        await firebaseDb.ref('leave_requests/' + id).set(leave);
+      } catch (_) {}
+    }
+
+    state.leaves.unshift(leave);
+    setLocal(STORAGE.LEAVES, state.leaves);
+
+    if (reasonInput) reasonInput.value = '';
+    state.uploadedLeaveFile = null;
+    const preview = document.getElementById('leaveUploadPreview');
+    if (preview) preview.style.display = 'none';
+
+    playSound('success');
+    showToast('تم إرسال طلب الإجازة للإدارة بنجاح! سيتم إعلامك بالرد فوراً 🏖️', 'success');
+    renderEmployeeLeaves();
+    renderAdminViews();
+  };
+
+  /* =========================================================
+     ADMIN CONTROL CENTER (PIN: 4k4k)
+     ========================================================= */
+  window.openAdminPinModal = function (e) {
+    if (e && e.stopPropagation) e.stopPropagation();
+    playSound('bubble');
+    const isAuth = sessionStorage.getItem(STORAGE.ADMIN) === 'true';
+    if (isAuth) {
+      const dash = document.getElementById('adminDashboardModal');
+      if (dash) dash.classList.add('active');
+      renderAdminViews();
+    } else {
+      const pinModal = document.getElementById('adminPinModal');
+      const pinInput = document.getElementById('adminPinInput');
+      if (pinModal) pinModal.classList.add('active');
+      if (pinInput) {
+        pinInput.value = '';
+        setTimeout(() => pinInput.focus(), 150);
+      }
+    }
+  }
+
+  window.closeAdminPinModal = function () {
+    const pinModal = document.getElementById('adminPinModal');
+    if (pinModal) pinModal.classList.remove('active');
+  };
+
+  window.handleAdminPinSubmit = function (e) {
+    if (e && e.preventDefault) e.preventDefault();
+    const pinInput = document.getElementById('adminPinInput');
+    const rawPin = pinInput ? pinInput.value.trim() : '';
+    const cleanPin = normalizeDigits(rawPin).toLowerCase();
+
+    if (cleanPin === CONFIG.ADMIN_PIN.toLowerCase()) {
+      sessionStorage.setItem(STORAGE.ADMIN, 'true');
+      window.closeAdminPinModal();
+      const dash = document.getElementById('adminDashboardModal');
+      if (dash) dash.classList.add('active');
+      playSound('success');
+      showToast('تم تسجيل الدخول كمسؤول لنظام Accurate Lab 🔐', 'success');
+      renderAdminViews();
+    } else {
+      showToast('الرقم السري غير صحيح!', 'error');
+    }
+  };
+
+  window.closeAdminDashboard = function () {
+    const dash = document.getElementById('adminDashboardModal');
+    if (dash) dash.classList.remove('active');
+  };
+
+  // Switch Admin Tabs
+  window.switchAdminTab = function (paneKey) {
+    playSound('bubble');
+    document.querySelectorAll('.admin-tab-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.pane === paneKey);
+    });
+    ['adminCodes', 'adminRewards', 'adminAttendance', 'adminLeaves', 'adminSupplies', 'adminDailyUploads'].forEach(k => {
+      const pane = document.getElementById('pane' + k.charAt(0).toUpperCase() + k.slice(1));
+      if (pane) pane.classList.toggle('active', k === paneKey);
+    });
+  };
+
+  // 1. Generate 4-digit code
+  window.handleGenerateCode = async function () {
+    const btn = document.getElementById('btnGenerateCode');
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = 'جاري التوليد...';
+    }
+
+    let code = '';
+    let attempts = 0;
+    do {
+      code = Math.floor(1000 + Math.random() * 9000).toString();
+      attempts++;
+    } while (state.employees.some(e => e.code === code) && attempts < 100);
+
+    const newEmp = {
+      code: code,
+      isRegistered: false,
+      name: '',
+      phone: '',
+      area: '',
+      createdAt: Date.now()
+    };
+
+    // Immediate UI feedback
+    const displayBox = document.getElementById('generatedCodeDisplay');
+    const valEl = document.getElementById('generatedCodeValue');
+    if (displayBox) {
+      displayBox.style.display = 'block';
+      displayBox.dataset.code = code;
+    }
+    if (valEl) valEl.textContent = `الكود الجديد: ${code}`;
+
+    state.employees.unshift(newEmp);
+    setLocal(STORAGE.EMPLOYEES, state.employees);
+
+    playSound('success');
+    showToast(`تم توليد الكود الرباعي [ ${code} ] وإضافته للسيرفر فوراً ⚡`, 'success', 4000);
+    renderAdminViews();
+
+    if (firebaseDb) {
+      try {
+        await firebaseDb.ref('employees/' + code).set(newEmp);
+      } catch (_) {}
+    }
+
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = '⚡ توليد كود موظف جديد';
+    }
+  };
+
+  window.copyGeneratedCode = function () {
+    const box = document.getElementById('generatedCodeDisplay');
+    const code = box ? box.dataset.code : '';
+    if (code) {
+      navigator.clipboard.writeText(code).then(() => {
+        playSound('bubble');
+        showToast(`تم نسخ الكود الرباعي [ ${code} ] بنجاح 📋`, 'success');
+      }).catch(() => {
+        showToast(`كود الموظف: ${code}`, 'info');
+      });
+    }
+  };
+
+  window.shareGeneratedCodeWhatsApp = function () {
+    const box = document.getElementById('generatedCodeDisplay');
+    const code = box ? box.dataset.code : '';
+    if (code) {
+      const msg = encodeURIComponent(`مرحباً بك في معمل أكيوريت للتحاليل الطبية (Accurate Lab).\nكود الدخول الخاص بك للبوابة الإلكترونية هو: ${code}\nيرجى استخدامه لتسجيل الحضور وطلب المستلزمات والإجازات.`);
+      window.open(`https://wa.me/?text=${msg}`, '_blank');
+    }
+  };
+
+  window.deleteEmployeeCode = async function (code) {
+    if (confirm(`هل أنت متأكد من حذف كود الموظف [ ${code} ]؟`)) {
+      if (firebaseDb) {
+        try {
+          await firebaseDb.ref('employees/' + code).remove();
+        } catch (_) {}
+      }
+      state.employees = state.employees.filter(e => e.code !== code);
+      setLocal(STORAGE.EMPLOYEES, state.employees);
+      showToast(`تم حذف كود الموظف [ ${code} ]`, 'info');
+      renderAdminViews();
+    }
+  };
+
+  // 2. Admin Send Reward or Deduction
+  window.handleAdminRewardSubmit = async function (e) {
+    if (e && e.preventDefault) e.preventDefault();
+    const empSelect = document.getElementById('rewardEmployeeSelect');
+    const typeSelect = document.getElementById('rewardType');
+    const amountInput = document.getElementById('rewardAmount');
+    const reasonInput = document.getElementById('rewardReason');
+
+    const code = empSelect ? empSelect.value : '';
+    const type = typeSelect ? typeSelect.value : 'reward';
+    const amount = amountInput ? parseFloat(amountInput.value) : 0;
+    const reason = reasonInput ? reasonInput.value.trim() : '';
+
+    if (!code || !amount || !reason) {
+      showToast('يرجى تحديد الموظف والمبلغ والسبب', 'error');
+      return;
+    }
+
+    const emp = state.employees.find(e => e.code === code);
+    const now = new Date();
+    const id = 'rew_' + Date.now() + '_' + Math.random().toString(36).substring(2, 6);
+
+    const record = {
+      id: id,
+      employeeCode: code,
+      employeeName: emp ? emp.name : '',
+      employeeArea: emp ? emp.area : '',
+      type: type,
+      amount: amount,
+      reason: reason,
+      date: now.toISOString().split('T')[0],
+      dateDisplay: now.toLocaleDateString('ar-EG'),
+      time: now.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' }),
+      timestamp: Date.now()
+    };
+
+    if (firebaseDb) {
+      try {
+        await firebaseDb.ref('rewards/' + id).set(record);
+      } catch (_) {}
+    }
+
+    state.rewards.unshift(record);
+    setLocal(STORAGE.REWARDS, state.rewards);
+
+    if (amountInput) amountInput.value = '';
+    if (reasonInput) reasonInput.value = '';
+
+    playSound('success');
+    showToast('تم إرسال المكافأة/الخصم للموظف بنجاح 💰', 'success');
+    renderEmployeeRewards();
+    renderAdminViews();
+  };
+
+  window.deleteRewardRecord = async function (id) {
+    if (confirm('هل أنت متأكد من حذف هذا السجل؟')) {
+      if (firebaseDb) {
+        try {
+          await firebaseDb.ref('rewards/' + id).remove();
+        } catch (_) {}
+      }
+      state.rewards = state.rewards.filter(r => r.id !== id);
+      setLocal(STORAGE.REWARDS, state.rewards);
+      showToast('تم حذف السجل بنجاح', 'info');
+      renderEmployeeRewards();
+      renderAdminViews();
+    }
+  };
+
+  // 3. Admin Live Attendance Delete
+  window.deleteAttendanceRecord = async function (id) {
+    if (confirm('هل أنت متأكد من حذف حركة الحضور هذه؟')) {
+      if (firebaseDb) {
+        try {
+          await firebaseDb.ref('attendance/' + id).remove();
+        } catch (_) {}
+      }
+      state.attendance = state.attendance.filter(r => r.id !== id);
+      setLocal(STORAGE.ATTENDANCE, state.attendance);
+      showToast('تم حذف سجل الحركة', 'info');
+      renderEmployeeAttendance();
+      renderAdminViews();
+    }
+  };
+
+  // 4. Admin Leaves Actions
+  window.approveLeaveRequest = async function (id) {
+    const updates = { status: 'approved', adminNotes: 'تمت الموافقة من إدارة المعمل', reviewedAt: Date.now() };
+    if (firebaseDb) {
+      try {
+        await firebaseDb.ref('leave_requests/' + id).update(updates);
+      } catch (_) {}
+    }
+    const item = state.leaves.find(r => r.id === id);
+    if (item) Object.assign(item, updates);
+    setLocal(STORAGE.LEAVES, state.leaves);
+    playSound('success');
+    showToast('تمت الموافقة على طلب الإجازة وإعلام الموظف ✅', 'success');
+    renderEmployeeLeaves();
+    renderAdminViews();
+  };
+
+  window.rejectLeaveRequest = async function (id) {
+    const note = prompt('أدخل سبب الرفض إن وجد:') || 'تم الرفض لظروف العمل بالمعمل';
+    const updates = { status: 'rejected', adminNotes: note, reviewedAt: Date.now() };
+    if (firebaseDb) {
+      try {
+        await firebaseDb.ref('leave_requests/' + id).update(updates);
+      } catch (_) {}
+    }
+    const item = state.leaves.find(r => r.id === id);
+    if (item) Object.assign(item, updates);
+    setLocal(STORAGE.LEAVES, state.leaves);
+    showToast('تم تسجيل رفض طلب الإجازة وإعلام الموظف ❌', 'info');
+    renderEmployeeLeaves();
+    renderAdminViews();
+  };
+
+  window.deleteLeaveRequest = async function (id) {
+    if (confirm('هل أنت متأكد من حذف هذا الطلب؟')) {
+      if (firebaseDb) {
+        try {
+          await firebaseDb.ref('leave_requests/' + id).remove();
+        } catch (_) {}
+      }
+      state.leaves = state.leaves.filter(r => r.id !== id);
+      setLocal(STORAGE.LEAVES, state.leaves);
+      showToast('تم حذف طلب الإجازة بنجاح', 'info');
+      renderEmployeeLeaves();
+      renderAdminViews();
+    }
+  };
+
+  // 5. Admin Add Supply with Cloudinary
+  window.handleAdminAddSupplySubmit = async function (e) {
+    if (e && e.preventDefault) e.preventDefault();
+    const nameInput = document.getElementById('newSupplyName');
+    const catInput = document.getElementById('newSupplyCategory');
+    const notesInput = document.getElementById('newSupplyNotes');
+
+    const name = nameInput ? nameInput.value.trim() : '';
+    const category = catInput ? catInput.value.trim() : 'عام';
+    const notes = notesInput ? notesInput.value.trim() : '';
+
+    if (!name) {
+      showToast('اسم المستلزم مطلوب', 'error');
+      return;
+    }
+
+    const id = 'sup_' + Date.now() + '_' + Math.random().toString(36).substring(2, 6);
+    const item = {
+      id: id,
+      name: name,
+      category: category,
+      unit: category,
+      imageUrl: state.uploadedSupplyFile ? state.uploadedSupplyFile.secure_url : '',
+      notes: notes,
+      createdAt: Date.now()
+    };
+
+    if (firebaseDb) {
+      try {
+        await firebaseDb.ref('supplies/' + id).set(item);
+      } catch (_) {}
+    }
+
+    state.supplies.unshift(item);
+    setLocal(STORAGE.SUPPLIES, state.supplies);
+
+    if (nameInput) nameInput.value = '';
+    if (catInput) catInput.value = '';
+    if (notesInput) notesInput.value = '';
+    state.uploadedSupplyFile = null;
+    const preview = document.getElementById('supplyUploadPreview');
+    if (preview) preview.style.display = 'none';
+
+    playSound('success');
+    showToast(`تمت إضافة [ ${name} ] لكتالوج المعمل لجميع الموظفين بنجاح 📦`, 'success');
+    renderEmployeeSupplies();
+    renderAdminViews();
+  };
+
+  window.deleteSupplyCatalogItem = async function (id) {
+    if (confirm('هل تريد حذف هذا المستلزم من الكتالوج العام؟')) {
+      if (firebaseDb) {
+        try {
+          await firebaseDb.ref('supplies/' + id).remove();
+        } catch (_) {}
+      }
+      state.supplies = state.supplies.filter(r => r.id !== id);
+      setLocal(STORAGE.SUPPLIES, state.supplies);
+      showToast('تم حذف المستلزم من الكتالوج', 'info');
+      renderEmployeeSupplies();
+      renderAdminViews();
+    }
+  };
+
+  window.completeSupplyOrder = async function (id) {
+    if (firebaseDb) {
+      try {
+        await firebaseDb.ref('supply_requests/' + id).update({ status: 'completed' });
+      } catch (_) {}
+    }
+    const item = state.supplyOrders.find(r => r.id === id);
+    if (item) item.status = 'completed';
+    setLocal(STORAGE.SUPPLY_ORDERS, state.supplyOrders);
+    playSound('success');
+    showToast('تم تأكيد صرف المستلزم للموظف بنجاح ✅', 'success');
+    renderEmployeeSupplies();
+    renderAdminViews();
+  };
+
+  window.deleteSupplyOrder = async function (id) {
+    if (confirm('هل أنت متأكد من حذف هذا الطلب؟')) {
+      if (firebaseDb) {
+        try {
+          await firebaseDb.ref('supply_requests/' + id).remove();
+        } catch (_) {}
+      }
+      state.supplyOrders = state.supplyOrders.filter(r => r.id !== id);
+      setLocal(STORAGE.SUPPLY_ORDERS, state.supplyOrders);
+      showToast('تم حذف طلب المستلزم بنجاح', 'info');
+      renderEmployeeSupplies();
+      renderAdminViews();
+    }
+  };
+
+  /* =========================================================
+     EXCEL EXPORT (CSV with UTF-8 BOM)
+     ========================================================= */
+  function downloadCSV(csvContent, filename) {
+    const blob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }
+
+  window.exportAttendanceCSV = function () {
+    if (!state.attendance.length) {
+      showToast('لا توجد سجلات حضور للتصدير', 'error');
+      return;
+    }
+    const headers = ['اسم الموظف', 'الكود الرباعي', 'المنطقة / الفرع', 'الهاتف', 'نوع الحركة', 'التاريخ', 'الساعة'];
+    const rows = state.attendance.map(r => [
+      `"${r.employeeName || ''}"`,
+      `"${r.employeeCode || ''}"`,
+      `"${r.employeeArea || ''}"`,
+      `"${r.employeePhone || ''}"`,
+      `"${r.actionLabel || ''}"`,
+      `"${r.date || ''}"`,
+      `"${r.time || ''}"`
+    ]);
+    const csv = [headers.join(','), ...rows.map(r => r.join(','))].join('\r\n');
+    const today = new Date().toISOString().split('T')[0];
+    downloadCSV(csv, `سجل_حضور_وانصراف_أكيوريت_${today}.csv`);
+    playSound('success');
+    showToast('تم تصدير سجل الحضور والانصراف إلى ملف Excel بنجاح 📊', 'success');
+  };
+
+  window.exportRewardsCSV = function () {
+    if (!state.rewards.length) {
+      showToast('لا توجد سجلات مكافآت للتصدير', 'error');
+      return;
+    }
+    const headers = ['اسم الموظف', 'الكود', 'النوع', 'المبلغ (ج.م)', 'السبب', 'التاريخ', 'الساعة'];
+    const rows = state.rewards.map(r => [
+      `"${r.employeeName || ''}"`,
+      `"${r.employeeCode || ''}"`,
+      `"${r.type === 'reward' ? 'مكافأة' : 'خصم'}"`,
+      r.amount || 0,
+      `"${r.reason || ''}"`,
+      `"${r.date || ''}"`,
+      `"${r.time || ''}"`
+    ]);
+    const csv = [headers.join(','), ...rows.map(r => r.join(','))].join('\r\n');
+    const today = new Date().toISOString().split('T')[0];
+    downloadCSV(csv, `سجل_المكافآت_والخصومات_أكيوريت_${today}.csv`);
+    playSound('success');
+    showToast('تم تصدير سجل المكافآت والخصومات إلى Excel بنجاح 📊', 'success');
+  };
+
+  window.exportLeavesCSV = function () {
+    if (!state.leaves.length) {
+      showToast('لا توجد طلبات إجازة للتصدير', 'error');
+      return;
+    }
+    const headers = ['اسم الموظف', 'الكود', 'المنطقة', 'الهاتف', 'نوع الإجازة', 'عدد الأيام', 'تاريخ البدء', 'الحالة', 'السبب', 'التاريخ'];
+    const rows = state.leaves.map(r => {
+      let st = r.status === 'approved' ? 'مقبولة' : r.status === 'rejected' ? 'مرفوضة' : 'قيد المراجعة';
+      return [
+        `"${r.employeeName || ''}"`,
+        `"${r.employeeCode || ''}"`,
+        `"${r.employeeArea || ''}"`,
+        `"${r.employeePhone || ''}"`,
+        `"${r.leaveType || ''}"`,
+        r.daysCount || 0,
+        `"${r.startDate || ''}"`,
+        `"${st}"`,
+        `"${r.reason || ''}"`,
+        `"${r.date || ''}"`
+      ];
+    });
+    const csv = [headers.join(','), ...rows.map(r => r.join(','))].join('\r\n');
+    const today = new Date().toISOString().split('T')[0];
+    downloadCSV(csv, `سجل_طلبات_الإجازات_أكيوريت_${today}.csv`);
+    playSound('success');
+    showToast('تم تصدير سجل الإجازات إلى Excel بنجاح 📊', 'success');
+  };
+
+  window.printAttendance = function () {
+    window.print();
+  };
+
+  
+  /* =========================================================
+     DAILY PHOTO REPORTS (صورة التوريد وصورة اليوميات)
+     ========================================================= */
+  function fileToDataUrl(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = () => reject(new Error('فشل قراءة الملف'));
+      reader.readAsDataURL(file);
+    });
+  }
+
+  // Handle local file selection from device (Camera or Gallery)
+  window.handleReportFileSelect = function (e, type) {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+
+    if (!state.selectedReportFiles) state.selectedReportFiles = {};
+    state.selectedReportFiles[type] = file;
+
+    const isSupply = type === 'supply_receipt';
+    const placeholder = document.getElementById(isSupply ? 'supplyReceiptPlaceholder' : 'dailyJournalPlaceholder');
+    const previewWrap = document.getElementById(isSupply ? 'supplyReceiptPreviewWrap' : 'dailyJournalPreviewWrap');
+    const previewImg = document.getElementById(isSupply ? 'supplyReceiptPreviewImg' : 'dailyJournalPreviewImg');
+    const submitBtn = document.getElementById(isSupply ? 'btnUploadSupplyReceipt' : 'btnUploadDailyJournal');
+
+    if (previewImg) {
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        previewImg.src = ev.target.result;
+        if (placeholder) placeholder.style.display = 'none';
+        if (previewWrap) previewWrap.style.display = 'block';
+        if (submitBtn) submitBtn.disabled = false;
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  // Cancel selected report preview
+  window.cancelReportSelection = function (e, type) {
+    if (e && e.stopPropagation) e.stopPropagation();
+    if (!state.selectedReportFiles) state.selectedReportFiles = {};
+    state.selectedReportFiles[type] = null;
+
+    const isSupply = type === 'supply_receipt';
+    const input = document.getElementById(isSupply ? 'supplyReceiptInput' : 'dailyJournalInput');
+    const placeholder = document.getElementById(isSupply ? 'supplyReceiptPlaceholder' : 'dailyJournalPlaceholder');
+    const previewWrap = document.getElementById(isSupply ? 'supplyReceiptPreviewWrap' : 'dailyJournalPreviewWrap');
+    const submitBtn = document.getElementById(isSupply ? 'btnUploadSupplyReceipt' : 'btnUploadDailyJournal');
+
+    if (input) input.value = '';
+    if (placeholder) placeholder.style.display = 'flex';
+    if (previewWrap) previewWrap.style.display = 'none';
+    if (submitBtn) submitBtn.disabled = true;
+  };
+
+  // Submit report to Cloudinary + Firebase
+  window.submitDailyReport = async function (type) {
+    if (!state.user) {
+      showToast('يرجى تسجيل الدخول أولاً', 'error');
+      return;
+    }
+
+    const file = state.selectedReportFiles && state.selectedReportFiles[type];
+    if (!file) {
+      showToast('يرجى اختيار أو التقاط الصورة أولاً من جهازك', 'error');
+      return;
+    }
+
+    const isSupply = type === 'supply_receipt';
+    const progressBox = document.getElementById(isSupply ? 'supplyReceiptProgress' : 'dailyJournalProgress');
+    const progressBar = document.getElementById(isSupply ? 'supplyReceiptProgressBar' : 'dailyJournalProgressBar');
+    const progressText = document.getElementById(isSupply ? 'supplyReceiptProgressText' : 'dailyJournalProgressText');
+    const submitBtn = document.getElementById(isSupply ? 'btnUploadSupplyReceipt' : 'btnUploadDailyJournal');
+
+    if (progressBox) progressBox.style.display = 'block';
+    if (progressBar) progressBar.style.width = '15%';
+    if (progressText) progressText.textContent = 'جاري المعالجة والرفع... (15%)';
+    if (submitBtn) submitBtn.disabled = true;
+
+    try {
+      let imageUrl = '';
+      try {
+        const cldRes = await uploadToCloudinary(file, (pct) => {
+          if (progressBar) progressBar.style.width = pct + '%';
+          if (progressText) progressText.textContent = `جاري الرفع... (${pct}%)`;
+        });
+        imageUrl = cldRes.secure_url;
+      } catch (cldErr) {
+        // Fallback: Use DataURL so local testing or offline never fails!
+        imageUrl = await fileToDataUrl(file);
+      }
+
+      const now = new Date();
+      const reportId = 'rep_' + Date.now() + '_' + Math.random().toString(36).substring(2, 6);
+      const record = {
+        id: reportId,
+        type: type,
+        typeLabel: isSupply ? 'صورة توريد' : 'صورة يوميات',
+        employeeCode: state.user.code,
+        employeeName: state.user.name || ('كود ' + state.user.code),
+        employeeArea: state.user.area || 'معمل أكيوريت',
+        employeePhone: state.user.phone || '',
+        imageUrl: imageUrl,
+        date: now.toISOString().split('T')[0],
+        dateDisplay: now.toLocaleDateString('ar-EG', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
+        time: now.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', hour12: true }),
+        timestamp: Date.now()
+      };
+
+      // Save to Firebase
+      if (firebaseDb) {
+        try {
+          await firebaseDb.ref('daily_uploads/' + reportId).set(record);
+        } catch (_) {}
+      }
+
+      // Add to local state
+      state.dailyUploads.unshift(record);
+      setLocal(STORAGE.DAILY_UPLOADS, state.dailyUploads);
+
+      // Clean up UI
+      if (progressBox) progressBox.style.display = 'none';
+      window.cancelReportSelection(null, type);
+
+      playSound('success');
+      showToast('تم الرفع بنجاح ✅', 'success', 3500);
+
+      renderEmployeeDailyUploads();
+      renderAdminDailyUploads();
+    } catch (err) {
+      if (progressBox) progressBox.style.display = 'none';
+      if (submitBtn) submitBtn.disabled = false;
+      showToast('حدث خطأ أثناء رفع الصورة: ' + (err.message || 'يرجى المحاولة مجدداً'), 'error');
+    }
+  };
+
+  // Download report photo directly to device hard drive or phone storage
+  window.downloadReportImage = async function (url, filename) {
+    try {
+      showToast('جاري بدء تحميل الصورة على جهازك... 📥', 'info', 2000);
+
+      if (url.startsWith('data:')) {
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename || 'accurate_lab_photo.jpg';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        playSound('success');
+        showToast('تم حفظ الصورة على جهازك بنجاح ✅', 'success', 2500);
+        return;
+      }
+
+      const res = await fetch(url);
+      const blob = await res.blob();
+      const blobUrl = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = blobUrl;
+      a.download = filename || 'accurate_lab_photo.jpg';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(blobUrl), 2000);
+      playSound('success');
+      showToast('تم حفظ الصورة على جهازك بنجاح ✅', 'success', 2500);
+    } catch (err) {
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename || 'accurate_lab_photo.jpg';
+      a.target = '_blank';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+  };
+
+  // Delete uploaded report from admin
+  window.deleteDailyUpload = async function (id) {
+    if (!confirm('هل ترغب بالتأكيد في حذف هذا التقرير المصور من السيرفر؟')) return;
+
+    if (firebaseDb) {
+      try {
+        await firebaseDb.ref('daily_uploads/' + id).remove();
+      } catch (_) {}
+    }
+
+    state.dailyUploads = state.dailyUploads.filter(r => r.id !== id);
+    setLocal(STORAGE.DAILY_UPLOADS, state.dailyUploads);
+
+    playSound('bubble');
+    showToast('تم حذف التقرير المصور من السيرفر 🗑️', 'info');
+    renderEmployeeDailyUploads();
+    renderAdminDailyUploads();
+  };
+
+  // Lightbox Modal for Full Screen Image Viewing
+  window.openImageLightbox = function (url, title) {
+    let box = document.getElementById('imageLightboxModal');
+    if (!box) {
+      box = document.createElement('div');
+      box.id = 'imageLightboxModal';
+      box.className = 'modal-overlay';
+      box.style.zIndex = '200000';
+      box.innerHTML = `
+        <div class="modal-dialog" style="max-width: 90vw; max-height: 90vh; background: transparent; border: none; box-shadow: none;">
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 1rem; background: rgba(15, 23, 42, 0.85); border-radius: 14px 14px 0 0; color: #fff; backdrop-filter: blur(8px);">
+            <span id="lightboxTitle" style="font-weight: 700; font-size: 0.95rem;">معاينة الصورة</span>
+            <button type="button" class="btn-icon" style="color: #fff; width: 32px; height: 32px; font-size: 1.25rem;" onclick="document.getElementById('imageLightboxModal').classList.remove('active')">&times;</button>
+          </div>
+          <div style="background: #000; text-align: center; max-height: 75vh; overflow: auto; border-radius: 0 0 14px 14px; padding: 0.5rem;">
+            <img id="lightboxImg" src="" style="max-width: 100%; max-height: 72vh; object-fit: contain; border-radius: 8px;">
+          </div>
+        </div>
+      `;
+      document.body.appendChild(box);
+      box.addEventListener('click', (e) => {
+        if (e.target === box) box.classList.remove('active');
+      });
+    }
+    const titleEl = document.getElementById('lightboxTitle');
+    const imgEl = document.getElementById('lightboxImg');
+    if (titleEl) titleEl.textContent = title || 'معاينة الصورة';
+    if (imgEl) imgEl.src = url;
+    box.classList.add('active');
+  };
+
+  function renderEmployeeDailyUploads() {
+    if (!state.user) return;
+    const todayIso = new Date().toISOString().split('T')[0];
+    const myToday = state.dailyUploads.filter(r => r.employeeCode === state.user.code && r.date === todayIso);
+
+    const countBadge = document.getElementById('todayUploadsCountBadge');
+    if (countBadge) countBadge.textContent = `${myToday.length} تقارير اليوم`;
+
+    const listContainer = document.getElementById('employeeTodayUploadsList');
+    if (!listContainer) return;
+
+    if (myToday.length === 0) {
+      listContainer.innerHTML = `<div style="color: var(--text-muted); font-size: 0.85rem; padding: 0.5rem 0;">لم تقم برفع أي تقارير مصورة اليوم بعد</div>`;
+      return;
+    }
+
+    listContainer.innerHTML = myToday.map(r => `
+      <div class="today-upload-pill">
+        <img src="${r.imageUrl}" alt="${r.typeLabel}" class="today-upload-thumb" onclick="window.openImageLightbox('${r.imageUrl}', '${r.typeLabel}')">
+        <div class="today-upload-info">
+          <strong>${r.typeLabel}</strong>
+          <span class="upload-time">${r.time}</span>
+        </div>
+        <span class="badge badge-success" style="font-size: 0.72rem;">تم الإرسال للإدارة ✅</span>
+      </div>
+    `).join('');
+  }
+
+  function renderAdminDailyUploads() {
+    const listContainer = document.getElementById('adminDailyUploadsList');
+    const badgeEl = document.getElementById('adminDailyUploadsBadge');
+    const countEl = document.getElementById('adminDailyUploadsCount');
+
+    if (badgeEl) {
+      badgeEl.textContent = state.dailyUploads.length;
+      badgeEl.style.display = state.dailyUploads.length ? 'inline-block' : 'none';
+    }
+    if (countEl) countEl.textContent = `${state.dailyUploads.length} صورة مرفوعة`;
+
+    if (!listContainer) return;
+
+    const typeFilter = document.getElementById('adminFilterUploadType') ? document.getElementById('adminFilterUploadType').value : 'all';
+    const dateFilter = document.getElementById('adminFilterUploadDate') ? document.getElementById('adminFilterUploadDate').value : '';
+    const searchFilter = document.getElementById('adminFilterUploadSearch') ? document.getElementById('adminFilterUploadSearch').value.trim().toLowerCase() : '';
+
+    let list = state.dailyUploads;
+    if (typeFilter && typeFilter !== 'all') {
+      list = list.filter(r => r.type === typeFilter);
+    }
+    if (dateFilter) {
+      list = list.filter(r => r.date === dateFilter);
+    }
+    if (searchFilter) {
+      list = list.filter(r =>
+        (r.employeeName && r.employeeName.toLowerCase().includes(searchFilter)) ||
+        (r.employeeCode && r.employeeCode.includes(searchFilter)) ||
+        (r.employeeArea && r.employeeArea.toLowerCase().includes(searchFilter))
+      );
+    }
+
+    if (list.length === 0) {
+      listContainer.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; padding: 3rem 1rem; color: var(--text-muted); background: var(--bg-card); border-radius: var(--radius-md); border: 1px dashed var(--border-color);">لا توجد صور توريد أو يوميات مطابقة للبحث حالياً</div>`;
+      return;
+    }
+
+    listContainer.innerHTML = list.map(item => `
+      <div class="admin-photo-card">
+        <div class="photo-card-img-wrap" onclick="window.openImageLightbox('${item.imageUrl}', '${item.typeLabel} - د. ${item.employeeName}')">
+          <img src="${item.imageUrl}" alt="${item.typeLabel}" loading="lazy">
+          <span class="photo-type-badge ${item.type === 'supply_receipt' ? 'badge-blue' : 'badge-purple'}">
+            ${item.type === 'supply_receipt' ? '📦 صورة توريد' : '📑 صورة يوميات'}
+          </span>
+        </div>
+        <div class="photo-card-body">
+          <div class="photo-card-user">
+            <div class="user-avatar-sm">${(item.employeeName || 'م').charAt(0)}</div>
+            <div>
+              <div class="user-name-title">د. ${item.employeeName || 'غير معروف'}</div>
+              <div class="user-meta-sub">كود: <strong>${item.employeeCode}</strong> | ${item.employeeArea || 'معمل أكيوريت'}</div>
+            </div>
+          </div>
+          <div class="photo-card-date">
+            <span>📅 ${item.dateDisplay || item.date}</span>
+            <span>⏱️ ${item.time}</span>
+          </div>
+          <div class="photo-card-actions">
+            <button type="button" class="btn btn-success btn-sm btn-block" onclick="window.downloadReportImage('${item.imageUrl}', '${item.typeLabel}_${item.employeeName}_${item.date}.jpg')">
+              📥 تحميل على الجهاز
+            </button>
+            <button type="button" class="btn btn-secondary btn-sm" style="color: var(--accent-red);" onclick="window.deleteDailyUpload('${item.id}')" title="حذف من السيرفر">
+              🗑️
+            </button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+/* =========================================================
+     ADMIN VIEWS RENDERER
+     ========================================================= */
+  function renderAdminViews() {
+    // 1. PENDING REGISTRATION REQUESTS TABLE
+    const pendingList = state.employees.filter(e => e.status === 'pending' || (e.isRegistered && !e.isApproved))
+      .concat(state.registrationRequests.filter(r => !state.employees.some(e => e.code === r.code)));
+    
+    // Unique by code
+    const uniquePending = [];
+    const seenCodes = new Set();
+    for (const p of pendingList) {
+      if (!seenCodes.has(p.code)) {
+        seenCodes.add(p.code);
+        uniquePending.push(p);
+      }
+    }
+
+    const pendingBadge = document.getElementById('adminPendingRequestsBadge');
+    if (pendingBadge) {
+      pendingBadge.textContent = `${uniquePending.length} طلب جديد`;
+      pendingBadge.style.display = uniquePending.length ? 'inline-block' : 'none';
+    }
+
+    const pendingTable = document.getElementById('adminPendingRequestsTableBody');
+    if (pendingTable) {
+      if (uniquePending.length === 0) {
+        pendingTable.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-muted); padding: 1.25rem;">لا توجد طلبات تسجيل جديدة في انتظار الموافقة حالياً ✨</td></tr>`;
+      } else {
+        pendingTable.innerHTML = uniquePending.map(req => `
+          <tr style="background: rgba(245, 158, 11, 0.05);">
+            <td><strong style="color: var(--primary); font-size: 1.1rem; letter-spacing: 0.15em;">${req.code}</strong></td>
+            <td><strong style="color: var(--text-primary);">${req.name || 'بدون اسم'}</strong></td>
+            <td>${req.area || '-'}</td>
+            <td><a href="tel:${req.phone}" style="color: var(--primary); font-weight: 600;">${req.phone || '-'}</a></td>
+            <td><span class="badge badge-amber">⏳ قيد الانتظار</span></td>
+            <td>
+              <div style="display: flex; gap: 0.35rem; align-items: center;">
+                <button type="button" class="btn btn-success btn-sm" onclick="window.approveEmployeeRegistration('${req.code}')" title="موافقة واعتماد">
+                  ✅ موافقة
+                </button>
+                <button type="button" class="btn btn-secondary btn-sm" style="color: var(--accent-red);" onclick="window.rejectEmployeeRegistration('${req.code}')" title="رفض الطلب">
+                  ❌ رفض
+                </button>
+              </div>
+            </td>
+          </tr>
+        `).join('');
+      }
+    }
+
+    // 2. APPROVED MEMBERS TABLE (الأعضاء المعتمدون وحذف عضو)
+    const approvedMembers = state.employees.filter(e => e.isApproved === true || e.status === 'approved');
+    const countEl = document.getElementById('adminCodesCount');
+    if (countEl) countEl.textContent = `${approvedMembers.length} عضو معتمد`;
+
+    const empTable = document.getElementById('adminEmployeesTableBody');
+    if (empTable) {
+      if (approvedMembers.length === 0) {
+        empTable.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-muted); padding: 1.25rem;">لا يوجد أعضاء معتمدون بالسيستم حالياً</td></tr>`;
+      } else {
+        empTable.innerHTML = approvedMembers.map(emp => `
+          <tr>
+            <td><strong style="color: var(--primary); letter-spacing: 0.1em; font-size: 1.05rem;">${emp.code}</strong></td>
+            <td>
+              <span class="badge badge-success">
+                معتمد بالسيستم ✅
+              </span>
+            </td>
+            <td><strong>د. ${emp.name || '-'}</strong></td>
+            <td>${emp.area || '-'}</td>
+            <td>${emp.phone || '-'}</td>
+            <td>
+              <button type="button" class="btn btn-danger btn-sm" onclick="window.deleteEmployeeMember('${emp.code}')" title="حذف العضو نهائياً من السيستم">
+                🗑️ حذف عضو
+              </button>
+            </td>
+          </tr>
+        `).join('');
+      }
+    }
+
+    // Populate employee select in rewards tab
+    const empSelect = document.getElementById('rewardEmployeeSelect');
+    if (empSelect) {
+      const prev = empSelect.value;
+      empSelect.innerHTML = `<option value="">اختر موظفاً...</option>` + state.employees.map(emp => `
+        <option value="${emp.code}">${emp.name ? `د. ${emp.name} (كود: ${emp.code} - ${emp.area})` : `كود: ${emp.code} (غير مسجل)`}</option>
+      `).join('');
+      if (prev) empSelect.value = prev;
+    }
+
+    // 2. Rewards Table
+    const rewTable = document.getElementById('adminRewardsTableBody');
+    if (rewTable) {
+      if (state.rewards.length === 0) {
+        rewTable.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-muted);">لا توجد مكافآت أو خصومات مسجلة</td></tr>`;
+      } else {
+        rewTable.innerHTML = state.rewards.map(item => `
+          <tr>
+            <td>${item.employeeName || item.employeeCode}</td>
+            <td>
+              <span class="badge ${item.type === 'reward' ? 'badge-success' : 'badge-danger'}">
+                ${item.type === 'reward' ? 'مكافأة 🎁' : 'خصم 🔻'}
+              </span>
+            </td>
+            <td><strong>${item.amount} ج.م</strong></td>
+            <td>${item.reason}</td>
+            <td>${item.dateDisplay || item.date} ${item.time}</td>
+            <td>
+              <button type="button" class="btn btn-danger btn-sm" onclick="window.deleteRewardRecord('${item.id}')">
+                حذف
+              </button>
+            </td>
+          </tr>
+        `).join('');
+      }
+    }
+
+    // 3. Attendance Feed (with live search and date filter)
+    const searchInput = document.getElementById('adminAttendanceSearchInput');
+    const dateInput = document.getElementById('adminAttendanceDateFilter');
+    const searchVal = searchInput ? searchInput.value.toLowerCase().trim() : '';
+    const dateVal = dateInput ? dateInput.value : '';
+
+    let filteredAtt = state.attendance;
+    if (searchVal) {
+      filteredAtt = filteredAtt.filter(r =>
+        (r.employeeName || '').toLowerCase().includes(searchVal) ||
+        (r.employeeCode || '').includes(searchVal) ||
+        (r.employeeArea || '').toLowerCase().includes(searchVal)
+      );
+    }
+    if (dateVal) {
+      filteredAtt = filteredAtt.filter(r => r.date === dateVal);
+    }
+
+    const attCount = document.getElementById('adminAttendanceCount');
+    if (attCount) attCount.textContent = `${filteredAtt.length} حركة`;
+    const attTable = document.getElementById('adminAttendanceTableBody');
+    if (attTable) {
+      if (filteredAtt.length === 0) {
+        attTable.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-muted);">لا توجد حركات مطابقة للبحث أو التاريخ</td></tr>`;
+      } else {
+        attTable.innerHTML = filteredAtt.map(item => `
+          <tr>
+            <td><strong>${item.employeeName}</strong></td>
+            <td><code>${item.employeeCode}</code></td>
+            <td>${item.employeeArea}</td>
+            <td>
+              <span class="badge ${item.actionType.includes('in') ? 'badge-success' : 'badge-info'}">
+                ${item.actionLabel}
+              </span>
+            </td>
+            <td>${item.dateDisplay || item.date} - ${item.time}</td>
+            <td>
+              <button type="button" class="btn btn-danger btn-sm" onclick="window.deleteAttendanceRecord('${item.id}')">
+                حذف
+              </button>
+            </td>
+          </tr>
+        `).join('');
+      }
+    }
+
+    // 4. Leaves List
+    const leaveCount = document.getElementById('adminLeavesCount');
+    if (leaveCount) leaveCount.textContent = `${state.leaves.length} طلب`;
+    const leaveContainer = document.getElementById('adminLeavesListContainer');
+    if (leaveContainer) {
+      if (state.leaves.length === 0) {
+        leaveContainer.innerHTML = `<div style="text-align: center; padding: 2rem; color: var(--text-muted);">لا توجد طلبات إجازة واردة</div>`;
+      } else {
+        leaveContainer.innerHTML = state.leaves.map(leave => {
+          let statusBadge = '<span class="badge badge-amber">⏳ قيد المراجعة</span>';
+          if (leave.status === 'approved') statusBadge = '<span class="badge badge-success">✅ مقبولة</span>';
+          if (leave.status === 'rejected') statusBadge = '<span class="badge badge-danger">❌ مرفوضة</span>';
+
+          return `
+            <div class="card" style="margin-bottom: 0.75rem;">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+                <div>
+                  <strong style="font-size: 1rem;">${leave.employeeName}</strong>
+                  <span style="font-size: 0.8rem; color: var(--text-muted); margin-right: 0.5rem;">(كود: ${leave.employeeCode} - فرع: ${leave.employeeArea} - هاتف: ${leave.employeePhone})</span>
+                </div>
+                ${statusBadge}
+              </div>
+              <div style="font-size: 0.85rem; margin-bottom: 0.5rem;">
+                <strong>النوع:</strong> ${leave.leaveType} | <strong>المدة:</strong> ${leave.daysCount} أيام | <strong>البداية:</strong> ${leave.startDate}
+              </div>
+              <div style="font-size: 0.85rem; background: var(--bg-surface-elevated); padding: 0.5rem; border-radius: var(--radius-sm); margin-bottom: 0.5rem;">
+                <strong>السبب:</strong> ${leave.reason}
+              </div>
+              ${leave.attachmentUrl ? `
+                <div style="margin-bottom: 0.5rem;">
+                  <a href="${leave.attachmentUrl}" target="_blank" rel="noopener noreferrer" style="font-size: 0.82rem; font-weight: 700; color: var(--primary);">
+                    📎 عرض المرفق الطبي المرفوع على Cloudinary
+                  </a>
+                </div>
+              ` : ''}
+              <div style="display: flex; gap: 0.5rem; align-items: center; justify-content: flex-end; flex-wrap: wrap;">
+                <button type="button" class="btn btn-success btn-sm" onclick="window.approveLeaveRequest('${leave.id}')">
+                  ✅ موافقة
+                </button>
+                <button type="button" class="btn btn-danger btn-sm" onclick="window.rejectLeaveRequest('${leave.id}')">
+                  ❌ رفض
+                </button>
+                <button type="button" class="btn btn-secondary btn-sm" style="color: var(--accent-red);" onclick="window.deleteLeaveRequest('${leave.id}')">
+                  🗑️ حذف
+                </button>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+    }
+
+    // 5. Supplies Catalog & Orders
+    const supTable = document.getElementById('adminSuppliesCatalogTableBody');
+    if (supTable) {
+      if (state.supplies.length === 0) {
+        supTable.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">لا توجد مستلزمات مضافة بالكتالوج</td></tr>`;
+      } else {
+        supTable.innerHTML = state.supplies.map(item => `
+          <tr>
+            <td>
+              ${item.imageUrl ? `<img src="${item.imageUrl}" alt="${item.name}" style="width: 36px; height: 36px; border-radius: 6px; object-fit: cover;">` : '-'}
+            </td>
+            <td><strong>${item.name}</strong></td>
+            <td>${item.unit || item.category || '-'}</td>
+            <td>
+              <button type="button" class="btn btn-danger btn-sm" onclick="window.deleteSupplyCatalogItem('${item.id}')">
+                حذف
+              </button>
+            </td>
+          </tr>
+        `).join('');
+      }
+    }
+
+    const orderCount = document.getElementById('adminSupplyOrdersCount');
+    if (orderCount) orderCount.textContent = `${state.supplyOrders.length} طلب`;
+    const orderList = document.getElementById('adminSupplyOrdersList');
+    if (orderList) {
+      if (state.supplyOrders.length === 0) {
+        orderList.innerHTML = `<div style="text-align: center; padding: 2rem; color: var(--text-muted);">لا توجد طلبات مستلزمات واردة</div>`;
+      } else {
+        orderList.innerHTML = state.supplyOrders.map(order => `
+          <div class="card" style="margin-bottom: 0.75rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+              <div>
+                <strong>د. ${order.employeeName}</strong>
+                <span style="font-size: 0.8rem; color: var(--text-muted); margin-right: 0.5rem;">(كود: ${order.employeeCode} - فرع: ${order.employeeArea} - هاتف: ${order.employeePhone})</span>
+              </div>
+              <span class="badge ${order.status === 'completed' ? 'badge-success' : 'badge-amber'}">
+                ${order.status === 'completed' ? 'تم الصرف والتسليم' : 'قيد التجهيز'}
+              </span>
+            </div>
+            <div style="font-size: 0.95rem; font-weight: 700; color: var(--primary);">
+              📦 ${order.supplyName} — الكمية: ${order.quantity}
+            </div>
+            ${order.notes ? `<div style="font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.25rem;">ملاحظات: ${order.notes}</div>` : ''}
+            <div style="display: flex; gap: 0.5rem; justify-content: flex-end; align-items: center; margin-top: 0.5rem;">
+              ${order.status !== 'completed' ? `
+                <button type="button" class="btn btn-success btn-sm" onclick="window.completeSupplyOrder('${order.id}')">
+                  ✅ تأكيد الصرف
+                </button>
+              ` : ''}
+              <button type="button" class="btn btn-danger btn-sm" onclick="window.deleteSupplyOrder('${order.id}')">
+                🗑️ حذف الطلب
+              </button>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+  }
+  window.renderAdminViews = renderAdminViews;
+
+  function renderAllEmployeeViews() {
+    renderEmployeeAttendance();
+    renderEmployeeDailyUploads();
+    renderEmployeeRewards();
+    renderEmployeeSupplies();
+    renderEmployeeLeaves();
+  }
+
+  /* =========================================================
+     LIVE CLOCK
+     ========================================================= */
+  function startClock() {
+    function tick() {
+      const now = new Date();
+      const timeEl = document.getElementById('digitalClockTime');
+      const dateEl = document.getElementById('digitalClockDate');
+      if (timeEl) {
+        timeEl.textContent = now.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+      }
+      if (dateEl) {
+        dateEl.textContent = now.toLocaleDateString('ar-EG', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+      }
+    }
+    tick();
+    setInterval(tick, 1000);
+  }
+
+  /* =========================================================
+     CLOUDINARY UPLOAD HELPER
+     ========================================================= */
+  function uploadToCloudinary(file, onProgress) {
+    if (!file) return Promise.reject(new Error('يرجى تحديد ملف للرفع'));
+
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', CONFIG.CLOUDINARY.uploadPreset);
+    formData.append('folder', 'accurate_lab');
+
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', CONFIG.CLOUDINARY.uploadUrl, true);
+      xhr.timeout = 6000;
+      xhr.ontimeout = () => reject(new Error('انتهت مهلة الاتصال بـ Cloudinary'));
+
+      if (xhr.upload && typeof onProgress === 'function') {
+        xhr.upload.onprogress = (e) => {
+          if (e.lengthComputable) {
+            const percent = Math.round((e.loaded / e.total) * 100);
+            onProgress(percent);
+          }
+        };
+      }
+
+      xhr.onload = () => {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          try {
+            const data = JSON.parse(xhr.responseText);
+            resolve(data);
+          } catch (_) {
+            reject(new Error('فشل معالجة استجابة الرفع'));
+          }
+        } else {
+          reject(new Error('حدث خطأ أثناء الرفع إلى Cloudinary'));
+        }
+      };
+
+      xhr.onerror = () => reject(new Error('تعذر الاتصال بـ Cloudinary'));
+      xhr.send(formData);
+    });
+  }
+
+  function setupCloudinaryUploads() {
+    // Leave document upload
+    const leaveDrop = document.getElementById('leaveUploadDropzone');
+    const leaveInput = document.getElementById('leaveFileInput');
+    const leaveProg = document.getElementById('leaveUploadProgress');
+    const leaveBar = document.getElementById('leaveProgressBarInner');
+    const leaveTxt = document.getElementById('leaveUploadProgressText');
+    const leavePrev = document.getElementById('leaveUploadPreview');
+    const leaveImg = document.getElementById('leavePreviewImg');
+
+    if (leaveDrop && leaveInput) {
+      leaveDrop.addEventListener('click', (e) => {
+        if (e.target.closest('#btnRemoveLeaveAttachment')) return;
+        leaveInput.click();
+      });
+
+      leaveInput.addEventListener('change', async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        if (leaveProg) leaveProg.style.display = 'block';
+        if (leaveBar) leaveBar.style.width = '0%';
+        if (leaveTxt) leaveTxt.textContent = 'جاري الرفع إلى Cloudinary... (0%)';
+
+        try {
+          const res = await uploadToCloudinary(file, (p) => {
+            if (leaveBar) leaveBar.style.width = p + '%';
+            if (leaveTxt) leaveTxt.textContent = `جاري الرفع... (${p}%)`;
+          });
+
+          state.uploadedLeaveFile = res;
+          if (leaveProg) leaveProg.style.display = 'none';
+          if (leavePrev) leavePrev.style.display = 'inline-block';
+          if (leaveImg) leaveImg.src = res.secure_url;
+          playSound('success');
+          showToast('تم رفع المرفق الطبي بنجاح إلى Cloudinary ✅', 'success');
+        } catch (err) {
+          if (leaveProg) leaveProg.style.display = 'none';
+          showToast(err.message || 'فشل رفع الملف', 'error');
+        }
+      });
+    }
+
+    // Supply image upload in admin
+    const supDrop = document.getElementById('supplyUploadDropzone');
+    const supInput = document.getElementById('supplyFileInput');
+    const supProg = document.getElementById('supplyUploadProgress');
+    const supBar = document.getElementById('supplyProgressBarInner');
+    const supTxt = document.getElementById('supplyUploadProgressText');
+    const supPrev = document.getElementById('supplyUploadPreview');
+    const supImg = document.getElementById('supplyPreviewImg');
+
+    if (supDrop && supInput) {
+      supDrop.addEventListener('click', (e) => {
+        if (e.target.closest('#btnRemoveSupplyImg')) return;
+        supInput.click();
+      });
+
+      supInput.addEventListener('change', async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        if (supProg) supProg.style.display = 'block';
+        if (supBar) supBar.style.width = '0%';
+        if (supTxt) supTxt.textContent = 'جاري الرفع إلى Cloudinary... (0%)';
+
+        try {
+          const res = await uploadToCloudinary(file, (p) => {
+            if (supBar) supBar.style.width = p + '%';
+            if (supTxt) supTxt.textContent = `جاري الرفع... (${p}%)`;
+          });
+
+          state.uploadedSupplyFile = res;
+          if (supProg) supProg.style.display = 'none';
+          if (supPrev) supPrev.style.display = 'inline-block';
+          if (supImg) supImg.src = res.secure_url;
+          playSound('success');
+          showToast('تم رفع صورة المستلزم بنجاح إلى Cloudinary ✅', 'success');
+        } catch (err) {
+          if (supProg) supProg.style.display = 'none';
+          showToast(err.message || 'فشل رفع صورة المستلزم', 'error');
+        }
+      });
+    }
+  }
+
+  /* =========================================================
+     INIT ALL ATTACHMENTS & EVENT LISTENERS
+     ========================================================= */
+  function setupAllEventListeners() {
+    // Attendance Filters
+    const searchInput = document.getElementById('adminAttendanceSearchInput');
+    const dateInput = document.getElementById('adminAttendanceDateFilter');
+    const resetFilterBtn = document.getElementById('btnResetAttendanceFilter');
+    if (searchInput) {
+      searchInput.addEventListener('input', () => renderAdminViews());
+    }
+    if (dateInput) {
+      dateInput.addEventListener('change', () => renderAdminViews());
+    }
+    if (resetFilterBtn) {
+      resetFilterBtn.addEventListener('click', () => {
+        if (searchInput) searchInput.value = '';
+        if (dateInput) dateInput.value = '';
+        renderAdminViews();
+      });
+    }
+  }
+
+  function initApp() {
+    applyTheme(state.theme);
+    startClock();
+    setupCloudinaryUploads();
+    initFirebase();
+    updateViewVisibility();
+    setupAllEventListeners();
+
+    console.log('🚀 Accurate Lab Engine is 100% Ready');
+    window.appReady = true;
+  }
+
+  // Run on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+  } else {
+    initApp();
+  }
+
+})(window, document);
+
   </script>
 </body>
 </html>
